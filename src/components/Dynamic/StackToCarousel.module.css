@@ -1,0 +1,94 @@
+.card {
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  aspect-ratio: 11 / 16;
+  max-width: 560px;
+  height: auto;
+
+  overflow: hidden;
+  border-radius: 6px;
+  /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); */
+
+  transform-style: preserve-3d;
+  transition: all 0.3s ease;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+/* for carousel */
+.card-size--desktop-full {
+  max-width: 40vw !important;
+  height: 98vh !important;
+}
+.card-size--mobile-full {
+  max-width: 400px !important;
+  height: 98vh !important;
+}
+
+/* gloss effect */
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+
+  /* gloss */
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 30%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.1) 70%,
+    transparent 100%
+  );
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card:hover {
+  /* box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); */
+  transform: translate(var(--hover-translate-x, 0), var(--hover-translate-y, 0))
+    scale(1.03);
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  /* box-shadow 0.3s ease; */
+}
+
+.card:hover img {
+  filter: brightness(1.05) contrast(1.05);
+  transform: scale(1.02);
+}
+
+/* animation classes */
+.anim-carousel-left {
+  display: flex;
+  will-change: transform;
+  animation: carousel-left 100s infinite linear;
+}
+
+@keyframes carousel-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(var(--carousel-translation));
+  }
+}
