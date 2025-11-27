@@ -7,6 +7,8 @@ import Carousel from '@/components/Dynamic/Carousel'
 import PublicLayout from '@/components/Layout/PublicLayout'
 import TextFade from '@/components/Dynamic/TextFade'
 
+import Albums from '@/components/Spotify/Albums'
+
 import styles from '@/styles/Landing.module.css'
 
 export const Route = createFileRoute('/')({
@@ -48,9 +50,7 @@ function App() {
 
       <section>
         <h2 className="text-6xl text-center">latest music</h2>
-        <h2 className="text-center">
-          Listen to Blue Valentine on your favorite streaming platform.
-        </h2>
+        <Albums />
       </section>
     </PublicLayout>
   )
