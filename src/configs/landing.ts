@@ -31,4 +31,7 @@ const SAMPLE_DECK = [
   },
 ]
 
-export const LANDING_DECK = SAMPLE_DECK
+const LANDING_BACKGROUND =
+  'https://d1al7qj7ydfbpt.cloudfront.net/artist/nmixx/3cce5a96a8a34e2aa4c1ed4098daad5c-PC%E1%84%83%E1%85%A1%E1%86%AB%E1%84%8E%E1%85%A6.jpg'
+
+export { SAMPLE_DECK as LANDING_DECK, LANDING_BACKGROUND }

@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import StackToCarousel from '@/components/Dynamic/StackToCarousel'
 
-import { LANDING_DECK } from '@/configs/landing'
+import { LANDING_BACKGROUND, LANDING_DECK } from '@/configs/landing'
 
 export const Route = createFileRoute('/(public)/playground')({
   component: RouteComponent,
@@ -11,7 +11,14 @@ export const Route = createFileRoute('/(public)/playground')({
 function RouteComponent() {
   return (
     <>
-      <div style={{ height: '50vh' }}>
+      <div
+        className="h-[90vh]"
+        style={{
+          backgroundImage: `url(${LANDING_BACKGROUND})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
         <h1>NMIXX</h1>
         <h2>Blue Valentine</h2>
       </div>

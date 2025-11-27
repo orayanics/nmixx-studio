@@ -1,12 +1,14 @@
 import React from 'react'
-import Navigation from '@/components/Page/PageNavigation'
+import Navigation from '@/components/Page/Navigation'
+
+import { PUBLIC_LINKS } from '@/configs/links'
 
 export default function PublicLayout(props: { children: React.ReactNode }) {
   const { children } = props
   return (
-    <div>
-      <Navigation />
+    <>
+      <Navigation links={PUBLIC_LINKS} />
       {children}
-    </div>
+    </>
   )
 }

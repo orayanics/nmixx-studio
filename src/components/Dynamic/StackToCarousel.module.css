@@ -7,7 +7,6 @@
   right: 0;
   margin: auto;
   aspect-ratio: 11 / 16;
-  max-width: 560px;
   height: auto;
 
   overflow: hidden;
@@ -27,13 +26,31 @@
   transition: all 0.3s ease;
 }
 
+/* for stack */
+.card-size--desktop-stack {
+  max-width: 96vw;
+  width: 70vw !important;
+  aspect-ratio: 16 / 9;
+
+  /* center image */
+  img {
+    object-fit: cover;
+    object-position: top;
+  }
+}
+.card-size--mobile-stack {
+  max-width: 96vw;
+  width: 80vw !important;
+  height: 70vh !important;
+}
+
 /* for carousel */
 .card-size--desktop-full {
-  max-width: 40vw !important;
+  width: 900px !important;
   height: 98vh !important;
 }
 .card-size--mobile-full {
-  max-width: 400px !important;
+  /* max-width: 400px !important; */
   height: 98vh !important;
 }
 
@@ -65,11 +82,9 @@
 }
 
 .card:hover {
-  /* box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); */
   transform: translate(var(--hover-translate-x, 0), var(--hover-translate-y, 0))
     scale(1.03);
   transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  /* box-shadow 0.3s ease; */
 }
 
 .card:hover img {

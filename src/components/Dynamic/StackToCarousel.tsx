@@ -32,7 +32,7 @@ export default function StackToCarousel(props: StackToCarouselProps) {
   const carouselTranslation = -(count * spacing)
 
   return (
-    <div ref={containerRef} className="min-h-[110vh] mx-2">
+    <div ref={containerRef} className="min-h-[120vh] mx-2">
       <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
         <div className="perspective-[1000px] w-full h-full">
           <div
@@ -82,7 +82,7 @@ export default function StackToCarousel(props: StackToCarouselProps) {
                     }
                   }}
                   className={`${styles.card}
-                  ${isCarouselMode && (isMobile ? styles['card-size--mobile-full'] : styles['card-size--desktop-full'])}
+                  ${isCarouselMode ? (isMobile ? styles['card-size--mobile-full'] : styles['card-size--desktop-full']) : isMobile ? styles['card-size--mobile-stack'] : styles['card-size--desktop-stack']}
                   cursor-pointer`}
                   style={{
                     zIndex: zIndex,
