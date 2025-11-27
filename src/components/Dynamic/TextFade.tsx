@@ -1,12 +1,7 @@
 import styles from './TextFade.module.css'
 
 interface TextFadeProps {
-  position?:
-    | 'top-left'
-    | 'top-right'
-    | 'bottom-left'
-    | 'bottom-right'
-    | 'center'
+  position?: 'bottom-left' | 'bottom-right' | 'center'
   children?: React.ReactNode
   className?: string
 }

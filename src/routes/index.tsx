@@ -3,7 +3,7 @@ import { Music, Music2, Music3 } from 'lucide-react'
 
 import { LANDING_BACKGROUND, LANDING_DECK } from '@/configs/landing'
 
-import StackToCarousel from '@/components/Dynamic/StackToCarousel'
+import Carousel from '@/components/Dynamic/Carousel'
 import PublicLayout from '@/components/Layout/PublicLayout'
 import TextFade from '@/components/Dynamic/TextFade'
 
@@ -43,7 +43,7 @@ function App() {
         <p className="text-center mb-10">
           Lily, Haewon, Bae, Sullyoon, Jiwoo, Bae
         </p>
-        <StackToCarousel DECK={LANDING_DECK} />
+        <Carousel DECK={LANDING_DECK} />
       </section>
 
       <section>

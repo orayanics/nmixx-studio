@@ -39,26 +39,7 @@ export default function StackToCarousel(props: StackToCarouselProps) {
         <div
           className={`${styles['carousel-track']} flex max-w-[90vw] overflow-hidden h-full`}
         >
-          <div className={`${styles['carousel-item']}`}>
-            {DECK.map((card) => {
-              return (
-                <div key={card.id}>
-                  <img fetchPriority="high" src={card.img} alt={card.title} />
-                </div>
-              )
-            })}
-          </div>
-
-          <div aria-hidden className={`${styles['carousel-item']}`}>
-            {DECK.map((card) => {
-              return (
-                <div key={card.id}>
-                  <img fetchPriority="high" src={card.img} alt={card.title} />
-                </div>
-              )
-            })}
-          </div>
-          {/* <div
+          <div
             className={`relative mt-2 ${isCarouselMode && styles['anim-carousel-left']}`}
             style={
               {
@@ -129,7 +110,7 @@ export default function StackToCarousel(props: StackToCarouselProps) {
                 </div>
               )
             })}
-          </div> */}
+          </div>
         </div>
       </div>
     </div>
