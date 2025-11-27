@@ -32,6 +32,23 @@ code {
   }
 }
 
+/* section*/
+section {
+  padding: 64px 0px;
+
+  &:last-of-type {
+    padding-bottom: 0;
+
+    + div {
+      margin-top: 64px;
+    }
+
+    + footer {
+      margin-top: 64px;
+    }
+  }
+}
+
 /* page transition */
 /* on page load, navigate to other page */
 @keyframes scale-fade-in {

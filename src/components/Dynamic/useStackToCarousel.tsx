@@ -17,7 +17,7 @@ export default function useStackToCarousel(props: UseStackToCarouselProps) {
   const [spread, setSpread] = useState(0)
   const [currentIndex, setCurrentIndex] = useState(0)
   const count = deck.length
-  const spacing = isMobile ? 640 : 905
+  const spacing = isMobile ? 510 : 905
   const isCarouselMode = spread >= 0.7
   const isStackMode = spread < 0.2
 

@@ -29,29 +29,28 @@
 /* for stack */
 .card-size--desktop-stack {
   max-width: 96vw;
-  width: 70vw !important;
+  width: 80vw !important;
   aspect-ratio: 16 / 9;
 
   /* center image */
   img {
     object-fit: cover;
-    object-position: top;
   }
 }
 .card-size--mobile-stack {
   max-width: 96vw;
   width: 80vw !important;
-  height: 70vh !important;
+  height: 70svh !important;
 }
 
 /* for carousel */
 .card-size--desktop-full {
   width: 900px !important;
-  height: 98vh !important;
+  height: 98svh !important;
 }
 .card-size--mobile-full {
   /* max-width: 400px !important; */
-  height: 98vh !important;
+  height: 98svh !important;
 }
 
 /* gloss effect */

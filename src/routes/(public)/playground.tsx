@@ -12,7 +12,7 @@ function RouteComponent() {
   return (
     <>
       <div
-        className="h-[90vh]"
+        className="h-[90svh]"
         style={{
           backgroundImage: `url(${LANDING_BACKGROUND})`,
           backgroundSize: 'cover',

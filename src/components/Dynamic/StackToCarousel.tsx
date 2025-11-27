@@ -31,6 +31,8 @@ export default function StackToCarousel(props: StackToCarouselProps) {
   const deckToRender = isCarouselMode ? [...DECK, ...DECK] : DECK
   const carouselTranslation = -(count * spacing)
 
+  const excludeTitles = ['Bae', 'Jiwoo']
+
   return (
     <div ref={containerRef} className="min-h-[120vh] mx-2">
       <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
@@ -90,10 +92,16 @@ export default function StackToCarousel(props: StackToCarouselProps) {
                     transform: `translate(${x}px,${y}px) scale(${scale})`,
                   }}
                 >
-                  <TextFade position="bottom-right">{card.title}</TextFade>
+                  <TextFade
+                    position={`${isCarouselMode ? 'bottom-right' : 'center'}`}
+                  >
+                    <code>{card.title}</code>
+                  </TextFade>
                   <img
                     fetchPriority="high"
-                    className="rounded"
+                    className={`${!isCarouselMode && (excludeTitles.includes(card.title) ? 'object-[-20%_20%]' : 'object-top')}
+                    ${isCarouselMode && 'object-top'}
+                    rounded-2xl`}
                     src={card.img}
                     alt={card.title}
                   />
