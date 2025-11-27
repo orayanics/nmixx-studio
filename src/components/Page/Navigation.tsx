@@ -21,7 +21,7 @@ export default function Navigation(props: NavigationProps) {
 
   return (
     <nav
-      className={`${styles['navigation--public']} px-4 mt-6 fixed top-0 start-0 z-50`}
+      className={`${styles['navigation--public']} px-6 mt-6 fixed top-0 start-0 z-50`}
     >
       <div
         className={`${styles['navigation--public-content']} liquid-glass rounded-full flex md:gap-3 gap-6 px-10 py-2 justify-between items-center`}
@@ -52,7 +52,7 @@ export default function Navigation(props: NavigationProps) {
 
       {isMenuOpen && (
         <div
-          className="absolute top-15 right-5 p-4 flex flex-col gap-4 items-end"
+          className="absolute top-11 right-5 p-4 flex flex-col gap-4 items-end"
           id="navigation-menu"
         >
           {links.map((link, index) => (

@@ -13,7 +13,7 @@ interface CarouselProps {
 export default function Carousel(props: CarouselProps) {
   const { DECK } = props
   return (
-    <div className="mx-2">
+    <div>
       <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
         <div
           className={`${styles['carousel-track']} flex max-w-[90vw] overflow-hidden`}
