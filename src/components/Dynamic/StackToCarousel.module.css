@@ -106,3 +106,37 @@
     transform: translateX(var(--carousel-translation));
   }
 }
+
+/* infinite carousel */
+.carousel-track {
+  > * {
+    flex: 0 0 100%;
+  }
+}
+
+.carousel-item {
+  display: flex;
+  gap: 20px;
+  padding-right: 20px;
+
+  will-change: transform;
+  animation: scrolling 5s linear infinite;
+
+  > div:hover {
+    animation-play-state: paused;
+  }
+
+  /* select all div children */
+  > div {
+    flex: 0 0 auto;
+  }
+}
+
+@keyframes scrolling {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

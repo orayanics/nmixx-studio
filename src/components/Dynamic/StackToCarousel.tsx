@@ -34,10 +34,31 @@ export default function StackToCarousel(props: StackToCarouselProps) {
   const excludeTitles = ['Bae', 'Jiwoo']
 
   return (
-    <div ref={containerRef} className="min-h-[120vh] mx-2">
+    <div ref={containerRef} className="min-h-screen mx-2">
       <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
-        <div className="perspective-[1000px] w-full h-full">
-          <div
+        <div
+          className={`${styles['carousel-track']} flex max-w-[90vw] overflow-hidden h-full`}
+        >
+          <div className={`${styles['carousel-item']}`}>
+            {DECK.map((card) => {
+              return (
+                <div key={card.id}>
+                  <img fetchPriority="high" src={card.img} alt={card.title} />
+                </div>
+              )
+            })}
+          </div>
+
+          <div aria-hidden className={`${styles['carousel-item']}`}>
+            {DECK.map((card) => {
+              return (
+                <div key={card.id}>
+                  <img fetchPriority="high" src={card.img} alt={card.title} />
+                </div>
+              )
+            })}
+          </div>
+          {/* <div
             className={`relative mt-2 ${isCarouselMode && styles['anim-carousel-left']}`}
             style={
               {
@@ -108,7 +129,7 @@ export default function StackToCarousel(props: StackToCarouselProps) {
                 </div>
               )
             })}
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
