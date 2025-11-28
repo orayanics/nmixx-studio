@@ -5,6 +5,7 @@ interface SpotifyAlbum {
   totalTracks: number
   imageUrl: string | null
   albumUrl: string
+  uri: string
 }
 
 interface SpotifySearchResponse {
@@ -20,6 +21,7 @@ interface SpotifyAlbumItem {
   total_tracks: number
   images: Array<{ url: string }>
   external_urls: { spotify: string }
+  uri: string
 }
 
 // In-memory token cache for client-credentials flow
@@ -77,9 +79,7 @@ async function getSpotifyAccessToken(): Promise<string> {
   return fetchClientCredentialsToken()
 }
 
-export async function searchAlbums(
-  query: string,
-): Promise<Array<SpotifyAlbum>> {
+async function searchAlbums(query: string): Promise<Array<SpotifyAlbum>> {
   const url = `https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=album&limit=20`
 
   try {
@@ -111,6 +111,7 @@ export async function searchAlbums(
       totalTracks: album.total_tracks,
       imageUrl: album.images[0]?.url ?? null,
       albumUrl: album.external_urls.spotify,
+      uri: album.uri,
     }))
 
     return albums
@@ -119,3 +120,43 @@ export async function searchAlbums(
     return []
   }
 }
+
+async function getAlbumTracks(albumId: string): Promise<Array<string>> {
+  // remove "spotify:album:" prefix if present
+  const albumID = albumId.startsWith('spotify:album:')
+    ? albumId.replace('spotify:album:', '')
+    : albumId
+
+  const url = `https://api.spotify.com/v1/albums/${albumID}/tracks`
+
+  try {
+    const token = await getSpotifyAccessToken()
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    })
+
+    if (!response.ok) {
+      if (response.status === 401) {
+        cachedAccessToken = null
+        accessTokenExpiresAt = 0
+      }
+      throw new Error(
+        `Failed to fetch album tracks from Spotify API (${response.status})`,
+      )
+    }
+
+    const data = await response.json()
+    const trackNames = data.items.map((track: any) => track.name)
+
+    return trackNames
+  } catch (error) {
+    console.error('Error fetching album tracks from Spotify:', error)
+    return []
+  }
+}
+
+export { searchAlbums, getAlbumTracks }

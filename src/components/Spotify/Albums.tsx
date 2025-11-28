@@ -23,6 +23,8 @@ export default function Albums() {
     <div className="mx-2">
       <LatestAlbum album={firstAlbum} />
 
+      <h2 className="text-2xl text-center">Listen to other albums</h2>
+
       <div className="grid md:grid-cols-3 grid-cols-auto grid-rows-auto gap-4 p-4">
         {albums.slice(1).map((album) => (
           <div
