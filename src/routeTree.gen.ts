@@ -12,7 +12,8 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as publicRouteRouteImport } from './routes/(public)/route'
 import { Route as publicIndexRouteImport } from './routes/(public)/index'
 import { Route as publicPlaygroundRouteImport } from './routes/(public)/playground'
-import { Route as publicMusicRouteImport } from './routes/(public)/music'
+import { Route as publicVideoIndexRouteImport } from './routes/(public)/video/index'
+import { Route as publicMusicIndexRouteImport } from './routes/(public)/music/index'
 import { Route as publicAboutIndexRouteImport } from './routes/(public)/about/index'
 
 const publicRouteRoute = publicRouteRouteImport.update({
@@ -29,9 +30,14 @@ const publicPlaygroundRoute = publicPlaygroundRouteImport.update({
   path: '/playground',
   getParentRoute: () => publicRouteRoute,
 } as any)
-const publicMusicRoute = publicMusicRouteImport.update({
-  id: '/music',
-  path: '/music',
+const publicVideoIndexRoute = publicVideoIndexRouteImport.update({
+  id: '/video/',
+  path: '/video/',
+  getParentRoute: () => publicRouteRoute,
+} as any)
+const publicMusicIndexRoute = publicMusicIndexRouteImport.update({
+  id: '/music/',
+  path: '/music/',
   getParentRoute: () => publicRouteRoute,
 } as any)
 const publicAboutIndexRoute = publicAboutIndexRouteImport.update({
@@ -41,37 +47,41 @@ const publicAboutIndexRoute = publicAboutIndexRouteImport.update({
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/music': typeof publicMusicRoute
   '/playground': typeof publicPlaygroundRoute
   '/': typeof publicIndexRoute
   '/about': typeof publicAboutIndexRoute
+  '/music': typeof publicMusicIndexRoute
+  '/video': typeof publicVideoIndexRoute
 }
 export interface FileRoutesByTo {
-  '/music': typeof publicMusicRoute
   '/playground': typeof publicPlaygroundRoute
   '/': typeof publicIndexRoute
   '/about': typeof publicAboutIndexRoute
+  '/music': typeof publicMusicIndexRoute
+  '/video': typeof publicVideoIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/(public)': typeof publicRouteRouteWithChildren
-  '/(public)/music': typeof publicMusicRoute
   '/(public)/playground': typeof publicPlaygroundRoute
   '/(public)/': typeof publicIndexRoute
   '/(public)/about/': typeof publicAboutIndexRoute
+  '/(public)/music/': typeof publicMusicIndexRoute
+  '/(public)/video/': typeof publicVideoIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/music' | '/playground' | '/' | '/about'
+  fullPaths: '/playground' | '/' | '/about' | '/music' | '/video'
   fileRoutesByTo: FileRoutesByTo
-  to: '/music' | '/playground' | '/' | '/about'
+  to: '/playground' | '/' | '/about' | '/music' | '/video'
   id:
     | '__root__'
     | '/(public)'
-    | '/(public)/music'
     | '/(public)/playground'
     | '/(public)/'
     | '/(public)/about/'
+    | '/(public)/music/'
+    | '/(public)/video/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -101,11 +111,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof publicPlaygroundRouteImport
       parentRoute: typeof publicRouteRoute
     }
-    '/(public)/music': {
-      id: '/(public)/music'
+    '/(public)/video/': {
+      id: '/(public)/video/'
+      path: '/video'
+      fullPath: '/video'
+      preLoaderRoute: typeof publicVideoIndexRouteImport
+      parentRoute: typeof publicRouteRoute
+    }
+    '/(public)/music/': {
+      id: '/(public)/music/'
       path: '/music'
       fullPath: '/music'
-      preLoaderRoute: typeof publicMusicRouteImport
+      preLoaderRoute: typeof publicMusicIndexRouteImport
       parentRoute: typeof publicRouteRoute
     }
     '/(public)/about/': {
@@ -119,17 +136,19 @@ declare module '@tanstack/react-router' {
 }
 
 interface publicRouteRouteChildren {
-  publicMusicRoute: typeof publicMusicRoute
   publicPlaygroundRoute: typeof publicPlaygroundRoute
   publicIndexRoute: typeof publicIndexRoute
   publicAboutIndexRoute: typeof publicAboutIndexRoute
+  publicMusicIndexRoute: typeof publicMusicIndexRoute
+  publicVideoIndexRoute: typeof publicVideoIndexRoute
 }
 
 const publicRouteRouteChildren: publicRouteRouteChildren = {
-  publicMusicRoute: publicMusicRoute,
   publicPlaygroundRoute: publicPlaygroundRoute,
   publicIndexRoute: publicIndexRoute,
   publicAboutIndexRoute: publicAboutIndexRoute,
+  publicMusicIndexRoute: publicMusicIndexRoute,
+  publicVideoIndexRoute: publicVideoIndexRoute,
 }
 
 const publicRouteRouteWithChildren = publicRouteRoute._addFileChildren(

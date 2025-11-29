@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import Albums from '@/components/Spotify/Albums'
 
-export const Route = createFileRoute('/(public)/music')({
+export const Route = createFileRoute('/(public)/music/')({
   component: RouteComponent,
 })
 
