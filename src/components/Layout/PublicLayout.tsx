@@ -1,16 +1,24 @@
 import React from 'react'
+
 import Navigation from '@/components/Page/Navigation'
 import Footer from '@/components/Page/Footer'
 
 import { PUBLIC_LINKS } from '@/configs/links'
 
-export default function PublicLayout(props: { children: React.ReactNode }) {
-  const { children } = props
+interface PublicLayoutProps {
+  children: React.ReactNode
+  enableFooter?: boolean
+  enableNavigation?: boolean
+}
+
+export default function PublicLayout(props: PublicLayoutProps) {
+  const { children, enableFooter = true, enableNavigation = true } = props
+
   return (
     <>
-      <Navigation links={PUBLIC_LINKS} />
+      {enableNavigation && <Navigation links={PUBLIC_LINKS} />}
       {children}
-      <Footer />
+      {enableFooter && <Footer />}
     </>
   )
 }

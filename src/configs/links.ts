@@ -1,7 +1,7 @@
 const PUBLIC_LINKS = [
-  { to: '/playground', label: 'Home' },
-  { to: '/blog/1', label: 'Music' },
-  { to: '/blog/2', label: 'Video' },
+  { to: '/', label: 'Home' },
+  { to: '/music', label: 'Music' },
+  { to: '/video', label: 'Video' },
   { to: '/about', label: 'About' },
 ]
 

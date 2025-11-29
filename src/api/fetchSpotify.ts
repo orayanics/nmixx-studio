@@ -1,30 +1,10 @@
-interface SpotifyAlbum {
-  name: string
-  artists: Array<string>
-  releaseDate: string
-  totalTracks: number
-  imageUrl: string | null
-  albumUrl: string
-  uri: string
-}
+import type { GetAlbum } from '@/types/Album'
+import type { GetAlbumTracks } from '@/types/AlbumTracks'
+import type { ArtistAlbums } from '@/types/ArtistAlbums'
+import type { ALBUM_TYPE } from '@/types/Shared'
 
-interface SpotifySearchResponse {
-  albums: {
-    items: Array<SpotifyAlbumItem>
-  }
-}
+const ARTIST_ID = '28ot3wh4oNmoFOdVajibBl' // NMIXX Spotify Artist ID
 
-interface SpotifyAlbumItem {
-  name: string
-  artists: Array<{ name: string }>
-  release_date: string
-  total_tracks: number
-  images: Array<{ url: string }>
-  external_urls: { spotify: string }
-  uri: string
-}
-
-// In-memory token cache for client-credentials flow
 let cachedAccessToken: string | null = null
 let accessTokenExpiresAt = 0
 
@@ -79,84 +59,82 @@ async function getSpotifyAccessToken(): Promise<string> {
   return fetchClientCredentialsToken()
 }
 
-async function searchAlbums(query: string): Promise<Array<SpotifyAlbum>> {
-  const url = `https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=album&limit=20`
-
-  try {
-    const token = await getSpotifyAccessToken()
-    const response = await fetch(url, {
-      method: 'GET',
+export async function fetchArtistAlbums(
+  latestOnly = false,
+  album_type?: ALBUM_TYPE,
+): Promise<ArtistAlbums> {
+  const token = await getSpotifyAccessToken()
+  const res = await fetch(
+    `https://api.spotify.com/v1/artists/${ARTIST_ID}/albums${album_type ? `?include_groups=${album_type}` : ''}`,
+    {
       headers: {
         Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json',
       },
-    })
+    },
+  )
+  if (!res.ok) {
+    throw new Error(`Failed to fetch artist albums: ${res.status}`)
+  }
 
-    if (!response.ok) {
-      if (response.status === 401) {
-        cachedAccessToken = null
-        accessTokenExpiresAt = 0
-      }
-      throw new Error(
-        `Failed to fetch data from Spotify API (${response.status})`,
-      )
-    }
+  const data: ArtistAlbums = await res.json()
 
-    const data: SpotifySearchResponse = await response.json()
+  if (!latestOnly) {
+    return data
+  }
 
-    const albums = data.albums.items.map((album: SpotifyAlbumItem) => ({
-      name: album.name,
-      artists: album.artists.map((artist) => artist.name),
-      releaseDate: album.release_date,
-      totalTracks: album.total_tracks,
-      imageUrl: album.images[0]?.url ?? null,
-      albumUrl: album.external_urls.spotify,
-      uri: album.uri,
-    }))
+  const sortedItems = [...data.items].sort((a, b) =>
+    a.release_date < b.release_date ? 1 : -1,
+  )
 
-    return albums
-  } catch (error) {
-    console.error('Error fetching data from Spotify:', error)
-    return []
+  const sortedAlbumType = album_type
+    ? sortedItems.filter((item) => item.album_type === album_type)
+    : sortedItems
+
+  const latest = sortedAlbumType.at(0)
+
+  return {
+    ...data,
+    items: latest ? [latest] : [],
   }
 }
 
-async function getAlbumTracks(albumId: string): Promise<Array<string>> {
-  // remove "spotify:album:" prefix if present
-  const albumID = albumId.startsWith('spotify:album:')
-    ? albumId.replace('spotify:album:', '')
-    : albumId
-
-  const url = `https://api.spotify.com/v1/albums/${albumID}/tracks`
-
-  try {
-    const token = await getSpotifyAccessToken()
-    const response = await fetch(url, {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json',
-      },
-    })
-
-    if (!response.ok) {
-      if (response.status === 401) {
-        cachedAccessToken = null
-        accessTokenExpiresAt = 0
-      }
-      throw new Error(
-        `Failed to fetch album tracks from Spotify API (${response.status})`,
-      )
-    }
-
-    const data = await response.json()
-    const trackNames = data.items.map((track: any) => track.name)
-
-    return trackNames
-  } catch (error) {
-    console.error('Error fetching album tracks from Spotify:', error)
-    return []
+export async function fetchAlbum(albumId: string): Promise<GetAlbum> {
+  const token = await getSpotifyAccessToken()
+  const res = await fetch(`https://api.spotify.com/v1/albums/${albumId}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+  if (!res.ok) {
+    throw new Error(`Failed to fetch album: ${res.status}`)
   }
+
+  const data: GetAlbum = await res.json()
+  return data
 }
 
-export { searchAlbums, getAlbumTracks }
+export async function fetchAlbumTracks(
+  albumId: string,
+): Promise<GetAlbumTracks> {
+  const token = await getSpotifyAccessToken()
+  const res = await fetch(
+    `https://api.spotify.com/v1/albums/${albumId}/tracks`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  )
+  if (!res.ok) {
+    throw new Error(`Failed to fetch album tracks: ${res.status}`)
+  }
+  const data: GetAlbumTracks = await res.json()
+  return data
+}
+
+export async function getLatestAlbumByArtist(
+  album_type?: ALBUM_TYPE,
+): Promise<ArtistAlbums> {
+  const albumsData = await fetchArtistAlbums(true, album_type)
+  return albumsData
+}

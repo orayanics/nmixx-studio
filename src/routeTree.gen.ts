@@ -10,75 +10,72 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as publicRouteRouteImport } from './routes/(public)/route'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as BlogIndexRouteImport } from './routes/blog/index'
-import { Route as BlogBlogIdRouteImport } from './routes/blog/$blogId'
+import { Route as publicIndexRouteImport } from './routes/(public)/index'
 import { Route as publicPlaygroundRouteImport } from './routes/(public)/playground'
+import { Route as publicMusicRouteImport } from './routes/(public)/music'
+import { Route as publicAboutIndexRouteImport } from './routes/(public)/about/index'
 
 const publicRouteRoute = publicRouteRouteImport.update({
   id: '/(public)',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
+const publicIndexRoute = publicIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BlogIndexRoute = BlogIndexRouteImport.update({
-  id: '/blog/',
-  path: '/blog/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BlogBlogIdRoute = BlogBlogIdRouteImport.update({
-  id: '/blog/$blogId',
-  path: '/blog/$blogId',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => publicRouteRoute,
 } as any)
 const publicPlaygroundRoute = publicPlaygroundRouteImport.update({
   id: '/playground',
   path: '/playground',
   getParentRoute: () => publicRouteRoute,
 } as any)
+const publicMusicRoute = publicMusicRouteImport.update({
+  id: '/music',
+  path: '/music',
+  getParentRoute: () => publicRouteRoute,
+} as any)
+const publicAboutIndexRoute = publicAboutIndexRouteImport.update({
+  id: '/about/',
+  path: '/about/',
+  getParentRoute: () => publicRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
+  '/music': typeof publicMusicRoute
   '/playground': typeof publicPlaygroundRoute
-  '/blog/$blogId': typeof BlogBlogIdRoute
-  '/blog': typeof BlogIndexRoute
+  '/': typeof publicIndexRoute
+  '/about': typeof publicAboutIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
+  '/music': typeof publicMusicRoute
   '/playground': typeof publicPlaygroundRoute
-  '/blog/$blogId': typeof BlogBlogIdRoute
-  '/blog': typeof BlogIndexRoute
+  '/': typeof publicIndexRoute
+  '/about': typeof publicAboutIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
   '/(public)': typeof publicRouteRouteWithChildren
+  '/(public)/music': typeof publicMusicRoute
   '/(public)/playground': typeof publicPlaygroundRoute
-  '/blog/$blogId': typeof BlogBlogIdRoute
-  '/blog/': typeof BlogIndexRoute
+  '/(public)/': typeof publicIndexRoute
+  '/(public)/about/': typeof publicAboutIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/playground' | '/blog/$blogId' | '/blog'
+  fullPaths: '/music' | '/playground' | '/' | '/about'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/playground' | '/blog/$blogId' | '/blog'
+  to: '/music' | '/playground' | '/' | '/about'
   id:
     | '__root__'
-    | '/'
     | '/(public)'
+    | '/(public)/music'
     | '/(public)/playground'
-    | '/blog/$blogId'
-    | '/blog/'
+    | '/(public)/'
+    | '/(public)/about/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
   publicRouteRoute: typeof publicRouteRouteWithChildren
-  BlogBlogIdRoute: typeof BlogBlogIdRoute
-  BlogIndexRoute: typeof BlogIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -90,26 +87,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof publicRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
+    '/(public)/': {
+      id: '/(public)/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/blog/': {
-      id: '/blog/'
-      path: '/blog'
-      fullPath: '/blog'
-      preLoaderRoute: typeof BlogIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/blog/$blogId': {
-      id: '/blog/$blogId'
-      path: '/blog/$blogId'
-      fullPath: '/blog/$blogId'
-      preLoaderRoute: typeof BlogBlogIdRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof publicIndexRouteImport
+      parentRoute: typeof publicRouteRoute
     }
     '/(public)/playground': {
       id: '/(public)/playground'
@@ -118,15 +101,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof publicPlaygroundRouteImport
       parentRoute: typeof publicRouteRoute
     }
+    '/(public)/music': {
+      id: '/(public)/music'
+      path: '/music'
+      fullPath: '/music'
+      preLoaderRoute: typeof publicMusicRouteImport
+      parentRoute: typeof publicRouteRoute
+    }
+    '/(public)/about/': {
+      id: '/(public)/about/'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof publicAboutIndexRouteImport
+      parentRoute: typeof publicRouteRoute
+    }
   }
 }
 
 interface publicRouteRouteChildren {
+  publicMusicRoute: typeof publicMusicRoute
   publicPlaygroundRoute: typeof publicPlaygroundRoute
+  publicIndexRoute: typeof publicIndexRoute
+  publicAboutIndexRoute: typeof publicAboutIndexRoute
 }
 
 const publicRouteRouteChildren: publicRouteRouteChildren = {
+  publicMusicRoute: publicMusicRoute,
   publicPlaygroundRoute: publicPlaygroundRoute,
+  publicIndexRoute: publicIndexRoute,
+  publicAboutIndexRoute: publicAboutIndexRoute,
 }
 
 const publicRouteRouteWithChildren = publicRouteRoute._addFileChildren(
@@ -134,10 +137,7 @@ const publicRouteRouteWithChildren = publicRouteRoute._addFileChildren(
 )
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
   publicRouteRoute: publicRouteRouteWithChildren,
-  BlogBlogIdRoute: BlogBlogIdRoute,
-  BlogIndexRoute: BlogIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
