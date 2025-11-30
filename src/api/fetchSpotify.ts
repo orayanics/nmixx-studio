@@ -131,10 +131,3 @@ export async function fetchAlbumTracks(
   const data: GetAlbumTracks = await res.json()
   return data
 }
-
-export async function getLatestAlbumByArtist(
-  album_type?: ALBUM_TYPE,
-): Promise<ArtistAlbums> {
-  const albumsData = await fetchArtistAlbums(true, album_type)
-  return albumsData
-}

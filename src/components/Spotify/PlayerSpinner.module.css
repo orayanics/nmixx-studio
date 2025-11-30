@@ -76,15 +76,17 @@
   pointer-events: none;
 }
 
-/* controls */
-button:hover,
-svg:hover {
-  animation: glow 1.5s;
-}
+.cd-controls {
+  /* controls */
+  button:hover,
+  svg:hover {
+    animation: glow 1.5s;
+  }
 
-svg {
-  color: #fff;
-  fill: #fff;
+  svg {
+    color: #fff;
+    fill: #fff;
+  }
 }
 
 .cdSvg {

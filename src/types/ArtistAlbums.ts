@@ -21,7 +21,7 @@ export interface ArtistAlbumItem {
   name: string
   release_date: string
   release_date_precision: string
-  restrictions?: Restrictions
+  restrictions: Restrictions
   type: string
   uri: string
   artists: Array<Artist>

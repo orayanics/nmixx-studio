@@ -19,7 +19,7 @@ export interface GetAlbum {
   name: string
   release_date: string
   release_date_precision: string
-  restrictions?: Restrictions
+  restrictions: Restrictions
   type: string
   uri: string
   artists: Array<Artist>
@@ -50,11 +50,11 @@ export interface TrackItem {
   external_urls: ExternalUrls
   href: string
   id: string
-  is_playable?: boolean
-  linked_from?: LinkedFrom
-  restrictions?: Restrictions
+  is_playable: boolean
+  linked_from: LinkedFrom
+  restrictions: Restrictions
   name: string
-  preview_url?: string | null
+  preview_url: string | null
   track_number: number
   type: string
   uri: string

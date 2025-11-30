@@ -21,8 +21,8 @@ export interface PlaylistItem {
       default: Thumbnail
       medium: Thumbnail
       high: Thumbnail
-      standard?: Thumbnail
-      maxres?: Thumbnail
+      standard: Thumbnail
+      maxres: Thumbnail
     }
     channelTitle: string
     localized: {

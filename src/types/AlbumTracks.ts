@@ -19,11 +19,11 @@ export interface TrackItem {
   external_urls: ExternalUrls
   href: string
   id: string
-  is_playable?: boolean
-  linked_from?: LinkedFrom
-  restrictions?: Restrictions
+  is_playable: boolean
+  linked_from: LinkedFrom
+  restrictions: Restrictions
   name: string
-  preview_url?: string | null
+  preview_url: string | null
   track_number: number
   type: string
   uri: string

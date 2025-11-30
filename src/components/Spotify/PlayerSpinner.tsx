@@ -1,55 +1,37 @@
 import { useState } from 'react'
-
 import { SkipBack, SkipForward } from 'lucide-react'
-
 import styles from './PlayerSpinner.module.css'
 
+import type { AlbumWithTracks } from '@/api/helperSpotify'
+import type { TrackItem } from '@/types/AlbumTracks'
+
 interface PlayerSpinnerProps {
-  album: {
-    artists: Array<{ name: string; id: string; href: string }>
-    album_type: string
-    total_tracks: number
-    name: string
-    release_date: string
-    href: string
-    images: Array<{ url: string }>
-    external_urls: { spotify: string }
-    uri: string
-    tracks: Array<{
-      name: string
-      id: string
-      uri: string
-      preview_url?: string | null
-    }>
-  }
+  album: AlbumWithTracks
 }
 
-export default function PlayerSpinner(props: PlayerSpinnerProps) {
-  const { album } = props
-  const {
-    total_tracks,
-    name,
-    artists,
-    images,
-    external_urls,
-    release_date,
-    tracks,
-  } = album
+export default function PlayerSpinner({ album }: PlayerSpinnerProps) {
+  const { name, artists, images, external_urls, release_date, tracks } = album
 
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0)
-  const [trackList, setTrackList] = useState(tracks)
+  const trackList: Array<TrackItem> = tracks
+  const trackCount = trackList.length
 
   const handleTrackBack = () => {
+    if (trackCount === 0) return
     setCurrentTrackIndex((prevIndex) =>
-      prevIndex === 0 ? total_tracks - 1 : prevIndex - 1,
+      prevIndex === 0 ? trackCount - 1 : prevIndex - 1,
     )
   }
 
   const handleTrackForward = () => {
+    if (trackCount === 0) return
     setCurrentTrackIndex((prevIndex) =>
-      prevIndex === total_tracks - 1 ? 0 : prevIndex + 1,
+      prevIndex === trackCount - 1 ? 0 : prevIndex + 1,
     )
   }
+
+  const currentTrack: TrackItem | undefined =
+    trackCount > 0 ? trackList[currentTrackIndex] : undefined
 
   const size = 300
   return (
@@ -100,13 +82,15 @@ export default function PlayerSpinner(props: PlayerSpinnerProps) {
                   </a>
                 </div>
 
-                <div className="md:w-100 w-full mt-4 flex flex-row items-center justify-center [&_p]:text-center">
+                <div
+                  className={`${styles['cd-controls']} md:w-100 w-full mt-4 flex flex-row items-center justify-center [&_p]:text-center`}
+                >
                   <button onClick={handleTrackBack}>
                     <SkipBack size={32} className="inline cursor-pointer" />
                   </button>
                   <div className="w-100 text-center">
                     <h2 className="text-2xl text-white">
-                      {trackList[currentTrackIndex].name}
+                      {currentTrack?.name ?? 'No tracks available'}
                     </h2>
                     <p className="text-lg text-gray-300">
                       {artists.map((artist) => artist.name).join(', ')}
