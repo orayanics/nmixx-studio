@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
+import styles from './Albums.module.css'
 
 import type { ALBUM_TYPE } from '@/types/Shared'
 
@@ -27,9 +28,9 @@ export default function Albums(props: AlbumsProps) {
 
   return (
     <div className="mx-2">
-      <h2 className="text-2xl text-center">{ALBUM_TYPE_LABELS[album_type]}</h2>
+      {/* <h2 className="text-2xl text-center">{ALBUM_TYPE_LABELS[album_type]}</h2> */}
 
-      <div className="grid md:grid-cols-3 grid-cols-auto grid-rows-auto gap-4 p-4">
+      <div className="grid md:grid-cols-2 grid-cols-auto grid-rows-auto gap-4 p-4">
         {data.items.map(
           ({
             name,
@@ -41,28 +42,29 @@ export default function Albums(props: AlbumsProps) {
           }) => (
             <div
               key={`${name}-${release_date}`}
-              className="w-full flex items-center justify-center gap-4"
+              className={`${styles['card--gradient']} relative w-full flex items-center justify-center gap-4 mx-auto`}
             >
               <a href={external_urls.spotify} target="_blank" rel="noreferrer">
                 <img
                   src={images[0].url}
                   alt={`${name} cover`}
-                  className="rounded-lg object-cover md:w-20 w-30 md:h-20 w-30"
+                  className="rounded-lg object-cover md:w-100 w-30 md:h-100 w-30"
                 />
               </a>
 
-              <div className="flex flex-col justify-between">
+              <div className="absolute z-20 bottom-0 left-0 right-0 text-white text-center py-4">
                 <div>
-                  <p className="truncate w-52">{name}</p>
-                  <p className="truncate w-52">
+                  <p className="font-bold text-gray-300">
+                    {release_date} · Tracks: {total_tracks}
+                  </p>
+
+                  <p className="word-break text-4xl w-60 mx-auto">{name}</p>
+                  <p className="truncate">
                     {artists
                       .map(({ name: artistName }) => artistName)
                       .join(', ')}
                   </p>
                 </div>
-                <p style={{ color: '#777', fontSize: 12 }}>
-                  Released: {release_date} · Tracks: {total_tracks}
-                </p>
               </div>
             </div>
           ),

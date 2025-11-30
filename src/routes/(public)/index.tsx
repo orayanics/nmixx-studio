@@ -10,7 +10,7 @@ export const Route = createFileRoute('/(public)/')({
 export default function App() {
   return (
     <section
-      className={`${styles['landing-backround']}`}
+      className={`${styles['landing-background']}`}
       style={{
         backgroundImage: `url(${LANDING_BACKGROUND})`,
       }}
