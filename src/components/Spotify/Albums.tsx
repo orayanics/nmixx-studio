@@ -51,7 +51,7 @@ export default function Albums(props: AlbumsProps) {
 
               <div className="absolute z-20 bottom-0 left-0 right-0 text-white text-center py-4">
                 <div>
-                  <p className="word-break md:text-4xl text-2xl w-60 mx-auto">
+                  <p className="word-break font-bold md:text-4xl text-2xl w-60 mx-auto">
                     {name}
                   </p>
                   <p className="truncate">
