@@ -27,38 +27,33 @@ export default function Albums(props: AlbumsProps) {
   if (!data?.items.length) return null
 
   return (
-    <div className="mx-2">
-      {/* <h2 className="text-2xl text-center">{ALBUM_TYPE_LABELS[album_type]}</h2> */}
-
-      <div className="grid md:grid-cols-2 grid-cols-auto grid-rows-auto gap-4 p-4">
+    <div className="mx-4">
+      <h2 className="text-6xl text-white">{ALBUM_TYPE_LABELS[album_type]}</h2>
+      <div className="flex gap-4 max-w-full rounded-lg overflow-x-auto my-6">
         {data.items.map(
-          ({
-            name,
-            release_date,
-            total_tracks,
-            images,
-            external_urls,
-            artists,
-          }) => (
+          ({ name, release_date, images, external_urls, artists }) => (
             <div
               key={`${name}-${release_date}`}
-              className={`${styles['card--gradient']} relative w-full flex items-center justify-center gap-4 mx-auto`}
+              className={`${styles['card--gradient']} relative w-auto flex items-center justify-center gap-4`}
             >
-              <a href={external_urls.spotify} target="_blank" rel="noreferrer">
+              <a
+                href={external_urls.spotify}
+                target="_blank"
+                rel="noreferrer"
+                className="md:w-[400px] w-60 rounded-lg overflow-hidden block"
+              >
                 <img
                   src={images[0].url}
                   alt={`${name} cover`}
-                  className="rounded-lg object-cover md:w-100 w-30 md:h-100 w-30"
+                  className="rounded-lg object-cover w-full h-full"
                 />
               </a>
 
               <div className="absolute z-20 bottom-0 left-0 right-0 text-white text-center py-4">
                 <div>
-                  <p className="font-bold text-gray-300">
-                    {release_date} · Tracks: {total_tracks}
+                  <p className="word-break md:text-4xl text-2xl w-60 mx-auto">
+                    {name}
                   </p>
-
-                  <p className="word-break text-4xl w-60 mx-auto">{name}</p>
                   <p className="truncate">
                     {artists
                       .map(({ name: artistName }) => artistName)

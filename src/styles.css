@@ -107,3 +107,11 @@ section {
 .page-transition {
   animation: scale-fade-in 0.4s cubic-bezier(0.3, 0, 0, 1) forwards;
 }
+
+.cursive {
+  font-family: 'New York', serif;
+}
+
+.mono {
+  font-family: 'SF Mono', monospace;
+}
