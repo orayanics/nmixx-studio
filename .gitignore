@@ -8,3 +8,7 @@ count.txt
 .nitro
 .tanstack
 .wrangler
+
+# include .env but not .env.development.local
+.env.*
+!.env
