@@ -1,14 +1,18 @@
 import { ArrowDown } from 'lucide-react'
-
 import styles from '@/styles/Landing.module.css'
-import sample from '@/assets/images/blue-valentine-1.jpg'
 
-export default function Hero() {
+interface HeroImageProps {
+  BACKGROUND: string
+  scrollId?: string
+}
+
+export default function HeroImage(props: HeroImageProps) {
+  const { BACKGROUND, scrollId } = props
   return (
     <section
       className={`${styles['landing-background']} ${styles['landing-background-gradient']} !mb-0`}
       style={{
-        backgroundImage: `url(${sample})`,
+        backgroundImage: `url(${BACKGROUND})`,
       }}
     >
       <div className="z-20 text-white relative flex flex-col justify-center items-center h-full">
@@ -40,8 +44,8 @@ export default function Hero() {
             <button
               className="hover:cursor-pointer"
               onClick={() => {
-                const albumsSection = document.getElementById('album')
-                if (albumsSection) {
+                const albumsSection = document.getElementById(scrollId || '')
+                if (albumsSection && scrollId) {
                   albumsSection.scrollIntoView({ behavior: 'smooth' })
                 }
               }}

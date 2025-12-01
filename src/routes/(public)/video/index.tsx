@@ -1,6 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router'
+
 import List from '@/modules/video/List'
-import Hero from '@/modules/music/Hero'
+import HeroImage from '@/components/Page/HeroImage'
+import sample from '@/assets/images/blue-valentine-1.jpg'
 
 export const Route = createFileRoute('/(public)/video/')({
   component: RouteComponent,
@@ -9,8 +11,7 @@ export const Route = createFileRoute('/(public)/video/')({
 function RouteComponent() {
   return (
     <>
-      {/* TODO - Hero */}
-      <Hero />
+      <HeroImage BACKGROUND={sample} scrollId="video" />
       <List />
     </>
   )
