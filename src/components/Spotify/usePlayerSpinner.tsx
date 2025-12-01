@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import type { TrackItem } from '@/types/AlbumTracks'
 
-interface UserPlayerSpinnerProps {
+interface UsePlayerSpinnerProps {
   trackCount: number
   trackList: Array<TrackItem>
 }
 
-export default function usePlayerSpinner(props: UserPlayerSpinnerProps) {
+export default function usePlayerSpinner(props: UsePlayerSpinnerProps) {
   const { trackCount, trackList } = props
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0)
   const currentTrack = trackList[currentTrackIndex].name

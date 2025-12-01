@@ -10,8 +10,8 @@ let accessTokenExpiresAt = 0
 
 async function fetchClientCredentialsToken(): Promise<string> {
   try {
-    const clientId = (import.meta as any).env?.VITE_SPOTIFY_CLIENT_ID
-    const clientSecret = (import.meta as any).env?.VITE_SPOTIFY_CLIENT_SECRET
+    const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID
+    const clientSecret = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET
 
     if (!clientId || !clientSecret) {
       throw new Error(
@@ -50,7 +50,7 @@ async function fetchClientCredentialsToken(): Promise<string> {
 }
 
 async function getSpotifyAccessToken(): Promise<string> {
-  const staticToken = (import.meta as any).env?.VITE_SPOTIFY_ACCESS_TOKEN
+  const staticToken = import.meta.env.VITE_SPOTIFY_ACCESS_TOKEN
   if (staticToken) return staticToken
 
   if (cachedAccessToken && Date.now() < accessTokenExpiresAt) {

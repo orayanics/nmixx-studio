@@ -26,6 +26,7 @@ export default function Playlist(props: PlaylistProps) {
             width={snippet.thumbnails.high.width}
             height={snippet.thumbnails.high.height}
             className="mt-2 rounded"
+            loading="lazy"
           />
         </a>
       ))}

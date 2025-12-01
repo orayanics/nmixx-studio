@@ -6,7 +6,7 @@ export function AboutMembers() {
     <section>
       <h2 className="text-6xl text-center">meet the members</h2>
       <p className="text-center mb-10">
-        Lily, Haewon, Bae, Sullyoon, Jiwoo, Bae
+        Lily, Haewon, Bae, Sullyoon, Jiwoo, Kyujin
       </p>
       <Carousel DECK={LANDING_DECK} />
     </section>

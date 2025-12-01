@@ -13,7 +13,7 @@
   will-change: transform;
   animation: scrolling 40s linear infinite;
 
-  > div:hover {
+  &:hover {
     animation-play-state: paused;
   }
 

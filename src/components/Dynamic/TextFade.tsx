@@ -8,7 +8,12 @@ interface TextFadeProps {
 }
 
 export default function TextFade(props: TextFadeProps) {
-  const { position = 'top-left', children, className, rounded = false } = props
+  const {
+    position = 'bottom-left',
+    children,
+    className,
+    rounded = false,
+  } = props
   return (
     <div
       className={`${styles['text-fade-container']} ${styles[position]} ${className || ''} ${rounded ? 'rounded-lg' : ''}`}

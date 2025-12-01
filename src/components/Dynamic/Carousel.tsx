@@ -29,7 +29,7 @@ export default function Carousel(props: CarouselProps) {
             })}
           </div>
 
-          <div aria-hidden className={`${styles['carousel-item']}`}>
+          <div aria-hidden="true" className={`${styles['carousel-item']}`}>
             {DECK.map((card) => {
               return (
                 <div key={card.id} className="relative">

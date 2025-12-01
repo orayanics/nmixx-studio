@@ -28,7 +28,7 @@ export async function getLatestAlbumTracks(): Promise<AlbumWithTracks> {
 
   const response: AlbumWithTracks = {
     ...album,
-    tracks: tracks,
+    tracks,
   }
 
   return response

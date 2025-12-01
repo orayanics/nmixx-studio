@@ -1,5 +1,5 @@
 export type ExternalUrls = {
-  spotify: string // can change
+  spotify: string
 }
 
 export type Image = {
