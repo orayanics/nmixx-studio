@@ -18,7 +18,7 @@ export default function PlaylistYearGroup({
         {playlists.map((playlist) => (
           <SliderTrack
             key={playlist.id}
-            img={playlist.snippet.thumbnails.medium.url}
+            img={playlist.snippet.thumbnails.standard.url}
             name={playlist.snippet.title}
             artist={new Date(playlist.snippet.publishedAt).toDateString()}
             href={`https://www.youtube.com/playlist?list=${playlist.id}`}

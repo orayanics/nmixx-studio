@@ -19,19 +19,20 @@ export default function SliderTrack(props: SliderTrackProps) {
         <img
           src={img}
           alt={`${name} cover`}
-          className="rounded-[var(--border-radius)] object-cover w-full h-full"
+          className="rounded-[var(--border-radius)] object-cover w-inherit h-inherit"
         />
       </div>
 
       <div className="absolute z-20 bottom-0 left-0 right-0 text-white text-center py-4">
         {/* Text Overlay */}
         <div>
-          <p className="break-words font-bold md:text-4xl text-2xl w-60 mx-auto">
-            <a href={href} target="_blank" rel="noreferrer">
+          <a href={href} target="_blank" rel="noreferrer">
+            <p className="md:break-words truncate font-bold md:text-4xl text-2xl w-[80%] mx-auto">
               {name}
-            </a>
-          </p>
-          <p className="text-gray-400 truncate">{artist}</p>
+            </p>
+          </a>
+
+          <p className="text-gray-400 w-[80%] mx-auto truncate">{artist}</p>
         </div>
       </div>
     </div>

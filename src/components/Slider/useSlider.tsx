@@ -22,7 +22,7 @@ export default function useSlider() {
         (isScrollingUp && canScrollLeft)
       ) {
         e.preventDefault()
-        slider.scrollLeft += e.deltaY * 4
+        slider.scrollLeft += e.deltaY * 1
       }
     }
 
