@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 
-export default function useAlbum() {
+export default function useSlider() {
   const sliderRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export default function useAlbum() {
         (isScrollingUp && canScrollLeft)
       ) {
         e.preventDefault()
-        slider.scrollLeft += e.deltaY
+        slider.scrollLeft += e.deltaY * 4
       }
     }
 
