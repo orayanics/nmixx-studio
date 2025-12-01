@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-import LANDING_BACKGROUND from '@/assets/images/test.webp'
+import LANDING_BACKGROUND from '@/assets/images/blue-valentine-1.webp'
 
 import PlayerSpinner from '@/components/Spotify/PlayerSpinner'
 import HeroImage from '@/components/Page/HeroImage'
