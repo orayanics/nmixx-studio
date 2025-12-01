@@ -9,6 +9,8 @@ count.txt
 .tanstack
 .wrangler
 
-# include .env but not .env.development.local
-.env.*
-!.env
+# ignore local env file
+.env
+
+# don't ignore the template
+!.env.example

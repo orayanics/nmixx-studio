@@ -5,13 +5,14 @@
   "scripts": {
     "dev": "vite --port 3000 --host",
     "build": "vite build && tsc",
-    "serve": "vite preview",
+    "serve": "vite preview --host",
     "test": "vitest run",
     "lint": "eslint",
     "format": "prettier",
     "check": "prettier --write . && eslint --fix"
   },
   "dependencies": {
+    "@fontsource-variable/inter": "^5.2.8",
     "@tailwindcss/vite": "^4.0.6",
     "@tanstack/react-devtools": "^0.7.0",
     "@tanstack/react-query": "^5.90.11",
@@ -36,7 +37,6 @@
     "prettier": "^3.5.3",
     "typescript": "^5.7.2",
     "vite": "^7.1.7",
-    "vitest": "^3.0.5",
-    "web-vitals": "^5.1.0"
+    "vitest": "^3.0.5"
   }
 }

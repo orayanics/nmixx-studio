@@ -10,11 +10,12 @@ export default function NavigationMenu(props: NavigationMenuProps) {
 
   return (
     <div className="flex gap-4 items-center">
-      <button className="md:flex hidden">
+      <button aria-label="Login" className="md:flex hidden">
         <a href="/(public)/login">Login</a>
       </button>
 
       <button
+        aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
         className="md:hidden flex"
         onClick={() => setIsMenuOpen(!isMenuOpen)}
       >

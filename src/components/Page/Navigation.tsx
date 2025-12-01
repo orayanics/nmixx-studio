@@ -3,14 +3,13 @@ import styles from './Navigation.module.css'
 
 import useNavigation from './useNavigation'
 
-import type { FileRouteTypes } from '@/routeTree.gen'
 import useScreen from '@/utils/useScreen'
 
 import Logo from '@/components/Logo/Logo'
 import NavigationMenu from '@/components/Page/NavigationMenu'
 
 type NavigationLink = {
-  to: FileRouteTypes['to']
+  to: string
   label: string
 }
 
@@ -25,18 +24,18 @@ export default function Navigation(props: NavigationProps) {
 
   return (
     <nav
-      className={`${styles['navigation--public']} px-6 mt-6 fixed top-0 start-0 z-50`}
+      className={`${styles['navigation--public']} px-6 mt-4 fixed top-0 start-0 z-50`}
     >
       <div
         className={`${styles['navigation--public-content']} glass--bg flex md:gap-3 gap-6 px-10 py-2 justify-between items-center`}
       >
         <div>
-          <Logo />
+          <Logo className="invert" />
         </div>
 
         <div className="flex gap-6 text-lg items-center md:flex hidden">
           {links.map((link) => (
-            <Link key={link.to} to={link.to} viewTransition>
+            <Link key={link.to} to={link.to}>
               {link.label}
             </Link>
           ))}

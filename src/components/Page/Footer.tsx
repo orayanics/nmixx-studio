@@ -14,7 +14,7 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <h3 className="font-semibold mb-4 text-gray-200">Socials</h3>
+          <h3 className="font-bold mb-4 text-gray-200">Socials</h3>
           {SOCIALS.map((social) => (
             <a
               key={social.label}

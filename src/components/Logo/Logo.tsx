@@ -6,6 +6,8 @@ export default function Logo({ className }: { className?: string }) {
     <img
       className={`${styles['logo']} ${className}`}
       src={LOGO}
+      height={26}
+      width={62}
       alt="NMIXX Logo"
     />
   )
