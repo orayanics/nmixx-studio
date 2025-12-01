@@ -25,7 +25,7 @@ export default function Navigation(props: NavigationProps) {
       className={`${styles['navigation--public']} px-6 mt-6 fixed top-0 start-0 z-50`}
     >
       <div
-        className={`${styles['navigation--public-content']} liquid-glass rounded-full flex md:gap-3 gap-6 px-10 py-2 justify-between items-center`}
+        className={`${styles['navigation--public-content']} liquid-glass flex md:gap-3 gap-6 px-10 py-2 justify-between items-center`}
       >
         <div>
           <Logo />

@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import styles from './Albums.module.css'
+import useAlbum from './useAlbum'
 
 import type { ALBUM_TYPE } from '@/types/Shared'
 
@@ -12,6 +13,7 @@ interface AlbumsProps {
 
 export default function Albums(props: AlbumsProps) {
   const { album_type } = props
+  const sliderRef = useAlbum()
 
   const { data, isLoading, error } = useQuery({
     queryKey: ['albums', album_type],
@@ -28,33 +30,39 @@ export default function Albums(props: AlbumsProps) {
 
   return (
     <div className="mx-4">
-      <h2 className="text-6xl text-white">{ALBUM_TYPE_LABELS[album_type]}</h2>
-      <div className="flex gap-4 max-w-full rounded-lg overflow-x-auto my-6">
+      <h2 className="text-6xl text-white" id={`${album_type}`}>
+        {ALBUM_TYPE_LABELS[album_type]}
+      </h2>
+      <div
+        ref={sliderRef}
+        className="flex gap-4 max-w-full rounded-[var(--border-radius)] overflow-x-hidden overflow-y-hidden my-6 scroll-smooth scrollbar-hide"
+      >
         {data.items.map(
           ({ name, release_date, images, external_urls, artists }) => (
             <div
               key={`${name}-${release_date}`}
               className={`${styles['card--gradient']} relative w-auto flex items-center justify-center gap-4`}
             >
-              <a
-                href={external_urls.spotify}
-                target="_blank"
-                rel="noreferrer"
-                className="md:w-[400px] w-60 rounded-lg overflow-hidden block"
-              >
+              <div className="md:w-[400px] w-60 rounded-[var(--border-radius)] overflow-hidden block">
                 <img
                   src={images[0].url}
                   alt={`${name} cover`}
-                  className="rounded-lg object-cover w-full h-full"
+                  className="rounded-[var(--border-radius)] object-cover w-full h-full"
                 />
-              </a>
+              </div>
 
               <div className="absolute z-20 bottom-0 left-0 right-0 text-white text-center py-4">
                 <div>
                   <p className="break-words font-bold md:text-4xl text-2xl w-60 mx-auto">
-                    {name}
+                    <a
+                      href={external_urls.spotify}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {name}
+                    </a>
                   </p>
-                  <p className="truncate">
+                  <p className="text-gray-400 truncate">
                     {artists
                       .map(({ name: artistName }) => artistName)
                       .join(', ')}

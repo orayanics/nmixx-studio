@@ -41,11 +41,37 @@
   font-display: swap;
 }
 
+:root {
+  --shadow-s:
+    inset 0 1px 2px #ffffff30, /* top highlight */ 0 2px 2px #00000030,
+    /* dark shadow */ 0 2px 4px #00000015; /* soft shadow */
+
+  --shadow-m:
+    inset 0 1px 2px #ffffff50, /* top highlight */ 0 2px 4px #00000030,
+    /* dark shadow */ 0 4px 8px #00000015; /* soft shadow */
+
+  --shadow-l:
+    inset 0 1px 2px #ffffff70, /* top highlight */ 0 4px 6px #00000030,
+    /* dark shadow */ 0 6px 10px #00000015; /* soft shadow */
+  --border-radius: 8px;
+  --border-radius-lg: 16px;
+  --border-radius-xl: 24px;
+  --border-radius-circle: 50%;
+}
+
+html {
+  /* hide scrollbar */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
 body {
   font-family: 'SF Pro', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
+
+  background-color: #0c0c0c;
 }
 
 code {

@@ -1,3 +1,5 @@
+import { ArrowDown } from 'lucide-react'
+
 import styles from '@/styles/Landing.module.css'
 import sample from '@/assets/images/blue-valentine-1.jpg'
 
@@ -16,7 +18,6 @@ export default function Hero() {
             <p className="text-2xl">NMIXX</p>
             <p className="text-lg italic">엔믹스</p>
           </div>
-          <hr className="border-white w-100 mb-0" />
           <div className="text-right">
             <p className="text-2xl">22.02.22</p>
             <p className="text-lg italic">Debut</p>
@@ -34,7 +35,20 @@ export default function Hero() {
             <p className="text-lg">Discover</p>
             <p className="text-2xl italic">more music</p>
           </div>
-          <hr className="border-white w-100 mb-0" />
+
+          <div>
+            <button
+              className="hover:cursor-pointer"
+              onClick={() => {
+                const albumsSection = document.getElementById('album')
+                if (albumsSection) {
+                  albumsSection.scrollIntoView({ behavior: 'smooth' })
+                }
+              }}
+            >
+              <ArrowDown className="inline-block ml-2 animate-bounce" />
+            </button>
+          </div>
           <div className="text-right">
             <p className="text-lg">Blue Valentine</p>
             <p className="text-2xl italic">1st Full Album</p>

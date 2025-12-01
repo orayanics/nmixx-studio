@@ -24,7 +24,9 @@ export default function PlayerSpinner({ album }: PlayerSpinnerProps) {
         key={`${name}-${release_date}`}
         className="flex flex-col justify-center items-center gap-4 p-4 mx-auto w-full h-full"
       >
-        <div className={`relative rounded-full overflow-hidden ${styles.cd}`}>
+        <div
+          className={`relative rounded-[var(--border-radius-circle)] overflow-hidden ${styles.cd}`}
+        >
           <a href={external_urls.spotify} target="_blank" rel="noreferrer">
             <div className={styles['cd-hole']} />
 

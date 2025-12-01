@@ -41,7 +41,7 @@
     rgba(255, 255, 255, 0) 70%
   );
   mix-blend-mode: overlay;
-  border-radius: 50%;
+  border-radius: var(--border-radius-circle);
   z-index: 5;
   pointer-events: none;
   box-shadow: inset 0 0.2em 0.2em rgba(255, 255, 255, 0.95);
@@ -55,7 +55,7 @@
   width: 20%;
   height: 20%;
   background-color: #ffffff02;
-  border-radius: 50%;
+  border-radius: var(--border-radius-circle);
   z-index: 20;
   box-shadow: inset 0 0 0.4em rgba(0, 0, 0, 0.95);
 }
@@ -71,7 +71,7 @@
     rgba(255, 255, 255, 0.6),
     rgba(255, 255, 255, 0) 70%
   );
-  border-radius: 50%;
+  border-radius: var(--border-radius-circle);
   z-index: 8;
   pointer-events: none;
 }
