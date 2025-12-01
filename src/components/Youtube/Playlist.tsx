@@ -1,35 +1,30 @@
-import type { PlaylistItem } from '@/types/Playlist'
+import { useQuery } from '@tanstack/react-query'
+import usePlaylist from './usePlaylist'
+import PlaylistYearGroup from './PlaylistYearGroup'
 
-interface PlaylistProps {
-  playlistItems: Array<PlaylistItem>
-}
+import { getChannelPlaylists } from '@/api/fetchYoutube'
 
-export default function Playlist(props: PlaylistProps) {
-  const { playlistItems } = props
+export default function Playlist() {
+  const { data, isLoading, error } = useQuery({
+    queryKey: ['youtube'],
+    queryFn: () => getChannelPlaylists(),
+  })
+  const { years, groupedPlaylists } = usePlaylist(data || [])
+
+  if (isLoading) return <div>Loading videos…</div>
+  if (error) return <div>Failed to load videos.</div>
 
   return (
-    <div>
-      {playlistItems.map(({ id, snippet }) => (
-        <a
-          key={id}
-          href={`https://www.youtube.com/playlist?list=${id}`}
-          target="_blank"
-          rel="noreferrer"
-          className="block mb-4 hover:bg-gray-100 p-2 rounded-[var(--border-radius)] transition-colors"
-        >
-          <h3 className="text-xl font-bold">{snippet.title}</h3>
-          <p className="text-gray-600">{snippet.description}</p>
-
-          <img
-            src={snippet.thumbnails.high.url}
-            alt={snippet.title}
-            width={snippet.thumbnails.high.width}
-            height={snippet.thumbnails.high.height}
-            className="mt-2  rounded-[var(--border-radius)] object-cover"
-            loading="lazy"
+    <div className="mx-4">
+      <div className="flex flex-col items-start gap-4 text-white">
+        {years.map((year) => (
+          <PlaylistYearGroup
+            key={`year-${year}`}
+            year={year}
+            playlists={groupedPlaylists[year]}
           />
-        </a>
-      ))}
+        ))}
+      </div>
     </div>
   )
 }

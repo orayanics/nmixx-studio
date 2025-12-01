@@ -30,7 +30,7 @@ export default function PlayerSpinner({ album }: PlayerSpinnerProps) {
           <a href={external_urls.spotify} target="_blank" rel="noreferrer">
             <div className={styles['cd-hole']} />
 
-            <svg viewBox={`0 0 ${size} ${size}`} className={styles.cdSvg}>
+            <svg viewBox={`0 0 ${size} ${size}`} className={`${styles.cdSvg}`}>
               <defs>
                 <mask id="cdHoleMask">
                   <rect width="100%" height="100%" fill="#fefefeff" />
