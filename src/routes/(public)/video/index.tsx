@@ -9,6 +9,7 @@ export const Route = createFileRoute('/(public)/video/')({
 function RouteComponent() {
   return (
     <>
+      {/* TODO - Hero */}
       <Hero />
       <List />
     </>

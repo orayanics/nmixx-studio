@@ -13,10 +13,6 @@
   will-change: transform;
   animation: scrolling 40s linear infinite;
 
-  &:hover {
-    animation-play-state: paused;
-  }
-
   /* select all div children */
   > div {
     img {
@@ -24,7 +20,9 @@
       object-fit: cover;
       max-width: 50vw;
       height: 100vh;
-
+      padding: 4px;
+      box-shadow: var(--shadow-m);
+      border-radius: var(--border-radius);
       /* media query for md and below */
       @media (max-width: 768px) {
         max-width: 90vw;
