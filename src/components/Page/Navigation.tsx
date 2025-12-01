@@ -25,7 +25,7 @@ export default function Navigation(props: NavigationProps) {
       className={`${styles['navigation--public']} px-6 mt-6 fixed top-0 start-0 z-50`}
     >
       <div
-        className={`${styles['navigation--public-content']} liquid-glass flex md:gap-3 gap-6 px-10 py-2 justify-between items-center`}
+        className={`${styles['navigation--public-content']} glass--bg flex md:gap-3 gap-6 px-10 py-2 justify-between items-center`}
       >
         <div>
           <Logo />
@@ -61,7 +61,7 @@ export default function Navigation(props: NavigationProps) {
               key={link.to}
               className={`${styles['menu-item']} ${
                 isClosing ? styles['menu-item--closing'] : ''
-              } liquid-glass rounded-full px-4 py-2 text-right`}
+              } glass--bg rounded-full px-4 py-2 text-right`}
               to={link.to}
               onClick={closeMenu}
               style={{ animationDelay: `${index * 0.1}s` }}

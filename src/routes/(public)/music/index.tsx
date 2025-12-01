@@ -11,8 +11,7 @@ function RouteComponent() {
   return (
     <>
       <Hero />
-      <section className="relative bg-black !pt-0 !mt-0 !pb-[64px]">
-        {/* <h2 className="text-6xl text-center">nmixx's music</h2> */}
+      <section className="relative">
         <Albums album_type="album" />
         <Albums album_type="single" />
         <Albums album_type="compilation" />

@@ -17,12 +17,12 @@ export default function PlayerSpinner({ album }: PlayerSpinnerProps) {
       trackList: tracks,
     })
 
-  const size = 300
+  const size = 600
   return (
-    <div className="absolute w-full bg-black/30 backdrop-blur-[1.2px] inset-0 flex flex-col justify-center items-center">
+    <div className="absolute z-20 w-full bg-black/20 inset-0 flex flex-col md:p-0 p-4 justify-center items-center">
       <div
         key={`${name}-${release_date}`}
-        className="flex flex-col justify-center items-center gap-4 p-4 mx-auto w-full h-full"
+        className="flex md:w-auto w-full bg-white/20 glass--bg flex-col justify-center items-center gap-4 p-10 mx-auto rounded-[var(--border-radius-xl)]"
       >
         <div
           className={`relative rounded-[var(--border-radius-circle)] overflow-hidden ${styles.cd}`}
@@ -33,7 +33,7 @@ export default function PlayerSpinner({ album }: PlayerSpinnerProps) {
             <svg viewBox={`0 0 ${size} ${size}`} className={styles.cdSvg}>
               <defs>
                 <mask id="cdHoleMask">
-                  <rect width="100%" height="100%" fill="white" />
+                  <rect width="100%" height="100%" fill="#fefefeff" />
                   <circle
                     cx={size / 2}
                     cy={size / 2}
@@ -47,8 +47,8 @@ export default function PlayerSpinner({ album }: PlayerSpinnerProps) {
                 href={images[0]?.url}
                 x="0"
                 y="0"
-                width={size}
-                height={size}
+                // width={size}
+                // height={size}
                 mask="url(#cdHoleMask)"
               />
             </svg>
