@@ -3,6 +3,8 @@ import usePlaylist from './usePlaylist'
 import PlaylistYearGroup from './PlaylistYearGroup'
 
 import { getChannelPlaylists } from '@/api/fetchYoutube'
+import LoaderError from '@/components/Loader/LoaderError'
+import LoaderSpinner from '@/components/Loader/LoaderSpinner'
 
 export default function Playlist() {
   const { data, isLoading, error } = useQuery({
@@ -11,8 +13,8 @@ export default function Playlist() {
   })
   const { years, groupedPlaylists } = usePlaylist(data || [])
 
-  if (isLoading) return <div>Loading videos…</div>
-  if (error) return <div>Failed to load videos.</div>
+  if (isLoading) return <LoaderSpinner isFullScreen />
+  if (error) return <LoaderError isFullScreen />
 
   return (
     <div className="mx-4">

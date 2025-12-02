@@ -7,6 +7,8 @@ import { ALBUM_TYPE_LABELS } from '@/configs/labels'
 
 import Slider from '@/components/Slider/Slider'
 import SliderTrack from '@/components/Slider/SliderTrack'
+import LoaderError from '@/components/Loader/LoaderError'
+import LoaderSpinner from '@/components/Loader/LoaderSpinner'
 
 interface AlbumsProps {
   album_type: ALBUM_TYPE
@@ -22,9 +24,8 @@ export default function Albums(props: AlbumsProps) {
     gcTime: 300_000,
   })
 
-  if (isLoading)
-    return <div>Loading NMIXX {ALBUM_TYPE_LABELS[album_type]}…</div>
-  if (error) return <div>Failed to load {ALBUM_TYPE_LABELS[album_type]}.</div>
+  if (isLoading) return <LoaderSpinner isFullScreen />
+  if (error) return <LoaderError isFullScreen />
 
   if (!data?.items.length) return null
 

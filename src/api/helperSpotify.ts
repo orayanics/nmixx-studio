@@ -1,35 +1,60 @@
+import { useQuery } from '@tanstack/react-query'
+
 import { fetchAlbumTracks, fetchArtistAlbums } from './fetchSpotify'
 
 import type { ArtistAlbumItem, ArtistAlbums } from '@/types/ArtistAlbums'
 import type { ALBUM_TYPE } from '@/types/Shared'
-import type { TrackItem } from '@/types/AlbumTracks'
+import type { GetAlbumTracks, TrackItem } from '@/types/AlbumTracks'
 
 export type AlbumWithTracks = ArtistAlbumItem & { tracks: Array<TrackItem> }
 
 export async function getLatestAlbumByArtist(
   album_type?: ALBUM_TYPE,
 ): Promise<ArtistAlbums> {
-  const albumsData = await fetchArtistAlbums(true, album_type)
-  return albumsData
+  return fetchArtistAlbums(true, album_type)
 }
 
-export async function getLatestAlbumTracks(): Promise<AlbumWithTracks> {
-  const latestAlbum = await getLatestAlbumByArtist('album')
+export async function getLatestAlbumTracks(
+  albumId: string,
+): Promise<GetAlbumTracks> {
+  return fetchAlbumTracks(albumId)
+}
 
-  const album = latestAlbum.items.at(0)
-  const albumId = album?.id
+export function useAlbumWithTracks() {
+  const {
+    data: albumsData,
+    error: albumsError,
+    isLoading: albumsLoading,
+  } = useQuery({
+    queryKey: ['artist-albums'],
+    queryFn: () => fetchArtistAlbums(true, 'album'),
+  })
 
-  if (!album || !albumId) {
-    throw new Error('No latest album available')
+  const latestAlbum = albumsData?.items.at(0)
+  const albumId = latestAlbum?.id
+
+  const {
+    data: tracksData,
+    error: tracksError,
+    isLoading: tracksLoading,
+  } = useQuery({
+    queryKey: ['album-tracks', albumId],
+    queryFn: () => {
+      return fetchAlbumTracks(albumId as string)
+    },
+    enabled: !!albumId,
+  })
+
+  const combined = latestAlbum
+    ? {
+        ...latestAlbum,
+        tracks: tracksData?.items ?? [],
+      }
+    : null
+
+  return {
+    data: combined,
+    isLoading: albumsLoading || tracksLoading,
+    error: albumsError || tracksError,
   }
-
-  const tracksData = await fetchAlbumTracks(albumId)
-  const tracks = tracksData.items
-
-  const response: AlbumWithTracks = {
-    ...album,
-    tracks,
-  }
-
-  return response
 }
