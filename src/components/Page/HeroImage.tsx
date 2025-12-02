@@ -30,7 +30,7 @@ export default function HeroImage(props: HeroImageProps) {
 
         {/* center */}
         <div className="absolute top-1/2 -translate-y-1/2 w-full text-center px-4">
-          <h1 className="text-6xl">Blue Valentine</h1>
+          <h1 className="md:text-6xl text-4xl">Blue Valentine</h1>
         </div>
 
         {/* bottom right and bottom left */}
@@ -40,19 +40,22 @@ export default function HeroImage(props: HeroImageProps) {
             <p className="text-2xl italic">more music</p>
           </div>
 
-          <div>
-            <button
-              className="hover:cursor-pointer"
-              onClick={() => {
-                const albumsSection = document.getElementById(scrollId || '')
-                if (albumsSection && scrollId) {
-                  albumsSection.scrollIntoView({ behavior: 'smooth' })
-                }
-              }}
-            >
-              <ArrowDown className="inline-block ml-2 animate-bounce" />
-            </button>
-          </div>
+          {scrollId && (
+            <div>
+              <button
+                aria-label="scroll icon button"
+                className="hover:cursor-pointer"
+                onClick={() => {
+                  const albumsSection = document.getElementById(scrollId || '')
+                  if (albumsSection && scrollId) {
+                    albumsSection.scrollIntoView({ behavior: 'smooth' })
+                  }
+                }}
+              >
+                <ArrowDown className="inline-block ml-2 animate-bounce" />
+              </button>
+            </div>
+          )}
           <div className="text-right">
             <p className="text-lg">Blue Valentine</p>
             <p className="text-2xl italic">1st Full Album</p>

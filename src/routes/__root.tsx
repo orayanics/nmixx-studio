@@ -1,8 +1,16 @@
-import { Outlet, createRootRoute } from '@tanstack/react-router'
-// import interWoff2 from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url'
-import mainStyle from '@/styles.css?url'
+import {
+  HeadContent,
+  Outlet,
+  createRootRouteWithContext,
+} from '@tanstack/react-router'
 
-export const Route = createRootRoute({
+import mainStyle from '../styles.css?url'
+
+import type { QueryClient } from '@tanstack/react-query'
+
+export const Route = createRootRouteWithContext<{
+  queryClient: QueryClient
+}>()({
   head: () => ({
     meta: [
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -11,6 +19,9 @@ export const Route = createRootRoute({
         name: 'description',
         content: 'NMIXX Studio - A fan-made project for NMIXX',
       },
+      {
+        title: 'NMIXX Studios',
+      },
     ],
     links: [
       {
@@ -18,13 +29,6 @@ export const Route = createRootRoute({
         href: 'https://i.scdn.co',
         crossOrigin: 'anonymous',
       },
-      // {
-      //   rel: 'preload',
-      //   as: 'font',
-      //   href: interWoff2 as string,
-      //   type: 'font/woff2',
-      //   crossOrigin: 'anonymous',
-      // },
       {
         rel: 'stylesheet',
         as: 'style',
@@ -32,5 +36,10 @@ export const Route = createRootRoute({
       },
     ],
   }),
-  component: () => <Outlet />,
+  component: () => (
+    <>
+      <HeadContent />
+      <Outlet />
+    </>
+  ),
 })

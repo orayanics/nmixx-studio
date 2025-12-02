@@ -1,28 +1,16 @@
-import { Suspense } from 'react'
-import { useSuspenseQuery } from '@tanstack/react-query'
 import { SkipBack, SkipForward } from 'lucide-react'
 import styles from './PlayerSpinner.module.css'
 
 import usePlayerSpinner from './usePlayerSpinner'
-import LoaderSpinner from '@/components/Loader/LoaderSpinner'
+import type { AlbumWithTracks } from '@/api/helperSpotify'
 
 import useScreen from '@/utils/useScreen'
 
-import { getLatestAlbumTracks } from '@/api/helperSpotify'
+interface PlayerSpinnerProps {
+  album: AlbumWithTracks
+}
 
-export default function PlayerSpinner() {
-  const { data, isFetching } = useSuspenseQuery({
-    queryKey: ['latest-album-tracks'],
-    queryFn: getLatestAlbumTracks,
-    staleTime: 60 * 1000, // 1 minute
-  })
-
-  if (isFetching) {
-    return <LoaderSpinner isFullScreen />
-  }
-
-  const album = data
-
+export default function PlayerSpinner({ album }: PlayerSpinnerProps) {
   const { name, artists, external_urls, release_date, tracks } = album
 
   const { isMobile } = useScreen()
@@ -51,14 +39,12 @@ export default function PlayerSpinner() {
           <a href={external_urls.spotify} target="_blank" rel="noreferrer">
             <div className={styles['cd-hole']} />
 
-            <Suspense fallback={<LoaderSpinner />}>
-              <img
-                src={src}
-                width={width}
-                height={height}
-                alt={`${name} album cover`}
-              />
-            </Suspense>
+            <img
+              src={src}
+              width={width}
+              height={height}
+              alt={`${name} album cover`}
+            />
           </a>
         </div>
 

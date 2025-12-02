@@ -3,8 +3,6 @@ import styles from './Navigation.module.css'
 
 import useNavigation from './useNavigation'
 
-import useScreen from '@/utils/useScreen'
-
 import Logo from '@/components/Logo/Logo'
 import NavigationMenu from '@/components/Page/NavigationMenu'
 
@@ -19,7 +17,6 @@ interface NavigationProps {
 
 export default function Navigation(props: NavigationProps) {
   const { links } = props
-  const { isMobile } = useScreen()
   const { isMenuOpen, isClosing, setIsMenuOpen, closeMenu } = useNavigation()
 
   return (
@@ -53,9 +50,9 @@ export default function Navigation(props: NavigationProps) {
         />
       </div>
 
-      {isMenuOpen && isMobile && (
+      {isMenuOpen && (
         <div
-          className="absolute top-11 right-5 p-4 flex flex-col gap-4 items-end"
+          className="md:hidden flex absolute top-11 right-5 p-4 flex flex-col gap-4 items-end"
           id="navigation-menu"
         >
           {links.map((link, index) => (

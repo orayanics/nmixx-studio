@@ -1,5 +1,7 @@
 .landing-background {
   height: 100svh;
+  width: 100vw;
+  object-fit: cover;
   background-size: cover;
   background-position: center;
   position: relative;
