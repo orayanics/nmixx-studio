@@ -25,10 +25,7 @@ export default function PlayerSpinner({ album }: PlayerSpinnerProps) {
   const height = isMobile ? 300 : 640
 
   return (
-    <div
-      className="z-20 w-full bg-black/20 inset-0 flex flex-col md:p-0 p-4 justify-center items-center"
-      id="player"
-    >
+    <div className="z-20 w-full bg-[var(--background-dark)] inset-0 flex flex-col md:p-0 p-4 justify-center items-center">
       <div
         key={`${name}-${release_date}`}
         className="flex md:w-auto w-full bg-white/20 glass--bg flex-col justify-center items-center gap-4 p-10 mx-auto rounded-[var(--border-radius-xl)]"

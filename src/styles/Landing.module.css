@@ -17,7 +17,14 @@
   width: 100%;
   height: 80%;
   z-index: 20;
-  background: linear-gradient(to top, #0e0e0e, rgba(0, 0, 0, 0));
+  background: linear-gradient(
+    to top,
+    rgba(14, 14, 14, 1) 0%,
+    rgba(14, 14, 14, 0.8) 20%,
+    rgba(14, 14, 14, 0.4) 40%,
+    rgba(14, 14, 14, 0.2) 60%,
+    rgba(14, 14, 14, 0) 100%
+  );
 }
 
 @keyframes fadeIn {

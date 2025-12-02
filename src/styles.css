@@ -25,6 +25,9 @@
     oklch(86.686% 0.0001 271.152 / 0.25)
   );
   --liquid-border: 1px solid rgba(255, 255, 255, 0.2);
+
+  --background-dark: #0e0e0e;
+  --section-spacing: 64px;
 }
 
 html {

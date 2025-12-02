@@ -22,7 +22,9 @@ function App() {
   return (
     <>
       <HeroImage BACKGROUND={LANDING_BACKGROUND} scrollId="player" />
-      <PlayerSpinner album={data} />
+      <section id="player" className="!mb-[var(--section-spacing)]">
+        <PlayerSpinner album={data} />
+      </section>
     </>
   )
 }
