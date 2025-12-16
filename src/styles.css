@@ -1,4 +1,6 @@
 @import 'tailwindcss';
+@import '@/styles/Gradient.css';
+
 :root {
   --shadow-s:
     inset 0 1px 2px #ffffff30, /* top highlight */ 0 2px 2px #00000030,
@@ -27,12 +29,18 @@
   --liquid-border: 1px solid rgba(255, 255, 255, 0.2);
 
   --background-light: #f0f0f0;
-  --background-dark: #0e0e0e;
+  --background-dark: #0b0b0b;
   --section-spacing: 64px;
 
   /* margins */
   --margin-x-base: 24px;
   --margin-x-small: 20px;
+
+  /* blue */
+  --blue-base: #1360cb;
+  --blue-light: #b4d1ff;
+  --blue-dark-1: #102152;
+  --blue-dark-2: #050d24;
 }
 
 html {
@@ -92,7 +100,7 @@ body {
 
 /* section*/
 section {
-  margin: 64px 0px;
+  margin: var(--section-spacing) 0px;
 
   &:first-of-type {
     margin-top: 0;
@@ -102,11 +110,11 @@ section {
     margin-bottom: 0;
 
     + div {
-      margin-top: 64px;
+      margin-top: var(--section-spacing);
     }
 
     + footer {
-      margin-top: 64px;
+      margin-top: var(--section-spacing);
       margin-bottom: 0;
     }
   }

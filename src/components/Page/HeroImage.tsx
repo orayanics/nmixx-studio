@@ -1,5 +1,4 @@
 import { ArrowDown } from 'lucide-react'
-import styles from '@/styles/Landing.module.css'
 
 interface HeroImageProps {
   BACKGROUND: string
@@ -10,7 +9,7 @@ export default function HeroImage(props: HeroImageProps) {
   const { BACKGROUND, scrollId } = props
   return (
     <main
-      className={`${styles['landing-background']} ${styles['landing-background-gradient']} !mb-0`}
+      className={`gradient-to-top relative h-screen w-full bg-cover bg-center object-cover !mb-0`}
       style={{
         backgroundImage: `url(${BACKGROUND})`,
       }}

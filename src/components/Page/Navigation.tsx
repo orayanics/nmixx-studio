@@ -20,8 +20,8 @@ export default function Navigation(props: NavigationProps) {
   const { isMenuOpen, isClosing, setIsMenuOpen, closeMenu } = useNavigation()
 
   return (
-    <header className="fixed top-0 start-0 z-20 w-full">
-      <div className="frosted-glass--bg text-white container flex md:gap-3 gap-6 justify-between items-center mx-auto py-3 px-5">
+    <header className="fixed top-0 start-0 z-[100] w-full">
+      <div className="text-white container flex md:gap-3 gap-6 justify-between items-center mx-auto py-3 px-5">
         <div>
           <Logo className="invert" />
         </div>

@@ -5,7 +5,7 @@ interface LoaderErrorProps {
 export default function LoaderError(props: LoaderErrorProps) {
   const { isFullScreen = false } = props
   const fullScreenClass =
-    'absolute w-full bg-black/30 backdrop-blur-[1.2px] inset-0 flex flex-col justify-center items-center'
+    'absolute z-100 w-full bg-black/75 backdrop-blur-[5px] inset-0 flex flex-col justify-center items-center'
   return (
     <div className={`${isFullScreen && fullScreenClass}`}>
       <h1 className="text-xl text-white">Oops. Something went wrong.</h1>

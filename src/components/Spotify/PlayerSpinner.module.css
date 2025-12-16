@@ -1,3 +1,154 @@
+.cdWrapper {
+  position: relative;
+  width: clamp(240px, 40vw, 320px);
+  height: clamp(240px, 40vw, 320px);
+  border-radius: 50%;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.cdWrapper::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: clamp(260px, 50vw, 340px);
+  height: clamp(260px, 50vw, 340px);
+
+  padding: 16px;
+  border-radius: var(--border-radius-xl);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0) 60%,
+    rgba(255, 255, 255, 0.3) 100%
+  );
+  box-shadow: var(--shadow-l);
+  pointer-events: none;
+}
+
+.cdLink {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.cdSvg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  animation: spin-reverse 20s linear infinite;
+}
+
+.container {
+  position: relative;
+  width: clamp(300px, 80vw, 420px);
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  overflow: hidden;
+  padding: 36px;
+
+  border-radius: 40px;
+  background: linear-gradient(
+    to bottom,
+    var(--blue-light) 0%,
+    var(--blue-base) 30%,
+    var(--blue-dark-1) 60%,
+    #000000 100%
+  );
+  box-shadow: var(--shadow-l);
+
+  color: white;
+  margin: 0 auto;
+}
+
+.visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  z-index: 10;
+  margin-top: 32px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logoIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.label {
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: -0.02em;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: #fff;
+  filter: drop-shadow(0 0 3px #3b82f6aa);
+}
+
+.artist {
+  font-size: 1.1rem;
+  color: #cbd5e1;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pagination {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 16px;
+  align-items: center;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.dotActive {
+  width: 24px;
+  background-color: #3b82f6;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
 @keyframes spin-reverse {
   from {
     transform: rotate(0deg);
@@ -5,98 +156,6 @@
   to {
     transform: rotate(-360deg);
   }
-}
-
-.cd {
-  position: relative;
-  box-shadow: 0 0 30px 16px rgba(0, 0, 0, 0.15);
-  height: 640px;
-  width: 640px;
-
-  animation: fadeIn 0.3s forwards;
-
-  @media (max-width: 768px) {
-    height: 300px !important;
-    width: 300px !important;
-  }
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.8;
-    animation: spin-reverse 20s linear infinite;
-  }
-}
-
-/* shine */
-.cd::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.15) 30%,
-    rgba(255, 255, 255, 0.9) 50%,
-    rgba(255, 255, 255, 0.15) 70%
-  );
-
-  mix-blend-mode: overlay;
-  border-radius: var(--border-radius-circle);
-  z-index: 5;
-  pointer-events: none;
-  box-shadow: inset 0 0.2em 0.2em rgba(255, 255, 255, 0.95);
-}
-
-.cd-hole {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 20%;
-  height: 20%;
-  background-color: oklch(100% 0.00011 271.152 / 0.75);
-  border-radius: var(--border-radius-circle);
-  z-index: 20;
-  box-shadow: inset 0 0 0.4em rgba(0, 0, 0, 0.95);
-}
-
-/* cd shine/glow for loading state */
-.cd::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: radial-gradient(
-    circle at center,
-    rgba(255, 255, 255, 0.6),
-    rgba(255, 255, 255, 0) 70%
-  );
-  border-radius: var(--border-radius-circle);
-  z-index: 8;
-  pointer-events: none;
-}
-
-.cd-controls {
-  /* controls */
-  button:hover,
-  svg:hover {
-    animation: glow 1.5s;
-  }
-
-  svg {
-    color: #fff;
-    fill: #fff;
-  }
-}
-
-.cdSvg {
-  width: auto;
-  height: auto;
-  display: block;
 }
 
 @keyframes glow {

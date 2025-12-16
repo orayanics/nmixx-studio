@@ -1,4 +1,4 @@
-import { SkipBack, SkipForward } from 'lucide-react'
+import { InfinityIcon, SkipBackIcon, SkipForwardIcon } from 'lucide-react'
 import styles from './PlayerSpinner.module.css'
 
 import usePlayerSpinner from './usePlayerSpinner'
@@ -9,55 +9,113 @@ interface PlayerSpinnerProps {
 }
 
 export default function PlayerSpinner({ album }: PlayerSpinnerProps) {
-  const { name, artists, external_urls, release_date, tracks } = album
+  const { name, artists, external_urls, tracks } = album
 
   const { currentTrack, handleTrackBack, handleTrackForward } =
     usePlayerSpinner({
       trackCount: tracks.length,
       trackList: tracks,
     })
-  const sortedImages = [...album.images].sort((a, b) => a.width - b.width)
 
   return (
-    <div className="z-20 w-full bg-[var(--background-dark)] inset-0 flex flex-col md:p-0 p-4 justify-center items-center">
-      <div
-        key={`${name}-${release_date}`}
-        className="flex md:w-auto w-full bg-white/20 glass--bg flex-col justify-center items-center gap-4 p-10 mx-auto rounded-[var(--border-radius-xl)]"
-      >
-        <div
-          className={`relative rounded-[var(--border-radius-circle)] overflow-hidden ${styles.cd}`}
-        >
-          <a href={external_urls.spotify} target="_blank" rel="noreferrer">
-            <div className={styles['cd-hole']} />
-
-            <img
-              srcSet={album.images
-                .map((image) => `${image.url} ${image.width}w`)
-                .join(', ')}
-              sizes="(max-width: 640px) 300px, 640px"
-              src={sortedImages[0].url}
-              width={300}
-              height={300}
-              alt={`${name} album cover`}
-            />
+    <div className={styles.container}>
+      <div className={styles.visual}>
+        <div className={styles.cdWrapper}>
+          <a
+            href={external_urls.spotify}
+            target="_blank"
+            rel="noreferrer"
+            className={styles.cdLink}
+          >
+            <svg
+              viewBox="0 0 200 200"
+              xmlns="http://www.w3.org/2000/svg"
+              className={styles.cdSvg}
+            >
+              <defs>
+                <linearGradient
+                  id="cdGradient"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="100%"
+                >
+                  <stop offset="0%" stopColor="rgba(255,255,255,0.6)" />
+                  <stop offset="50%" stopColor="rgba(255,255,255,0.05)" />
+                  <stop offset="100%" stopColor="rgba(255,255,255,0.6)" />
+                </linearGradient>
+              </defs>
+              {/* Main CD Body with Hole */}
+              <path
+                d="M 100 100 m -95, 0 a 95,95 0 1,0 190,0 a 95,95 0 1,0 -190,0 
+                   M 100 100 m -20, 0 a 20,20 0 1,1 40,0 a 20,20 0 1,1 -40,0"
+                fill="url(#cdGradient)"
+                fillRule="evenodd"
+              />
+              {/* Inner Ring Detail */}
+              <circle
+                cx="100"
+                cy="100"
+                r="25"
+                fill="none"
+                stroke="rgba(255,255,255,0.1)"
+                strokeWidth="1"
+              />
+              {/* Outer Ring Detail */}
+              <circle
+                cx="100"
+                cy="100"
+                r="94"
+                fill="none"
+                stroke="rgba(255,255,255,0.2)"
+                strokeWidth="1"
+              />
+            </svg>
           </a>
         </div>
+      </div>
 
-        <div
-          className={`${styles['cd-controls']} md:w-100 w-full mt-4 flex flex-row items-center justify-center [&_p]:text-center`}
-        >
-          <button onClick={handleTrackBack} aria-label="Back">
-            <SkipBack size={32} className="inline cursor-pointer" />
-          </button>
-          <div className="w-100 text-center">
-            <h2 className="text-2xl text-white">{currentTrack}</h2>
-            <p className="text-lg text-gray-300">
-              {artists.map((artist) => artist.name).join(', ')}
-            </p>
+      <div className={styles.content}>
+        <div className={styles.header}>
+          <InfinityIcon />
+          <span className={styles.label}>NMIXX Studio</span>
+        </div>
+
+        <div className={styles.info}>
+          <h2 className={styles.title}>{currentTrack}</h2>
+          <p className={styles.artist}>
+            {artists.map((artist) => artist.name).join(', ')}
+            <br />
+            <span style={{ fontSize: '0.9em', opacity: 0.7 }}>{name}</span>
+          </p>
+        </div>
+
+        <div className={`${styles.controls}`}>
+          <div className={styles.pagination}>
+            {tracks.map((_, index) =>
+              currentTrack !== tracks[index].name ? (
+                <div key={index} className={styles.dot} />
+              ) : (
+                <div className={`${styles.dot} ${styles.dotActive}`} />
+              ),
+            )}
           </div>
-          <button onClick={handleTrackForward} aria-label="Forward">
-            <SkipForward size={32} className="inline cursor-pointer" />
-          </button>
+
+          <div className="flex gap-6 w-full justify-center">
+            <button
+              className="rounded-full bg-white text-black p-3 cursor-pointer"
+              onClick={handleTrackBack}
+            >
+              <SkipBackIcon />
+            </button>
+
+            <button
+              className="rounded-full bg-white text-black p-3 cursor-pointer"
+              onClick={handleTrackForward}
+            >
+              <SkipForwardIcon />
+            </button>
+          </div>
         </div>
       </div>
     </div>
