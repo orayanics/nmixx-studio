@@ -1,6 +1,15 @@
 import styles from './PlanetB.module.css'
 
 export default function PlanetB() {
+  const STARS = [
+    { id: 'star1', name: 'Lily', style: { top: '15%', left: '20%' } },
+    { id: 'star2', name: 'Haewon', style: { top: '25%', right: '15%' } },
+    { id: 'star3', name: 'Sullyoon', style: { bottom: '20%', left: '10%' } },
+    { id: 'star4', name: 'Bae', style: { bottom: '35%', right: '25%' } },
+    { id: 'star5', name: 'Jiwoo', style: { top: '10%', left: '50%' } },
+    { id: 'star6', name: 'Kyujin', style: { bottom: '10%', right: '45%' } },
+  ]
+
   return (
     <div className={styles.container}>
       <div className={styles.noise}></div>
@@ -9,48 +18,11 @@ export default function PlanetB() {
       <div className={styles.stars}></div>
 
       {/* Big Stars with Unique IDs */}
-      <div
-        id="star1"
-        className={styles.bigStar}
-        style={{ top: '15%', left: '20%' }}
-      >
-        <span className={styles.tooltip}>Lily</span>
-      </div>
-      <div
-        id="star2"
-        className={styles.bigStar}
-        style={{ top: '25%', right: '15%' }}
-      >
-        <span className={styles.tooltip}>Haewon</span>
-      </div>
-      <div
-        id="star3"
-        className={styles.bigStar}
-        style={{ bottom: '20%', left: '10%' }}
-      >
-        <span className={styles.tooltip}>Sullyoon</span>
-      </div>
-      <div
-        id="star4"
-        className={styles.bigStar}
-        style={{ bottom: '35%', right: '25%' }}
-      >
-        <span className={styles.tooltip}>Bae</span>
-      </div>
-      <div
-        id="star5"
-        className={styles.bigStar}
-        style={{ top: '10%', left: '50%' }}
-      >
-        <span className={styles.tooltip}>Jiwoo</span>
-      </div>
-      <div
-        id="star6"
-        className={styles.bigStar}
-        style={{ bottom: '10%', right: '45%' }}
-      >
-        <span className={styles.tooltip}>Kyujin</span>
-      </div>
+      {STARS.map(({ id, name, style }) => (
+        <div key={id} id={id} className={styles.bigStar} style={style}>
+          <span className={styles.tooltip}>{name}</span>
+        </div>
+      ))}
 
       <div className={styles.scene}>
         {/* Radiating Lines (Fan) */}

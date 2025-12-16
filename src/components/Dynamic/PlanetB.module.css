@@ -59,16 +59,31 @@
   width: clamp(340px, 52vw, 420px);
   height: clamp(340px, 52vw, 420px);
 
-  border: 4px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
   transform-style: preserve-3d;
 
-  animation: spinOrbit 10s linear infinite;
+  background:
+    conic-gradient(
+      from 0deg,
+      transparent,
+      rgba(255, 255, 255, 0.55),
+      transparent 90deg
+    ),
+    conic-gradient(
+      from 90deg,
+      transparent,
+      rgba(160, 200, 255, 0.65),
+      transparent 180deg
+    );
+  mask: radial-gradient(
+    closest-side,
+    transparent calc(100% - 5px),
+    #000 calc(100% - 2px)
+  );
 
-  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8))
-    drop-shadow(0 0 16px rgba(255, 255, 255, 0.6))
-    drop-shadow(0 0 24px rgba(255, 255, 255, 0.4));
+  animation: spinOrbit 10s linear infinite;
 }
 
 /* Planet */
@@ -196,11 +211,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
-  /* glow */
-  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8))
-    drop-shadow(0 0 16px rgba(255, 255, 255, 0.6))
-    drop-shadow(0 0 24px rgba(255, 255, 255, 0.4));
 }
 
 .bigStar::before {
@@ -208,7 +218,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background: white;
+  background: #ffffff;
   clip-path: polygon(
     50% 0%,
     61% 35%,
