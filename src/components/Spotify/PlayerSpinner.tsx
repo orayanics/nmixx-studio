@@ -4,8 +4,6 @@ import styles from './PlayerSpinner.module.css'
 import usePlayerSpinner from './usePlayerSpinner'
 import type { AlbumWithTracks } from '@/api/helperSpotify'
 
-import useScreen from '@/utils/useScreen'
-
 interface PlayerSpinnerProps {
   album: AlbumWithTracks
 }
@@ -13,16 +11,12 @@ interface PlayerSpinnerProps {
 export default function PlayerSpinner({ album }: PlayerSpinnerProps) {
   const { name, artists, external_urls, release_date, tracks } = album
 
-  const { isMobile } = useScreen()
   const { currentTrack, handleTrackBack, handleTrackForward } =
     usePlayerSpinner({
       trackCount: tracks.length,
       trackList: tracks,
     })
-
-  const src = isMobile ? album.images[1]?.url : album.images[0]?.url
-  const width = isMobile ? 300 : 640
-  const height = isMobile ? 300 : 640
+  const sortedImages = [...album.images].sort((a, b) => a.width - b.width)
 
   return (
     <div className="z-20 w-full bg-[var(--background-dark)] inset-0 flex flex-col md:p-0 p-4 justify-center items-center">
@@ -37,9 +31,13 @@ export default function PlayerSpinner({ album }: PlayerSpinnerProps) {
             <div className={styles['cd-hole']} />
 
             <img
-              src={src}
-              width={width}
-              height={height}
+              srcSet={album.images
+                .map((image) => `${image.url} ${image.width}w`)
+                .join(', ')}
+              sizes="(max-width: 640px) 300px, 640px"
+              src={sortedImages[0].url}
+              width={300}
+              height={300}
               alt={`${name} album cover`}
             />
           </a>

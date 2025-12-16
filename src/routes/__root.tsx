@@ -25,11 +25,6 @@ export const Route = createRootRouteWithContext<{
     ],
     links: [
       {
-        rel: 'preconnect',
-        href: 'https://i.scdn.co',
-        crossOrigin: 'anonymous',
-      },
-      {
         rel: 'stylesheet',
         as: 'style',
         href: mainStyle,

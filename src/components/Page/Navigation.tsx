@@ -20,12 +20,8 @@ export default function Navigation(props: NavigationProps) {
   const { isMenuOpen, isClosing, setIsMenuOpen, closeMenu } = useNavigation()
 
   return (
-    <nav
-      className={`${styles['navigation--public']} px-6 mt-4 fixed top-0 start-0 z-50`}
-    >
-      <div
-        className={`${styles['navigation--public-content']} glass--bg flex md:gap-3 gap-6 px-10 py-2 justify-between items-center`}
-      >
+    <header className="fixed top-0 start-0 z-20 w-full">
+      <div className="frosted-glass--bg text-white container flex md:gap-3 gap-6 justify-between items-center mx-auto py-3 px-5">
         <div>
           <Logo className="invert" />
         </div>
@@ -52,7 +48,7 @@ export default function Navigation(props: NavigationProps) {
 
       {isMenuOpen && (
         <div
-          className="md:hidden flex absolute top-11 right-5 p-4 flex flex-col gap-4 items-end"
+          className="md:hidden flex absolute top-16 right-6 flex flex-col gap-4 items-end"
           id="navigation-menu"
         >
           {links.map((link, index) => (
@@ -60,7 +56,7 @@ export default function Navigation(props: NavigationProps) {
               key={link.to}
               className={`${styles['menu-item']} ${
                 isClosing ? styles['menu-item--closing'] : ''
-              } glass--bg rounded-full px-4 py-2 text-right`}
+              } frosted-glass--bg rounded-full px-4 py-2 text-right`}
               to={link.to}
               onClick={closeMenu}
               style={{ animationDelay: `${index * 0.1}s` }}
@@ -70,6 +66,6 @@ export default function Navigation(props: NavigationProps) {
           ))}
         </div>
       )}
-    </nav>
+    </header>
   )
 }

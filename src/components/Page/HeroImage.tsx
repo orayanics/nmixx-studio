@@ -9,7 +9,7 @@ interface HeroImageProps {
 export default function HeroImage(props: HeroImageProps) {
   const { BACKGROUND, scrollId } = props
   return (
-    <section
+    <main
       className={`${styles['landing-background']} ${styles['landing-background-gradient']} !mb-0`}
       style={{
         backgroundImage: `url(${BACKGROUND})`,
@@ -62,6 +62,6 @@ export default function HeroImage(props: HeroImageProps) {
           </div>
         </div>
       </div>
-    </section>
+    </main>
   )
 }
