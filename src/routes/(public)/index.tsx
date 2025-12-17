@@ -2,9 +2,6 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { useAlbumWithTracks } from '@/api/helperSpotify'
 
-// import LANDING_BACKGROUND from '@/assets/images/blue-valentine-1.webp'
-
-// import HeroImage from '@/components/Page/HeroImage'
 import LoaderSpinner from '@/components/Loader/LoaderSpinner'
 import LoaderError from '@/components/Loader/LoaderError'
 import PlayerSpinner from '@/components/Spotify/PlayerSpinner'
@@ -22,11 +19,12 @@ function App() {
 
   return (
     <>
-      <section className="h-screen w-full">
+      <main className="h-screen w-full">
+        <div className="bg-stars" />
         <Planet />
-      </section>
-      {/* <HeroImage BACKGROUND={LANDING_BACKGROUND} scrollId="player" /> */}
-      <section id="player" className="!mb-[var(--section-spacing)]">
+      </main>
+      <section className="h-screen w-full" id="player">
+        <div className="bg-stars" />
         <PlayerSpinner album={data} />
       </section>
     </>

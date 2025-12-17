@@ -7,13 +7,11 @@ export default function Planet() {
     { id: 'star3', name: 'Sullyoon', style: { bottom: '20%', left: '10%' } },
     { id: 'star4', name: 'Bae', style: { bottom: '35%', right: '18%' } },
     { id: 'star5', name: 'Jiwoo', style: { top: '12%', left: '50%' } },
-    { id: 'star6', name: 'Kyujin', style: { bottom: '10%', right: '45%' } },
+    { id: 'star6', name: 'Kyujin', style: { bottom: '10%', right: '35%' } },
   ]
 
   return (
     <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
-      <div className={styles.stars} />
-
       {STARS.map(({ id, name, style }) => (
         <div key={id} className={styles.starWrapper} style={style}>
           <svg

@@ -46,12 +46,14 @@
 .container {
   position: relative;
   width: clamp(300px, 80vw, 420px);
-  height: 100%;
+  height: clamp(500px, 90vh, 700px);
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   gap: 16px;
+
   overflow: hidden;
   padding: 36px;
 
@@ -61,12 +63,25 @@
     var(--blue-light) 0%,
     var(--blue-base) 30%,
     var(--blue-dark-1) 60%,
-    #000000 100%
+    var(--black-300) 100%
   );
-  box-shadow: var(--shadow-l);
+  box-shadow:
+    var(--shadow-l),
+    inset 0 0 20px rgba(59, 130, 246, 0.4);
 
   color: white;
-  margin: 0 auto;
+  margin: auto;
+  transition: all 0.2s ease;
+}
+
+.container:hover {
+  box-shadow:
+    var(--shadow-m),
+    inset 0 0 20px rgba(59, 130, 246, 0.4),
+    0px 0px 22px rgba(var(--blue-light-rgb), 0.4),
+    0px 0px 60px rgba(var(--blue-base-rgb), 0.3);
+
+  transform: scale(1.05);
 }
 
 .visual {
@@ -81,6 +96,7 @@
   gap: 24px;
   z-index: 10;
   margin-top: 32px;
+  width: 100%;
 }
 
 .header {
@@ -107,7 +123,7 @@
 }
 
 .title {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.03em;
@@ -126,6 +142,24 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  button {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: #fff;
+    background: radial-gradient(
+      circle,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(155, 205, 255, 0.2) 55%,
+      rgb(255, 255, 255) 100%
+    );
+    box-shadow: var(--shadow-l);
+    color: #fff;
+    font: inherit;
+    cursor: pointer;
+    padding: 12px;
+    border-radius: var(--border-radius-circle);
+    transition: background-color 0.2s ease;
+  }
 }
 
 .pagination {

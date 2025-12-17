@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import '@/styles/Gradient.css';
+@import '@/styles/Background.css';
 
 :root {
   --shadow-s:
@@ -36,11 +37,17 @@
   --margin-x-base: 24px;
   --margin-x-small: 20px;
 
+  /* black */
+  --black-300: #141414;
+
   /* blue */
   --blue-base: #1360cb;
   --blue-light: #b4d1ff;
   --blue-dark-1: #102152;
   --blue-dark-2: #050d24;
+  /* blue rgb */
+  --blue-base-rgb: 19, 96, 203;
+  --blue-light-rgb: 180, 209, 255;
 }
 
 html {
