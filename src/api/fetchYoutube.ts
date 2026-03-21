@@ -1,18 +1,6 @@
 import type { Playlist } from '@/types/Playlist'
 
-const USERNAME = 'NMIXXOfficial'
 const CHANNEL_ID = 'UCnUAyD4t2LkvW68YrDh7fDg'
-
-export async function getChannelIdByUsername() {
-  const YOUTUBE_KEY = import.meta.env.VITE_YOUTUBE_API_KEY
-  const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=channel&q=${encodeURIComponent(
-    USERNAME,
-  )}&maxResults=1&key=${YOUTUBE_KEY}`
-
-  const res = await fetch(url)
-  const data = await res.json()
-  return data.items?.[0]?.snippet?.channelId
-}
 
 export async function getChannelPlaylists() {
   const YOUTUBE_KEY = import.meta.env.VITE_YOUTUBE_API_KEY

@@ -1,0 +1,358 @@
+export const SPOTIFY_DATA = {
+  data: {
+    items: [
+      {
+        id: '3UKx4WJH82TdgG9xevZGzO',
+        name: 'TIC TIC (feat. Pabllo Vittar)',
+        type: 'SINGLE',
+        date: '2026-02-25T00:00:00Z',
+        year: 2026,
+        totalTracks: 1,
+        coverArt: {
+          sm: 'https://i.scdn.co/image/ab67616d000048516234fb43ba0408012edf6a9a',
+          md: 'https://i.scdn.co/image/ab67616d00001e026234fb43ba0408012edf6a9a',
+          lg: 'https://i.scdn.co/image/ab67616d0000b2736234fb43ba0408012edf6a9a',
+        },
+        shareUrl:
+          'https://open.spotify.com/album/3UKx4WJH82TdgG9xevZGzO?si=RcY0bUg4TseTI2k1G7nF3Q',
+        uri: 'spotify:album:3UKx4WJH82TdgG9xevZGzO',
+      },
+      {
+        id: '6jy5700dqaCui8Wosnaaar',
+        name: 'Blue Valentine (MIXX Ver.)',
+        type: 'EP',
+        date: '2025-10-17T00:00:00Z',
+        year: 2025,
+        totalTracks: 5,
+        coverArt: {
+          sm: 'https://i.scdn.co/image/ab67616d00004851c302e1820a563df814073c82',
+          md: 'https://i.scdn.co/image/ab67616d00001e02c302e1820a563df814073c82',
+          lg: 'https://i.scdn.co/image/ab67616d0000b273c302e1820a563df814073c82',
+        },
+        shareUrl:
+          'https://open.spotify.com/album/6jy5700dqaCui8Wosnaaar?si=Im8pVxCLSCCY2qyVjH1ceg',
+        uri: 'spotify:album:6jy5700dqaCui8Wosnaaar',
+      },
+      {
+        id: '42URGYboRJEQPwXj7wlsoB',
+        name: 'Blue Valentine',
+        type: 'ALBUM',
+        date: '2025-10-13T00:00:00Z',
+        year: 2025,
+        totalTracks: 12,
+        coverArt: {
+          sm: 'https://i.scdn.co/image/ab67616d00004851ee26bd5ae483fc54e6ef9e74',
+          md: 'https://i.scdn.co/image/ab67616d00001e02ee26bd5ae483fc54e6ef9e74',
+          lg: 'https://i.scdn.co/image/ab67616d0000b273ee26bd5ae483fc54e6ef9e74',
+        },
+        shareUrl:
+          'https://open.spotify.com/album/42URGYboRJEQPwXj7wlsoB?si=lnBOViWDRUiGeftOaolS3w',
+        uri: 'spotify:album:42URGYboRJEQPwXj7wlsoB',
+      },
+      {
+        id: '3pqOt29EZkGpqPHBfpPskX',
+        name: 'MEXE',
+        type: 'SINGLE',
+        date: '2025-08-21T00:00:00Z',
+        year: 2025,
+        totalTracks: 1,
+        coverArt: {
+          sm: 'https://i.scdn.co/image/ab67616d000048518ab8ca2e9e35a8b4223cf9b2',
+          md: 'https://i.scdn.co/image/ab67616d00001e028ab8ca2e9e35a8b4223cf9b2',
+          lg: 'https://i.scdn.co/image/ab67616d0000b2738ab8ca2e9e35a8b4223cf9b2',
+        },
+        shareUrl:
+          'https://open.spotify.com/album/3pqOt29EZkGpqPHBfpPskX?si=pSTPI-pbSxupviItd0Je8w',
+        uri: 'spotify:album:3pqOt29EZkGpqPHBfpPskX',
+      },
+      {
+        id: '1qOD7pel3w9en2JKQ3l6Ha',
+        name: 'Fe3O4: FORWARD',
+        type: 'EP',
+        date: '2025-03-17T00:00:00Z',
+        year: 2025,
+        totalTracks: 6,
+        coverArt: {
+          sm: 'https://i.scdn.co/image/ab67616d00004851e7129d59bb7af19ad185b40e',
+          md: 'https://i.scdn.co/image/ab67616d00001e02e7129d59bb7af19ad185b40e',
+          lg: 'https://i.scdn.co/image/ab67616d0000b273e7129d59bb7af19ad185b40e',
+        },
+        shareUrl:
+          'https://open.spotify.com/album/1qOD7pel3w9en2JKQ3l6Ha?si=A5AWMpUPTrCXjtxw1KMe3w',
+        uri: 'spotify:album:1qOD7pel3w9en2JKQ3l6Ha',
+      },
+      {
+        id: '5XkpNffqz7WdtM1RrAQOvo',
+        name: 'High Horse',
+        type: 'SINGLE',
+        date: '2025-03-04T00:00:00Z',
+        year: 2025,
+        totalTracks: 1,
+        coverArt: {
+          sm: 'https://i.scdn.co/image/ab67616d000048516d71909e2c110095fd6791f2',
+          md: 'https://i.scdn.co/image/ab67616d00001e026d71909e2c110095fd6791f2',
+          lg: 'https://i.scdn.co/image/ab67616d0000b2736d71909e2c110095fd6791f2',
+        },
+        shareUrl:
+          'https://open.spotify.com/album/5XkpNffqz7WdtM1RrAQOvo?si=cwt887HnRAWvLWLx6hpyrA',
+        uri: 'spotify:album:5XkpNffqz7WdtM1RrAQOvo',
+      },
+      {
+        id: '21xLl5kT7vG7UfuZ4G1G0T',
+        name: 'Soñar (Spanish Ver.)',
+        type: 'SINGLE',
+        date: '2024-10-10T00:00:00Z',
+        year: 2024,
+        totalTracks: 1,
+        coverArt: {
+          sm: 'https://i.scdn.co/image/ab67616d00004851491d8a87fbfc8ac274fb2ffa',
+          md: 'https://i.scdn.co/image/ab67616d00001e02491d8a87fbfc8ac274fb2ffa',
+          lg: 'https://i.scdn.co/image/ab67616d0000b273491d8a87fbfc8ac274fb2ffa',
+        },
+        shareUrl:
+          'https://open.spotify.com/album/21xLl5kT7vG7UfuZ4G1G0T?si=-vD12oiKQgiO9XS7xF958g',
+        uri: 'spotify:album:21xLl5kT7vG7UfuZ4G1G0T',
+      },
+      {
+        id: '34389PjcqI6aPBjPgpYTTW',
+        name: 'Come On',
+        type: 'SINGLE',
+        date: '2024-09-27T00:00:00Z',
+        year: 2024,
+        totalTracks: 1,
+        coverArt: {
+          sm: 'https://i.scdn.co/image/ab67616d00004851f8803221f5e92a4d0b85ada0',
+          md: 'https://i.scdn.co/image/ab67616d00001e02f8803221f5e92a4d0b85ada0',
+          lg: 'https://i.scdn.co/image/ab67616d0000b273f8803221f5e92a4d0b85ada0',
+        },
+        shareUrl:
+          'https://open.spotify.com/album/34389PjcqI6aPBjPgpYTTW?si=A1OqDwKrRNuk0NBNpb4EIg',
+        uri: 'spotify:album:34389PjcqI6aPBjPgpYTTW',
+      },
+      {
+        id: '2pb2RscdByJ8pc7dPT1SY2',
+        name: 'Fe3O4: STICK OUT',
+        type: 'EP',
+        date: '2024-08-19T00:00:00Z',
+        year: 2024,
+        totalTracks: 6,
+        coverArt: {
+          sm: 'https://i.scdn.co/image/ab67616d00004851c9c9aaadb2d6d3d44be06332',
+          md: 'https://i.scdn.co/image/ab67616d00001e02c9c9aaadb2d6d3d44be06332',
+          lg: 'https://i.scdn.co/image/ab67616d0000b273c9c9aaadb2d6d3d44be06332',
+        },
+        shareUrl:
+          'https://open.spotify.com/album/2pb2RscdByJ8pc7dPT1SY2?si=GlQP6kHUT2m5gkRTNBeyjg',
+        uri: 'spotify:album:2pb2RscdByJ8pc7dPT1SY2',
+      },
+      {
+        id: '3iM9IcCKlZrTtvjgKvbtBW',
+        name: 'FEIFEI',
+        type: 'SINGLE',
+        date: '2024-07-31T00:00:00Z',
+        year: 2024,
+        totalTracks: 2,
+        coverArt: {
+          sm: 'https://i.scdn.co/image/ab67616d00004851211dd4f1141b597f5f1c2ac9',
+          md: 'https://i.scdn.co/image/ab67616d00001e02211dd4f1141b597f5f1c2ac9',
+          lg: 'https://i.scdn.co/image/ab67616d0000b273211dd4f1141b597f5f1c2ac9',
+        },
+        shareUrl:
+          'https://open.spotify.com/album/3iM9IcCKlZrTtvjgKvbtBW?si=aVYck4WDRrOoIL6z6uhdUA',
+        uri: 'spotify:album:3iM9IcCKlZrTtvjgKvbtBW',
+      },
+      {
+        id: '5bp8pvBXLoluC3mXfTccfm',
+        name: 'Like Magic',
+        type: 'SINGLE',
+        date: '2024-02-20T00:00:00Z',
+        year: 2024,
+        totalTracks: 2,
+        coverArt: {
+          sm: 'https://i.scdn.co/image/ab67616d0000485137a8f8c0fd60149673598870',
+          md: 'https://i.scdn.co/image/ab67616d00001e0237a8f8c0fd60149673598870',
+          lg: 'https://i.scdn.co/image/ab67616d0000b27337a8f8c0fd60149673598870',
+        },
+        shareUrl:
+          'https://open.spotify.com/album/5bp8pvBXLoluC3mXfTccfm?si=FylgG4plQbuM-Xr-lhqlnQ',
+        uri: 'spotify:album:5bp8pvBXLoluC3mXfTccfm',
+      },
+      {
+        id: '5CCxLQgcI7cVwmgFDlicbP',
+        name: 'Fe3O4: BREAK',
+        type: 'ALBUM',
+        date: '2024-01-15T00:00:00Z',
+        year: 2024,
+        totalTracks: 7,
+        coverArt: {
+          sm: 'https://i.scdn.co/image/ab67616d0000485181d97a31253b898bc4149195',
+          md: 'https://i.scdn.co/image/ab67616d00001e0281d97a31253b898bc4149195',
+          lg: 'https://i.scdn.co/image/ab67616d0000b27381d97a31253b898bc4149195',
+        },
+        shareUrl:
+          'https://open.spotify.com/album/5CCxLQgcI7cVwmgFDlicbP?si=tsR7CublSQy7bZpcRzJiNA',
+        uri: 'spotify:album:5CCxLQgcI7cVwmgFDlicbP',
+      },
+      {
+        id: '1CMbJop3q7bSoakHutpi1W',
+        name: 'Soñar (Breaker)',
+        type: 'SINGLE',
+        date: '2023-12-04T00:00:00Z',
+        year: 2023,
+        totalTracks: 1,
+        coverArt: {
+          sm: 'https://i.scdn.co/image/ab67616d000048513751b580f520cf08bce66d63',
+          md: 'https://i.scdn.co/image/ab67616d00001e023751b580f520cf08bce66d63',
+          lg: 'https://i.scdn.co/image/ab67616d0000b2733751b580f520cf08bce66d63',
+        },
+        shareUrl:
+          'https://open.spotify.com/album/1CMbJop3q7bSoakHutpi1W?si=W4WI4OrcT42Pk7TL-2FWtw',
+        uri: 'spotify:album:1CMbJop3q7bSoakHutpi1W',
+      },
+      {
+        id: '0OM5hpJTbDQtetg6TQCOke',
+        name: "A Midsummer NMIXX's Dream",
+        type: 'EP',
+        date: '2023-07-11T00:00:00Z',
+        year: 2023,
+        totalTracks: 4,
+        coverArt: {
+          sm: 'https://i.scdn.co/image/ab67616d00004851de5d7fcc7c044c9813e99b33',
+          md: 'https://i.scdn.co/image/ab67616d00001e02de5d7fcc7c044c9813e99b33',
+          lg: 'https://i.scdn.co/image/ab67616d0000b273de5d7fcc7c044c9813e99b33',
+        },
+        shareUrl:
+          'https://open.spotify.com/album/0OM5hpJTbDQtetg6TQCOke?si=f8tcxVX4TyODFOugMc1YPw',
+        uri: 'spotify:album:0OM5hpJTbDQtetg6TQCOke',
+      },
+      {
+        id: '1brnEznuO5sOFwX5cgblYw',
+        name: 'Roller Coaster',
+        type: 'SINGLE',
+        date: '2023-07-03T00:00:00Z',
+        year: 2023,
+        totalTracks: 1,
+        coverArt: {
+          sm: 'https://i.scdn.co/image/ab67616d0000485189eb0434891ac969895cbba8',
+          md: 'https://i.scdn.co/image/ab67616d00001e0289eb0434891ac969895cbba8',
+          lg: 'https://i.scdn.co/image/ab67616d0000b27389eb0434891ac969895cbba8',
+        },
+        shareUrl:
+          'https://open.spotify.com/album/1brnEznuO5sOFwX5cgblYw?si=1Ri7GzlNSZS9CzY5OjQXMA',
+        uri: 'spotify:album:1brnEznuO5sOFwX5cgblYw',
+      },
+      {
+        id: '6GbCvETnCVvkpvK6qCqTYS',
+        name: 'expérgo',
+        type: 'EP',
+        date: '2023-03-20T00:00:00Z',
+        year: 2023,
+        totalTracks: 6,
+        coverArt: {
+          sm: 'https://i.scdn.co/image/ab67616d000048514b32002f8a5e4ee2a5db5ace',
+          md: 'https://i.scdn.co/image/ab67616d00001e024b32002f8a5e4ee2a5db5ace',
+          lg: 'https://i.scdn.co/image/ab67616d0000b2734b32002f8a5e4ee2a5db5ace',
+        },
+        shareUrl:
+          'https://open.spotify.com/album/6GbCvETnCVvkpvK6qCqTYS?si=w0vebr16Tu2GIdw4d_0lfA',
+        uri: 'spotify:album:6GbCvETnCVvkpvK6qCqTYS',
+      },
+      {
+        id: '4OEXCY70MiuMJaenbxxRb2',
+        name: 'Young, Dumb, Stupid',
+        type: 'SINGLE',
+        date: '2023-03-12T00:00:00Z',
+        year: 2023,
+        totalTracks: 1,
+        coverArt: {
+          sm: 'https://i.scdn.co/image/ab67616d00004851afb50d799e2312fafbb8f63b',
+          md: 'https://i.scdn.co/image/ab67616d00001e02afb50d799e2312fafbb8f63b',
+          lg: 'https://i.scdn.co/image/ab67616d0000b273afb50d799e2312fafbb8f63b',
+        },
+        shareUrl:
+          'https://open.spotify.com/album/4OEXCY70MiuMJaenbxxRb2?si=aqB9B2KlQrmY-zsRQLEUtQ',
+        uri: 'spotify:album:4OEXCY70MiuMJaenbxxRb2',
+      },
+      {
+        id: '4BDUJDquHDWsW5qH48RzHn',
+        name: '1st Intermixxion Single <Funky Glitter Christmas>',
+        type: 'SINGLE',
+        date: '2022-11-23T00:00:00Z',
+        year: 2022,
+        totalTracks: 1,
+        coverArt: {
+          sm: 'https://i.scdn.co/image/ab67616d0000485162fe63e0533991976269709f',
+          md: 'https://i.scdn.co/image/ab67616d00001e0262fe63e0533991976269709f',
+          lg: 'https://i.scdn.co/image/ab67616d0000b27362fe63e0533991976269709f',
+        },
+        shareUrl:
+          'https://open.spotify.com/album/4BDUJDquHDWsW5qH48RzHn?si=lczMu0ikSs6DJu677A8lZA',
+        uri: 'spotify:album:4BDUJDquHDWsW5qH48RzHn',
+      },
+      {
+        id: '3wMlxC4t3dN70e1OF8wUfz',
+        name: 'ENTWURF',
+        type: 'EP',
+        date: '2022-09-19T00:00:00Z',
+        year: 2022,
+        totalTracks: 4,
+        coverArt: {
+          sm: 'https://i.scdn.co/image/ab67616d00004851eb1b1bb1651e8cca563f3967',
+          md: 'https://i.scdn.co/image/ab67616d00001e02eb1b1bb1651e8cca563f3967',
+          lg: 'https://i.scdn.co/image/ab67616d0000b273eb1b1bb1651e8cca563f3967',
+        },
+        shareUrl:
+          'https://open.spotify.com/album/3wMlxC4t3dN70e1OF8wUfz?si=zd7KX4epRsiiwGXDCWCfJQ',
+        uri: 'spotify:album:3wMlxC4t3dN70e1OF8wUfz',
+      },
+      {
+        id: '3XLwYEV8JxiKrzL1IJOQhg',
+        name: 'Kiss',
+        type: 'SINGLE',
+        date: '2022-07-31T00:00:00Z',
+        year: 2022,
+        totalTracks: 2,
+        coverArt: {
+          sm: 'https://i.scdn.co/image/ab67616d00004851a466102d6c810c15d2a81b7d',
+          md: 'https://i.scdn.co/image/ab67616d00001e02a466102d6c810c15d2a81b7d',
+          lg: 'https://i.scdn.co/image/ab67616d0000b273a466102d6c810c15d2a81b7d',
+        },
+        shareUrl:
+          'https://open.spotify.com/album/3XLwYEV8JxiKrzL1IJOQhg?si=NiNaInVARTi4QtV3lc4_9A',
+        uri: 'spotify:album:3XLwYEV8JxiKrzL1IJOQhg',
+      },
+      {
+        id: '0uwtKGjwAJ9z1Hp74B5xWC',
+        name: '개비의 매직하우스 OST X Nmixx',
+        type: 'SINGLE',
+        date: '2022-05-02T00:00:00Z',
+        year: 2022,
+        totalTracks: 4,
+        coverArt: {
+          sm: 'https://i.scdn.co/image/ab67616d00004851643932cf6566c99e1d2077b8',
+          md: 'https://i.scdn.co/image/ab67616d00001e02643932cf6566c99e1d2077b8',
+          lg: 'https://i.scdn.co/image/ab67616d0000b273643932cf6566c99e1d2077b8',
+        },
+        shareUrl:
+          'https://open.spotify.com/album/0uwtKGjwAJ9z1Hp74B5xWC?si=XSN_LEQ2QUGEq23Ml0WJXw',
+        uri: 'spotify:album:0uwtKGjwAJ9z1Hp74B5xWC',
+      },
+      {
+        id: '2QbA97qjlAs81t6kVS6zBk',
+        name: 'AD MARE',
+        type: 'EP',
+        date: '2022-02-22T00:00:00Z',
+        year: 2022,
+        totalTracks: 4,
+        coverArt: {
+          sm: 'https://i.scdn.co/image/ab67616d0000485186ca91e718866f411c01db5e',
+          md: 'https://i.scdn.co/image/ab67616d00001e0286ca91e718866f411c01db5e',
+          lg: 'https://i.scdn.co/image/ab67616d0000b27386ca91e718866f411c01db5e',
+        },
+        shareUrl:
+          'https://open.spotify.com/album/2QbA97qjlAs81t6kVS6zBk?si=YPydah0VSvyNspDpcnC8hw',
+        uri: 'spotify:album:2QbA97qjlAs81t6kVS6zBk',
+      },
+    ],
+  },
+}

@@ -3,14 +3,11 @@ node_modules
 dist
 dist-ssr
 *.local
-count.txt
 .env
 .nitro
 .tanstack
 .wrangler
-
-# ignore local env file
-.env
-
-# don't ignore the template
-!.env.example
+.output
+.vinxi
+__unconfig*
+todos.json

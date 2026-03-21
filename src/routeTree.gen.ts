@@ -42,9 +42,9 @@ const publicAboutIndexRoute = publicAboutIndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof publicIndexRoute
-  '/about': typeof publicAboutIndexRoute
-  '/music': typeof publicMusicIndexRoute
-  '/video': typeof publicVideoIndexRoute
+  '/about/': typeof publicAboutIndexRoute
+  '/music/': typeof publicMusicIndexRoute
+  '/video/': typeof publicVideoIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof publicIndexRoute
@@ -62,7 +62,7 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/music' | '/video'
+  fullPaths: '/' | '/about/' | '/music/' | '/video/'
   fileRoutesByTo: FileRoutesByTo
   to: '/' | '/about' | '/music' | '/video'
   id:
@@ -97,21 +97,21 @@ declare module '@tanstack/react-router' {
     '/(public)/video/': {
       id: '/(public)/video/'
       path: '/video'
-      fullPath: '/video'
+      fullPath: '/video/'
       preLoaderRoute: typeof publicVideoIndexRouteImport
       parentRoute: typeof publicRouteRoute
     }
     '/(public)/music/': {
       id: '/(public)/music/'
       path: '/music'
-      fullPath: '/music'
+      fullPath: '/music/'
       preLoaderRoute: typeof publicMusicIndexRouteImport
       parentRoute: typeof publicRouteRoute
     }
     '/(public)/about/': {
       id: '/(public)/about/'
       path: '/about'
-      fullPath: '/about'
+      fullPath: '/about/'
       preLoaderRoute: typeof publicAboutIndexRouteImport
       parentRoute: typeof publicRouteRoute
     }
@@ -142,3 +142,12 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}

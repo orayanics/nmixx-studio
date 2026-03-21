@@ -1,6 +1,6 @@
 @import 'tailwindcss';
-@import '@/styles/Gradient.css';
-@import '@/styles/Background.css';
+@import './styles/Gradient.css';
+@import './styles/Background.css';
 
 :root {
   --shadow-s:

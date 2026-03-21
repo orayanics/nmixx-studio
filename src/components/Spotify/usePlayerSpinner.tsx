@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import type { TrackItem } from '@/types/AlbumTracks'
+import type { LastFMTrack } from '@/types/LastFm'
 
 interface UsePlayerSpinnerProps {
   trackCount: number
-  trackList: Array<TrackItem>
+  trackList: Array<LastFMTrack>
 }
 
 export default function usePlayerSpinner(props: UsePlayerSpinnerProps) {

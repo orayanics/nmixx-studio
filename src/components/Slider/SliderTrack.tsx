@@ -14,12 +14,12 @@ export default function SliderTrack(props: SliderTrackProps) {
     <div
       className={`${styles['card--gradient']} relative w-auto flex items-center justify-center gap-4`}
     >
-      <div className="md:w-[500px] w-60 rounded-[var(--border-radius)] overflow-hidden block">
+      <div className="md:w-[500px] w-60 rounded-(--border-radius) overflow-hidden block">
         {/* Card */}
         <img
           src={img}
           alt={`${name} cover`}
-          className="rounded-[var(--border-radius)] object-cover w-inherit h-inherit"
+          className="rounded-(--border-radius) object-cover w-inherit h-inherit"
         />
       </div>
 
@@ -27,7 +27,7 @@ export default function SliderTrack(props: SliderTrackProps) {
         {/* Text Overlay */}
         <div>
           <a href={href} target="_blank" rel="noreferrer">
-            <p className="md:break-words truncate font-bold md:text-4xl text-2xl w-[80%] mx-auto">
+            <p className="md:wrap-break-words truncate font-bold md:text-4xl text-2xl w-[80%] mx-auto">
               {name}
             </p>
           </a>

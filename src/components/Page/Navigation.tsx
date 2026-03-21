@@ -20,13 +20,13 @@ export default function Navigation(props: NavigationProps) {
   const { isMenuOpen, isClosing, setIsMenuOpen, closeMenu } = useNavigation()
 
   return (
-    <header className="fixed top-0 start-0 z-[100] w-full">
+    <header className="fixed top-0 start-0 z-100 w-full backdrop-blur-2xl">
       <div className="text-white container flex md:gap-3 gap-6 justify-between items-center mx-auto py-3 px-5">
         <div>
           <Logo className="invert" />
         </div>
 
-        <div className="flex gap-6 text-lg items-center md:flex hidden">
+        <div className="gap-6 text-lg items-center md:flex hidden">
           {links.map((link) => (
             <Link key={link.to} to={link.to}>
               {link.label}
@@ -48,7 +48,7 @@ export default function Navigation(props: NavigationProps) {
 
       {isMenuOpen && (
         <div
-          className="md:hidden flex absolute top-16 right-6 flex flex-col gap-4 items-end"
+          className="md:hidden flex absolute top-16 right-6 flex-col gap-4 items-end"
           id="navigation-menu"
         >
           {links.map((link, index) => (

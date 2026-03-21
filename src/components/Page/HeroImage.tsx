@@ -9,7 +9,7 @@ export default function HeroImage(props: HeroImageProps) {
   const { BACKGROUND, scrollId } = props
   return (
     <main
-      className={`gradient-to-top relative h-screen w-full bg-cover bg-center object-cover !mb-0`}
+      className={`gradient-to-top relative h-screen w-full bg-cover bg-center object-cover mb-0!`}
       style={{
         backgroundImage: `url(${BACKGROUND})`,
       }}
