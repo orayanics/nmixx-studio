@@ -1,0 +1,32 @@
+import { LANDING_DECK } from '@/configs/landing'
+
+export const PortraitCard = ({
+  name,
+  zoom = 1,
+  focus = { x: '50%', y: '50%' },
+}: {
+  name: string
+  zoom?: number
+  focus?: { x: string; y: string }
+}) => {
+  const selected = LANDING_DECK.find(
+    (item) => item.title.toUpperCase() === name,
+  )
+  return (
+    <div className="relative aspect-3/4 border border-white/30 border-border overflow-hidden bg-card group">
+      <div className="absolute z-10 inset-0 halftone-aura opacity-30 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none" />
+
+      <div className="absolute inset-0 flex items-center justify-center">
+        <img
+          src={selected?.img || ''}
+          alt={name}
+          className="zine-image object-cover w-full h-full"
+          style={{
+            transform: `scale(${zoom}) translate(-${focus.x}, -${focus.y})`,
+            transformOrigin: `${focus.x} ${focus.y}`,
+          }}
+        />
+      </div>
+    </div>
+  )
+}

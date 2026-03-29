@@ -30,7 +30,7 @@
   --liquid-border: 1px solid rgba(255, 255, 255, 0.2);
 
   --background-light: #f0f0f0;
-  --background-dark: #0b0b0b;
+  --background-dark: #080808;
   --section-spacing: 64px;
 
   /* margins */
@@ -128,20 +128,38 @@ section {
   }
 }
 
-/* Noise Texture Overlay */
-.bg-noise {
-  background-image: url('https://i.sstatic.net/j1D66.png');
-  filter: contrast(150%) brightness(00%);
-}
-
-/* Halftone Pattern Simulation */
 .halftone-aura {
   background-image: radial-gradient(circle, #fff 1px, transparent 1px);
-  background-size: 5px 5px;
-  mask-image: radial-gradient(circle, black, transparent 70%);
+  background-size: 4px 4px;
+  mask-image: radial-gradient(circle, rgb(255, 255, 255, 0.2), transparent 80%);
 }
 
-/* High Contrast Grayscale Filter */
 .zine-image {
-  filter: grayscale(1) contrast(1.8) brightness(0.9);
+  filter: grayscale(1) contrast(5) brightness(1) blur(1.5px);
+}
+
+.group {
+  position: relative;
+  display: block;
+}
+
+.group::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 255, 0.6);
+  opacity: 0;
+  mix-blend-mode: color;
+  pointer-events: none;
+  transition: opacity 1s ease;
+}
+
+.group:hover::after {
+  opacity: 1;
+  transition: opacity 2s ease;
+}
+
+.group:hover .zine-image {
+  filter: grayscale(1) contrast(2) brightness(1);
+  transition: filter 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
