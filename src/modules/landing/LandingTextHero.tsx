@@ -30,7 +30,7 @@ export default function LandingTextHero() {
           opacity: textOpacity,
           filter: `blur(${blur})`,
         }}
-        className="flex flex-col items-center gap-6"
+        className="relative flex flex-col items-center gap-6"
       >
         {/* Member Names Row - Entrance Stagger */}
         <div className="relative flex flex-wrap justify-center gap-x-6 gap-y-2 px-4">
@@ -52,7 +52,7 @@ export default function LandingTextHero() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="text-center space-y-2"
+          className="relative text-center space-y-2"
         >
           <h1 className="text-blue-500 text-7xl md:text-9xl font-bold tracking-tighter uppercase leading-none">
             <ScrambleText text="NMIXX" delay={50} />{' '}

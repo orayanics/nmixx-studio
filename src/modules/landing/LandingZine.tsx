@@ -49,7 +49,7 @@ export default function LandingZine() {
         >
           <motion.div variants={itemVariants} className="relative group">
             <TextFade position="center">
-              <p className="lowercase italic font-serif bg-clip-text text-transparent bg-linear-to-r from-rose-600 to-rose-800">
+              <p className="text-sm md:text-4xl lowercase italic font-serif bg-clip-text text-transparent bg-linear-to-r from-rose-600 to-rose-800">
                 Lily
               </p>
             </TextFade>
@@ -62,7 +62,7 @@ export default function LandingZine() {
 
           <motion.div variants={itemVariants} className="relative group">
             <TextFade position="center">
-              <p className="lowercase italic font-serif bg-clip-text text-transparent bg-linear-to-r from-rose-600 to-rose-800">
+              <p className="text-sm md:text-4xl lowercase italic font-serif bg-clip-text text-transparent bg-linear-to-r from-rose-600 to-rose-800">
                 Haewon
               </p>
             </TextFade>
@@ -75,7 +75,7 @@ export default function LandingZine() {
 
           <motion.div variants={itemVariants} className="relative group">
             <TextFade position="center">
-              <p className="lowercase italic font-serif bg-clip-text text-transparent bg-linear-to-r from-rose-600 to-rose-800">
+              <p className="text-sm md:text-4xl lowercase italic font-serif bg-clip-text text-transparent bg-linear-to-r from-rose-600 to-rose-800">
                 Sullyoon
               </p>
             </TextFade>
@@ -133,7 +133,7 @@ export default function LandingZine() {
         >
           <motion.div variants={itemVariants} className="relative group">
             <TextFade position="center">
-              <p className="lowercase italic font-serif bg-clip-text text-transparent bg-linear-to-r from-rose-600 to-rose-800">
+              <p className="text-sm md:text-4xl lowercase italic font-serif bg-clip-text text-transparent bg-linear-to-r from-rose-600 to-rose-800">
                 Jinsol
               </p>
             </TextFade>
@@ -142,7 +142,7 @@ export default function LandingZine() {
 
           <motion.div variants={itemVariants} className="relative group">
             <TextFade position="center">
-              <p className="lowercase italic font-serif bg-clip-text text-transparent bg-linear-to-r from-rose-600 to-rose-800">
+              <p className="text-sm md:text-4xl lowercase italic font-serif bg-clip-text text-transparent bg-linear-to-r from-rose-600 to-rose-800">
                 Jiwoo{' '}
               </p>
             </TextFade>
@@ -155,7 +155,7 @@ export default function LandingZine() {
 
           <motion.div variants={itemVariants} className="relative group">
             <TextFade position="center">
-              <p className="lowercase italic font-serif bg-clip-text text-transparent bg-linear-to-r from-rose-600 to-rose-800">
+              <p className="text-sm md:text-4xl lowercase italic font-serif bg-clip-text text-transparent bg-linear-to-r from-rose-600 to-rose-800">
                 Kyujin
               </p>
             </TextFade>

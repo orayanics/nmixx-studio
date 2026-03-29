@@ -5,7 +5,7 @@ import LandingZineHeading from './LandingZineHeading'
 
 export default function LandingView() {
   return (
-    <div className="relative">
+    <div className="relative overflow-hidden">
       <LandingTextHero />
       <LandingZineHeading />
       <LandingZine />

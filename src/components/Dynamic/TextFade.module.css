@@ -6,7 +6,7 @@
   z-index: 5;
   pointer-events: auto;
   background-color: rgba(0, 0, 0, 0);
-  padding: 20px;
+  padding: 6px;
 
   /* children position */
   display: flex;
@@ -28,6 +28,8 @@
 }
 
 .text-content {
+  width: 100%;
+  text-align: center;
   color: #fff;
   font-size: 3em;
   transform-style: preserve-3d;
