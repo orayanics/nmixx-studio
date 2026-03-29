@@ -5,7 +5,7 @@ export const Route = createFileRoute('/(public)')({
   component: RouteComponent,
 })
 
-const DISABLE_FOOTER_PATHS = ['/']
+const DISABLE_FOOTER_PATHS = ['']
 const DISABLE_NAVIGATION_PATHS = ['/']
 
 function RouteComponent() {

@@ -3,13 +3,13 @@ import { SOCIALS } from '@/configs/socials'
 
 export default function Footer() {
   return (
-    <footer className="!border-b-0 !border-x-0 w-full glass--border px-4">
+    <footer className="border-b-0! border-x-0! w-full glass--border px-4">
       <div className="grid md:grid-cols-2 grid-cols-1 gap-4 py-10">
         <div className="flex flex-col gap-2">
-          <Logo className="invert !w-fit" />
+          <Logo className="invert w-fit!" />
           <p className="text-gray-400">
-            MixxLabs is a fan-made project and is not officially affiliated with
-            JYP Entertainment or NMIXX.
+            NMIXX Studio is a fan-made project and is not officially affiliated
+            with JYP Entertainment or NMIXX.
           </p>
         </div>
 

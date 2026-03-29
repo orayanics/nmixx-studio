@@ -62,7 +62,7 @@ export function TapeItem({
         scale: 1,
         transition: {
           duration: 0.75,
-          delay: index * 0.08, // optional per-item cascade
+          delay: index * 0.08,
           ease: [0.25, 0.46, 0.45, 0.94],
         },
       }}
@@ -120,7 +120,7 @@ export default function LandingTapes() {
             }}
             className="text-7xl md:text-9xl font-bold tracking-tighter leading-none"
           >
-            <span className="font-serif italic font-normal lowercase block md:inline">
+            <span className="text-blue-500 font-serif italic font-normal lowercase block md:inline">
               blue valentine
             </span>
           </motion.p>

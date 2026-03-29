@@ -47,7 +47,10 @@ export default function LandingZine() {
           }}
           className="grid grid-cols-3 gap-2"
         >
-          <motion.div variants={itemVariants} className="relative group">
+          <motion.div
+            variants={itemVariants}
+            className="relative group zine-group"
+          >
             <TextFade position="center">
               <p className="text-sm md:text-4xl lowercase italic font-serif bg-clip-text text-transparent bg-linear-to-r from-rose-600 to-rose-800">
                 Lily
@@ -60,7 +63,10 @@ export default function LandingZine() {
             />
           </motion.div>
 
-          <motion.div variants={itemVariants} className="relative group">
+          <motion.div
+            variants={itemVariants}
+            className="relative group zine-group"
+          >
             <TextFade position="center">
               <p className="text-sm md:text-4xl lowercase italic font-serif bg-clip-text text-transparent bg-linear-to-r from-rose-600 to-rose-800">
                 Haewon
@@ -73,7 +79,10 @@ export default function LandingZine() {
             />
           </motion.div>
 
-          <motion.div variants={itemVariants} className="relative group">
+          <motion.div
+            variants={itemVariants}
+            className="relative group zine-group"
+          >
             <TextFade position="center">
               <p className="text-sm md:text-4xl lowercase italic font-serif bg-clip-text text-transparent bg-linear-to-r from-rose-600 to-rose-800">
                 Sullyoon
@@ -97,7 +106,7 @@ export default function LandingZine() {
             amount: 0.05,
             margin: '0px 0px -120px 0px',
           }}
-          className="flex-1 group relative border border-white/30 border-border overflow-hidden aspect-21/9"
+          className="flex-1 group zine-group relative border border-white/30 border-border overflow-hidden aspect-21/9"
         >
           <motion.div variants={itemVariants}>
             <div className="overflow-hidden absolute z-10 inset-0 halftone-aura opacity-30 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none" />
@@ -131,7 +140,10 @@ export default function LandingZine() {
           }}
           className="grid grid-cols-3 gap-2"
         >
-          <motion.div variants={itemVariants} className="relative group">
+          <motion.div
+            variants={itemVariants}
+            className="relative group zine-group"
+          >
             <TextFade position="center">
               <p className="text-sm md:text-4xl lowercase italic font-serif bg-clip-text text-transparent bg-linear-to-r from-rose-600 to-rose-800">
                 Jinsol
@@ -140,7 +152,10 @@ export default function LandingZine() {
             <PortraitCard name="BAE" zoom={3} focus={{ x: '20%', y: '8%' }} />
           </motion.div>
 
-          <motion.div variants={itemVariants} className="relative group">
+          <motion.div
+            variants={itemVariants}
+            className="relative group zine-group"
+          >
             <TextFade position="center">
               <p className="text-sm md:text-4xl lowercase italic font-serif bg-clip-text text-transparent bg-linear-to-r from-rose-600 to-rose-800">
                 Jiwoo{' '}
@@ -153,7 +168,10 @@ export default function LandingZine() {
             />
           </motion.div>
 
-          <motion.div variants={itemVariants} className="relative group">
+          <motion.div
+            variants={itemVariants}
+            className="relative group zine-group"
+          >
             <TextFade position="center">
               <p className="text-sm md:text-4xl lowercase italic font-serif bg-clip-text text-transparent bg-linear-to-r from-rose-600 to-rose-800">
                 Kyujin

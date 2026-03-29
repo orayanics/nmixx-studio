@@ -138,12 +138,7 @@ section {
   filter: grayscale(1) contrast(5) brightness(1) blur(1.5px);
 }
 
-.group {
-  position: relative;
-  display: block;
-}
-
-.group::after {
+.zine-group::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -154,12 +149,12 @@ section {
   transition: opacity 1s ease;
 }
 
-.group:hover::after {
+.zine-group:hover::after {
   opacity: 1;
   transition: opacity 2s ease;
 }
 
-.group:hover .zine-image {
+.zine-group:hover .zine-image {
   filter: grayscale(1) contrast(2) brightness(1);
   transition: filter 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
