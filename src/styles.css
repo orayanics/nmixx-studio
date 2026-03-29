@@ -147,7 +147,7 @@ section {
   content: '';
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 255, 0.6);
+  background-color: rgba(88, 160, 255, 0.7);
   opacity: 0;
   mix-blend-mode: color;
   pointer-events: none;

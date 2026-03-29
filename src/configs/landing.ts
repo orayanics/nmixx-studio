@@ -31,9 +31,75 @@ const SAMPLE_DECK = [
   },
 ]
 
-const LANDING_BACKGROUND =
+export const LANDING_BACKGROUND =
   'https://d1al7qj7ydfbpt.cloudfront.net/artist/nmixx/3cce5a96a8a34e2aa4c1ed4098daad5c-PC%E1%84%83%E1%85%A1%E1%86%AB%E1%84%8E%E1%85%A6.jpg'
 
-const NMIXX_MEMBERS = ['LILY', 'HAEWON', 'SULLYOON', 'BAE', 'JIWOO', 'KYUJIN']
+export const NMIXX_MEMBERS = [
+  'LILY',
+  'HAEWON',
+  'SULLYOON',
+  'BAE',
+  'JIWOO',
+  'KYUJIN',
+]
 
-export { SAMPLE_DECK as LANDING_DECK, LANDING_BACKGROUND, NMIXX_MEMBERS }
+import BLUE_VALENTINE_COVER from '@/assets/images/BLUE_VALENTINE.webp'
+import SPINNIN_ON_IT_COVER from '@/assets/images/SPINNIN_ON_IT.webp'
+import PHOENIX_COVER from '@/assets/images/PHOENIX.webp'
+import REALITY_HURTS_COVER from '@/assets/images/REALITY_HURTS.webp'
+import RICO_COVER from '@/assets/images/RICO.webp'
+import GAME_FACE_COVER from '@/assets/images/GAME_FACE.webp'
+import PODIUM_COVER from '@/assets/images/PODIUM.webp'
+import CRUSH_ON_YOU_COVER from '@/assets/images/CRUSH_ON_YOU.webp'
+import ADORE_U_COVER from '@/assets/images/ADORE_U.webp'
+import SHAPE_OF_LOVE_COVER from '@/assets/images/SHAPE_OF_LOVE.webp'
+import OO_COVER from '@/assets/images/OO.webp'
+
+export const BLUE_VALENTINE_TRACKS = [
+  {
+    title: 'Blue Valentine',
+    img: BLUE_VALENTINE_COVER,
+  },
+  {
+    title: 'Spinnin On It',
+    img: SPINNIN_ON_IT_COVER,
+  },
+  {
+    title: 'Phoenix',
+    img: PHOENIX_COVER,
+  },
+  {
+    title: 'Reality Hurts',
+    img: REALITY_HURTS_COVER,
+  },
+  {
+    title: 'RICO',
+    img: RICO_COVER,
+  },
+  {
+    title: 'Game Face',
+    img: GAME_FACE_COVER,
+  },
+  {
+    title: 'PODIUM',
+    img: PODIUM_COVER,
+  },
+  {
+    title: 'Crush On You',
+    img: CRUSH_ON_YOU_COVER,
+  },
+  {
+    title: 'ADORE U',
+    img: ADORE_U_COVER,
+  },
+  {
+    title: 'Shape of Love',
+    img: SHAPE_OF_LOVE_COVER,
+  },
+  {
+    title: 'O.O Pt.1 (Baila) & O.O Pt.2 (Superhero)',
+    img: OO_COVER,
+  },
+]
+
+export { SAMPLE_DECK as LANDING_DECK }

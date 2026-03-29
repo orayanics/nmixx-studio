@@ -1,3 +1,4 @@
+import LandingTapes from './LandingTapes'
 import LandingTextHero from './LandingTextHero'
 import LandingZine from './LandingZine'
 import LandingZineHeading from './LandingZineHeading'
@@ -8,6 +9,7 @@ export default function LandingView() {
       <LandingTextHero />
       <LandingZineHeading />
       <LandingZine />
+      <LandingTapes />
     </div>
   )
 }

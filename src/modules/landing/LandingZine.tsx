@@ -42,7 +42,7 @@ export default function LandingZine() {
           whileInView="show"
           viewport={{
             once: true,
-            amount: 0.25,
+            amount: 0.05,
             margin: '0px 0px -120px 0px',
           }}
           className="grid grid-cols-3 gap-2"
@@ -94,7 +94,7 @@ export default function LandingZine() {
           whileInView="show"
           viewport={{
             once: true,
-            amount: 0.25,
+            amount: 0.05,
             margin: '0px 0px -120px 0px',
           }}
           className="flex-1 group relative border border-white/30 border-border overflow-hidden aspect-21/9"
@@ -126,7 +126,7 @@ export default function LandingZine() {
           whileInView="show"
           viewport={{
             once: true,
-            amount: 0.25,
+            amount: 0.05,
             margin: '0px 0px -120px 0px',
           }}
           className="grid grid-cols-3 gap-2"
