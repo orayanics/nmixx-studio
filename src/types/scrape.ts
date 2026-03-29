@@ -6,6 +6,7 @@ export interface Track {
 
 export interface Album {
   title: string
+  cover: string | null
   language: string | null
   year: string | null
   release: string | null

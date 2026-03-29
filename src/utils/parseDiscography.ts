@@ -52,6 +52,14 @@ export function parseDiscography(html: string): Discography {
       const tds = row.querySelectorAll('td')
       if (tds.length < 2) return
 
+      const img = tds[0].querySelector('img')
+      const rawCover =
+        img?.dataset.src ??
+        (img?.src.startsWith('data:') ? null : img?.src) ??
+        null
+
+      const cover = cleanImageUrl(rawCover)
+
       const titleTd = tds[1]
       const title = titleTd.querySelector('b')?.textContent?.trim() ?? ''
 
@@ -81,6 +89,7 @@ export function parseDiscography(html: string): Discography {
 
       result[currentArtist!][currentSection!]!.push({
         title,
+        cover,
         language,
         year,
         release,
@@ -91,4 +100,17 @@ export function parseDiscography(html: string): Discography {
   })
 
   return result
+}
+
+export function cleanImageUrl(url: string | null): string | null {
+  if (!url) return null
+  return url.replace(/\/(revision|scale-to-width-down).*$/, '')
+}
+
+export function sortByLatest(albums: Album[]): Album[] {
+  return [...albums].sort((a, b) => {
+    if (!a.release) return 1
+    if (!b.release) return -1
+    return new Date(b.release).getTime() - new Date(a.release).getTime()
+  })
 }

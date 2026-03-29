@@ -6,12 +6,16 @@ export const Route = createFileRoute('/(public)')({
 })
 
 const DISABLE_FOOTER_PATHS = ['/']
+const DISABLE_NAVIGATION_PATHS = ['/']
 
 function RouteComponent() {
   const location = useLocation()
   const enableFooter = !DISABLE_FOOTER_PATHS.includes(location.pathname)
   return (
-    <PublicLayout enableFooter={enableFooter}>
+    <PublicLayout
+      enableFooter={enableFooter}
+      enableNavigation={!DISABLE_NAVIGATION_PATHS.includes(location.pathname)}
+    >
       <Outlet />
     </PublicLayout>
   )

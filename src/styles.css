@@ -74,6 +74,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--background-dark);
+  color: white;
 }
 
 .container {
@@ -125,4 +126,22 @@ section {
       margin-bottom: 0;
     }
   }
+}
+
+/* Noise Texture Overlay */
+.bg-noise {
+  background-image: url('https://i.sstatic.net/j1D66.png');
+  filter: contrast(150%) brightness(00%);
+}
+
+/* Halftone Pattern Simulation */
+.halftone-aura {
+  background-image: radial-gradient(circle, #fff 1px, transparent 1px);
+  background-size: 5px 5px;
+  mask-image: radial-gradient(circle, black, transparent 70%);
+}
+
+/* High Contrast Grayscale Filter */
+.zine-image {
+  filter: grayscale(1) contrast(1.8) brightness(0.9);
 }

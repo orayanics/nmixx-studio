@@ -10,25 +10,30 @@ export const Route = createFileRoute('/(public)/')({
   component: App,
 })
 
-function App() {
-  const { data, isPending, isError } = useAlbum('NMIXX', 'Blue Valentine')
+// function App() {
+//   const { data, isPending, isError } = useAlbum('NMIXX', 'Blue Valentine')
 
-  return (
-    <>
-      <main className="h-screen w-full">
-        <div className="bg-stars" />
-        <Planet />
-      </main>
-      {isPending ? (
-        <LoaderSpinner isFullScreen />
-      ) : isError ? (
-        <LoaderError />
-      ) : data ? (
-        <section className="h-screen w-full" id="player">
-          <div className="bg-stars" />
-          <PlayerSpinner album={data} />
-        </section>
-      ) : null}
-    </>
-  )
+//   return (
+//     <>
+//       <main className="h-screen w-full">
+//         <div className="bg-stars" />
+//         <Planet />
+//       </main>
+//       {isPending ? (
+//         <LoaderSpinner isFullScreen />
+//       ) : isError ? (
+//         <LoaderError />
+//       ) : data ? (
+//         <section className="h-screen w-full" id="player">
+//           <div className="bg-stars" />
+//           <PlayerSpinner album={data} />
+//         </section>
+//       ) : null}
+//     </>
+//   )
+// }
+
+import { NmixxHero } from '@/modules/music/Sample'
+function App() {
+  return <NmixxHero />
 }

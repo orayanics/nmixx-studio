@@ -2,7 +2,7 @@ import styles from './Slider.module.css'
 
 interface SliderTrackProps {
   img: string
-  href: string
+  href?: string
   name: string
   artist: string
 }
@@ -14,7 +14,7 @@ export default function SliderTrack(props: SliderTrackProps) {
     <div
       className={`${styles['card--gradient']} relative w-auto flex items-center justify-center gap-4`}
     >
-      <div className="md:w-[500px] w-60 rounded-(--border-radius) overflow-hidden block">
+      <div className="md:w-125 w-60 rounded-(--border-radius) overflow-hidden block">
         {/* Card */}
         <img
           src={img}
