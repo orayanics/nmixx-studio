@@ -19,14 +19,16 @@ function App() {
         <div className="bg-stars" />
         <Planet />
       </main>
-      {isPending && <LoaderSpinner />}
-      {isError && <LoaderError />}
-      {data && (
+      {isPending ? (
+        <LoaderSpinner isFullScreen />
+      ) : isError ? (
+        <LoaderError />
+      ) : data ? (
         <section className="h-screen w-full" id="player">
           <div className="bg-stars" />
           <PlayerSpinner album={data} />
         </section>
-      )}
+      ) : null}
     </>
   )
 }
