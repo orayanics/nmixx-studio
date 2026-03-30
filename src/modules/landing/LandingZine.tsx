@@ -1,10 +1,17 @@
+import { useEffect, useRef, useState } from 'react'
+
 import { motion } from 'framer-motion'
 import type { Variants } from 'framer-motion'
+
 import { PortraitCard } from './components/PortraitCard'
 import { LANDING_BACKGROUND } from '@/configs/landing'
 import TextFade from '@/components/Dynamic/TextFade'
+import LoaderSpinner from '@/components/Loader/LoaderSpinner'
 
 export default function LandingZine() {
+  const [isLoaded, setIsLoaded] = useState(false)
+  const imgRef = useRef<HTMLImageElement>(null)
+
   const containerVariants = {
     hidden: {},
     show: {
@@ -26,6 +33,10 @@ export default function LandingZine() {
       },
     },
   }
+
+  useEffect(() => {
+    if (imgRef.current?.complete) setIsLoaded(true)
+  }, [])
 
   return (
     <div className="relative w-full p-4 md:p-8 flex items-center justify-center z-20">
@@ -110,7 +121,11 @@ export default function LandingZine() {
         >
           <motion.div variants={itemVariants}>
             <div className="overflow-hidden absolute z-10 inset-0 halftone-aura opacity-30 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none" />
+            {!isLoaded && <LoaderSpinner isFullScreen />}
             <img
+              ref={imgRef}
+              onLoad={() => setIsLoaded(true)}
+              onError={() => setIsLoaded(true)}
               src={LANDING_BACKGROUND}
               className="
                 zine-image

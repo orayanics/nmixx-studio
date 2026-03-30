@@ -1,3 +1,7 @@
+import { useEffect, useRef, useState } from 'react'
+import { motion, type Variants } from 'framer-motion'
+import LoaderSpinner from '@/components/Loader/LoaderSpinner'
+
 type Align = 'left' | 'center' | 'right'
 
 interface DuoScreenProps {
@@ -11,6 +15,8 @@ interface DuoScreenProps {
 
 export default function DuoScreen(props: DuoScreenProps) {
   const { align = 'left', index, title, description, names, img } = props
+  const [isLoaded, setIsLoaded] = useState(false)
+  const imgRef = useRef<HTMLImageElement>(null)
 
   const alignmentStyles: Record<
     Align,
@@ -37,38 +43,97 @@ export default function DuoScreen(props: DuoScreenProps) {
     },
   }
 
+  const containerVariants = {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  }
+
+  const itemVariants: Variants = {
+    hidden: {
+      opacity: 0,
+      y: '20%',
+    },
+    show: {
+      opacity: 1,
+      y: '0%',
+      transition: {
+        duration: 0.6,
+        ease: 'easeOut',
+      },
+    },
+  }
+
   const styles = alignmentStyles[align]
+
+  useEffect(() => {
+    if (imgRef.current?.complete) setIsLoaded(true)
+  }, [])
 
   return (
     <div className="relative h-full w-full overflow-hidden group">
+      {!isLoaded && <LoaderSpinner isFullScreen />}
       {/* overlays */}
       <div className="absolute z-10 inset-0 bg-linear-to-t from-blue-600/40 to-transparent opacity-50 pointer-events-none" />
       <div className="absolute z-10 inset-0 halftone-aura opacity-30 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none" />
 
       {/* content */}
-      <div
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.05, margin: '-100px' }}
         className={`h-full ${styles.width} absolute z-10 inset-0 p-8
         flex flex-col justify-center ${styles.container} gap-6`}
       >
-        <div className={`w-full max-w-md flex flex-col gap-2 ${styles.text}`}>
-          <p className="uppercase tracking-widest">{index}. blue valentine</p>
+        <div className={`relative w-full flex flex-col gap-2 ${styles.text}`}>
+          <motion.p
+            variants={itemVariants}
+            className="uppercase tracking-widest text-xs md:text-md"
+          >
+            {index}. blue valentine
+          </motion.p>
 
-          <p className="font-serif text-3xl capitalize max-w-xs">
+          <motion.p
+            variants={itemVariants}
+            className="font-serif text-sm md:text-4xl lg:text-7xl capitalize max-w-40 md:max-w-md lg:max-w-lg"
+          >
             {description}
-          </p>
+          </motion.p>
 
-          <div className="w-fit border my-2 p-2">
+          <motion.div
+            variants={itemVariants}
+            className="w-fit border text-xs md:text-lg my-1 md:my-2 p-1 md:p-2"
+          >
             <p>{title}</p>
-          </div>
+          </motion.div>
         </div>
 
-        <div className={`w-full max-w-xl flex flex-col ${styles.text}`}>
-          <h1 className="font-serif italic text-xl capitalize">{names}</h1>
+        <div className={`relative w-full flex flex-col ${styles.text}`}>
+          <motion.h1
+            variants={itemVariants}
+            className="font-serif italic text-md md:text-xl capitalize"
+          >
+            {names}
+          </motion.h1>
         </div>
-      </div>
+      </motion.div>
 
       {/* image */}
-      <img src={img} alt={names} className="grayscale-100 contrast-[1.2]" />
+      <motion.img
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: isLoaded ? 1 : 0 }}
+        transition={{ duration: 2, ease: 'easeOut' }}
+        ref={imgRef}
+        onLoad={() => setIsLoaded(true)}
+        onError={() => setIsLoaded(true)}
+        src={img}
+        alt={names}
+        className="grayscale-100 contrast-[1.2]"
+      />
     </div>
   )
 }

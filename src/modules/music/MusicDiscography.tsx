@@ -31,9 +31,9 @@ export default function MusicDiscography() {
     <>
       {isPending ? (
         <LoaderSpinner isFullScreen />
-      ) : isError ? (
+      ) : isError || !data ? (
         <LoaderError />
-      ) : data ? (
+      ) : (
         <div
           className="min-h-screen text-white font-mono uppercase"
           id="discography"
@@ -56,14 +56,13 @@ export default function MusicDiscography() {
                   key={album.title}
                   className={`group relative overflow-hidden flex! flex-col border rounded-sm border-white/20 ${size}`}
                 >
-                  {/* 1. TOP STATUS BAR (Industrial ID) */}
+                  {/* 1. TOP STATUS BAR */}
                   <div className="relative flex justify-between items-center px-4 py-2 text-[10px] font-bold">
                     <span>{serialNo}</span>
                     <span
                       className="bg-blue-500 text-white px-2
                       transition-colors duration-500
-                    group-hover:bg-rose-500
-                    "
+                      group-hover:bg-rose-500"
                     >
                       LIVE_DATA
                     </span>
@@ -71,18 +70,15 @@ export default function MusicDiscography() {
 
                   {/* 2. MAIN CONTENT AREA */}
                   <div
-                    className="h-100 relative grow flex flex-col group
+                    className="relative grow flex flex-col h-full
                     after:content-['']
                     after:absolute after:inset-0
                     after:bg-[rgba(88,160,255,0.3)]
                     after:opacity-0
                     after:mix-blend-color
                     after:pointer-events-none
-                    after:transition-opacity after:duration-1000
-                    transition-all duration-1000 ease-[cubic-bezier(0.075,0.82,0.165,1)]
-
-                    hover:after:opacity-100
-                    hover:after:duration-1000"
+                    after:transition-opacity after:duration-500
+                    group-hover:after:opacity-100"
                   >
                     {/* Background Artwork - Industrial Filter */}
                     <div className="absolute z-10 inset-0 halftone-aura opacity-30 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none" />
@@ -91,19 +87,19 @@ export default function MusicDiscography() {
                       src={album.cover!}
                       alt={album.title}
                       className="absolute inset-0 w-full h-full object-cover
-                    opacity-40
-                    filter-[grayscale(1)_contrast(5)_blur(2px)_brightness(1)]
-                    transition-[filter] duration-1000 ease-[cubic-bezier(0.075,0.82,0.165,1)]
-                    group-hover:filter-[grayscale(1)_contrast(2)_blur(0px)_brightness(1)]"
+                      opacity-40
+                      filter-[grayscale(1)_contrast(5)_blur(2px)_brightness(1)]
+                      transition-[filter] duration-500 ease-[cubic-bezier(0.075,0.82,0.165,1)]
+                      group-hover:filter-[grayscale(1)_contrast(2)_blur(0px)_brightness(1)]"
                     />
 
                     {/* UI Elements Overlay */}
                     <div className="relative z-10 h-full flex flex-col justify-between p-4">
                       <div className="flex justify-between items-start">
                         <div
-                          className="md:text-2xl font-black leading-none wrap-break-words max-w-[80%] 
-                          transition-colors duration-500  
-                        group-hover:text-rose-500"
+                          className="md:text-2xl font-black leading-none wrap-break-words max-w-[80%]
+                          transition-colors duration-500
+                          group-hover:text-rose-500"
                         >
                           {album.title}
                         </div>
@@ -112,14 +108,14 @@ export default function MusicDiscography() {
                         </div>
                       </div>
 
-                      {/* 3. BOTTOM MANIFEST (Metadata) */}
+                      {/* 3. BOTTOM MANIFEST */}
                       <div className="border-t border-white/20 flex flex-col gap-1">
                         <div className="flex justify-between items-end pt-2">
                           <div className="text-xs leading-none">
                             <p
                               className="text-blue-500
                               transition-colors duration-500
-                            group-hover:text-rose-500"
+                              group-hover:text-rose-500"
                             >
                               RELEASED //
                             </p>
@@ -138,7 +134,7 @@ export default function MusicDiscography() {
             })}
           </div>
         </div>
-      ) : null}
+      )}
     </>
   )
 }

@@ -131,13 +131,11 @@ export default function LandingTapes() {
       <div
         ref={containerRef}
         className="relative w-full pt-20 flex justify-center overflow-hidden"
-        style={{ position: 'relative' }}
       >
         <div className="relative flex flex-col items-center justify-center">
           {BLUE_VALENTINE_TRACKS.map((track, i) => (
-            <Link to="/music">
+            <Link to="/music" key={i}>
               <TapeItem
-                key={i}
                 track={track}
                 index={i}
                 scrollYProgress={scrollYProgress}

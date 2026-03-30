@@ -172,3 +172,16 @@ section {
   justify-content: center;
   align-items: center;
 }
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee {
+  animation: marquee 20s linear infinite;
+}

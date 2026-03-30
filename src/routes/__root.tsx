@@ -23,6 +23,10 @@ export const Route = createRootRouteWithContext<{
         content: 'width=device-width, initial-scale=1',
       },
       {
+        name: 'description',
+        content: 'A starter for TanStack Start',
+      },
+      {
         title: 'TanStack Start Starter',
       },
     ],

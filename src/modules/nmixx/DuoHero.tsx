@@ -1,3 +1,4 @@
+import TextDivider from '@/components/Layout/TextDivider'
 import DuoScreen from './components/DuoScreen'
 import { BL_CHAOS_DUO_IMGS } from '@/configs/landing'
 
@@ -13,6 +14,8 @@ export default function DuoHero() {
         img={BL_CHAOS_DUO_IMGS.HAE_SULL}
       />
 
+      <TextDivider />
+
       <DuoScreen
         align="center"
         index="02"
@@ -21,6 +24,8 @@ export default function DuoHero() {
         names="lily & bae"
         img={BL_CHAOS_DUO_IMGS.LILY_BAE}
       />
+
+      <TextDivider />
 
       <DuoScreen
         align="right"
