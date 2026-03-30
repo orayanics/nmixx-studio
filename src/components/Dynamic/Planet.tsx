@@ -11,7 +11,7 @@ export default function Planet() {
   ]
 
   return (
-    <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
+    <div className="w-full h-screen absolute z-10 flex items-center justify-center overflow-hidden">
       {STARS.map(({ id, name, style }) => (
         <div key={id} className={styles.starWrapper} style={style}>
           <svg
@@ -40,9 +40,9 @@ export default function Planet() {
         </div>
 
         <div className={styles.center}>
-          <div className={styles.text}>
+          {/* <div className={styles.text}>
             B L U E<br />V A L E N T I N E
-          </div>
+          </div> */}
         </div>
       </div>
 

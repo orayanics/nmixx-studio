@@ -2,19 +2,20 @@ import { InfinityIcon, SkipBackIcon, SkipForwardIcon } from 'lucide-react'
 import styles from './PlayerSpinner.module.css'
 
 import usePlayerSpinner from './usePlayerSpinner'
-import type { AlbumWithTracks } from '@/api/helperSpotify'
+import type { LastFMAlbum } from '@/types/LastFm'
 
 interface PlayerSpinnerProps {
-  album: AlbumWithTracks
+  album: LastFMAlbum
 }
 
 export default function PlayerSpinner({ album }: PlayerSpinnerProps) {
-  const { name, artists, external_urls, tracks } = album
+  const { name, artist, url, tracks } = album
+  const trackList = tracks.track
 
   const { currentTrack, handleTrackBack, handleTrackForward } =
     usePlayerSpinner({
-      trackCount: tracks.length,
-      trackList: tracks,
+      trackCount: trackList.length,
+      trackList,
     })
 
   return (
@@ -23,7 +24,7 @@ export default function PlayerSpinner({ album }: PlayerSpinnerProps) {
         <div className={styles.visual}>
           <div className={styles.cdWrapper}>
             <a
-              href={external_urls.spotify}
+              href={url}
               target="_blank"
               rel="noreferrer"
               className={styles.cdLink}
@@ -46,14 +47,12 @@ export default function PlayerSpinner({ album }: PlayerSpinnerProps) {
                     <stop offset="100%" stopColor="rgba(255,255,255,1)" />
                   </linearGradient>
                 </defs>
-                {/* Main CD Body with Hole */}
                 <path
                   d="M 100 100 m -95, 0 a 95,95 0 1,0 190,0 a 95,95 0 1,0 -190,0 
                    M 100 100 m -20, 0 a 20,20 0 1,1 40,0 a 20,20 0 1,1 -40,0"
                   fill="url(#cdGradient)"
                   fillRule="evenodd"
                 />
-                {/* Inner Ring Detail */}
                 <circle
                   cx="100"
                   cy="100"
@@ -62,7 +61,6 @@ export default function PlayerSpinner({ album }: PlayerSpinnerProps) {
                   stroke="rgba(255,255,255,0.4)"
                   strokeWidth="1"
                 />
-                {/* Outer Ring Detail */}
                 <circle
                   cx="100"
                   cy="100"
@@ -85,7 +83,7 @@ export default function PlayerSpinner({ album }: PlayerSpinnerProps) {
           <div className={styles.info}>
             <h2 className={styles.title}>{currentTrack}</h2>
             <p className={styles.artist}>
-              {artists.map((artist) => artist.name).join(', ')}
+              {artist}
               <br />
               <span style={{ fontSize: '0.9em', opacity: 0.7 }}>{name}</span>
             </p>
@@ -93,11 +91,14 @@ export default function PlayerSpinner({ album }: PlayerSpinnerProps) {
 
           <div className={`${styles.controls}`}>
             <div className={styles.pagination}>
-              {tracks.map((_, index) =>
-                currentTrack !== tracks[index].name ? (
+              {trackList.map((_, index) =>
+                currentTrack !== trackList[index].name ? (
                   <div key={index} className={styles.dot} />
                 ) : (
-                  <div className={`${styles.dot} ${styles.dotActive}`} />
+                  <div
+                    key={index}
+                    className={`${styles.dot} ${styles.dotActive}`}
+                  />
                 ),
               )}
             </div>

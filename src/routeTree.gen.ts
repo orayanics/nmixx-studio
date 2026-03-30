@@ -12,8 +12,9 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as publicRouteRouteImport } from './routes/(public)/route'
 import { Route as publicIndexRouteImport } from './routes/(public)/index'
 import { Route as publicVideoIndexRouteImport } from './routes/(public)/video/index'
+import { Route as publicNmixxIndexRouteImport } from './routes/(public)/nmixx/index'
 import { Route as publicMusicIndexRouteImport } from './routes/(public)/music/index'
-import { Route as publicAboutIndexRouteImport } from './routes/(public)/about/index'
+import { Route as publicNmixxMemberRouteImport } from './routes/(public)/nmixx/$member'
 
 const publicRouteRoute = publicRouteRouteImport.update({
   id: '/(public)',
@@ -29,48 +30,57 @@ const publicVideoIndexRoute = publicVideoIndexRouteImport.update({
   path: '/video/',
   getParentRoute: () => publicRouteRoute,
 } as any)
+const publicNmixxIndexRoute = publicNmixxIndexRouteImport.update({
+  id: '/nmixx/',
+  path: '/nmixx/',
+  getParentRoute: () => publicRouteRoute,
+} as any)
 const publicMusicIndexRoute = publicMusicIndexRouteImport.update({
   id: '/music/',
   path: '/music/',
   getParentRoute: () => publicRouteRoute,
 } as any)
-const publicAboutIndexRoute = publicAboutIndexRouteImport.update({
-  id: '/about/',
-  path: '/about/',
+const publicNmixxMemberRoute = publicNmixxMemberRouteImport.update({
+  id: '/nmixx/$member',
+  path: '/nmixx/$member',
   getParentRoute: () => publicRouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof publicIndexRoute
-  '/about': typeof publicAboutIndexRoute
-  '/music': typeof publicMusicIndexRoute
-  '/video': typeof publicVideoIndexRoute
+  '/nmixx/$member': typeof publicNmixxMemberRoute
+  '/music/': typeof publicMusicIndexRoute
+  '/nmixx/': typeof publicNmixxIndexRoute
+  '/video/': typeof publicVideoIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof publicIndexRoute
-  '/about': typeof publicAboutIndexRoute
+  '/nmixx/$member': typeof publicNmixxMemberRoute
   '/music': typeof publicMusicIndexRoute
+  '/nmixx': typeof publicNmixxIndexRoute
   '/video': typeof publicVideoIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/(public)': typeof publicRouteRouteWithChildren
   '/(public)/': typeof publicIndexRoute
-  '/(public)/about/': typeof publicAboutIndexRoute
+  '/(public)/nmixx/$member': typeof publicNmixxMemberRoute
   '/(public)/music/': typeof publicMusicIndexRoute
+  '/(public)/nmixx/': typeof publicNmixxIndexRoute
   '/(public)/video/': typeof publicVideoIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/music' | '/video'
+  fullPaths: '/' | '/nmixx/$member' | '/music/' | '/nmixx/' | '/video/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/music' | '/video'
+  to: '/' | '/nmixx/$member' | '/music' | '/nmixx' | '/video'
   id:
     | '__root__'
     | '/(public)'
     | '/(public)/'
-    | '/(public)/about/'
+    | '/(public)/nmixx/$member'
     | '/(public)/music/'
+    | '/(public)/nmixx/'
     | '/(public)/video/'
   fileRoutesById: FileRoutesById
 }
@@ -97,22 +107,29 @@ declare module '@tanstack/react-router' {
     '/(public)/video/': {
       id: '/(public)/video/'
       path: '/video'
-      fullPath: '/video'
+      fullPath: '/video/'
       preLoaderRoute: typeof publicVideoIndexRouteImport
+      parentRoute: typeof publicRouteRoute
+    }
+    '/(public)/nmixx/': {
+      id: '/(public)/nmixx/'
+      path: '/nmixx'
+      fullPath: '/nmixx/'
+      preLoaderRoute: typeof publicNmixxIndexRouteImport
       parentRoute: typeof publicRouteRoute
     }
     '/(public)/music/': {
       id: '/(public)/music/'
       path: '/music'
-      fullPath: '/music'
+      fullPath: '/music/'
       preLoaderRoute: typeof publicMusicIndexRouteImport
       parentRoute: typeof publicRouteRoute
     }
-    '/(public)/about/': {
-      id: '/(public)/about/'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof publicAboutIndexRouteImport
+    '/(public)/nmixx/$member': {
+      id: '/(public)/nmixx/$member'
+      path: '/nmixx/$member'
+      fullPath: '/nmixx/$member'
+      preLoaderRoute: typeof publicNmixxMemberRouteImport
       parentRoute: typeof publicRouteRoute
     }
   }
@@ -120,15 +137,17 @@ declare module '@tanstack/react-router' {
 
 interface publicRouteRouteChildren {
   publicIndexRoute: typeof publicIndexRoute
-  publicAboutIndexRoute: typeof publicAboutIndexRoute
+  publicNmixxMemberRoute: typeof publicNmixxMemberRoute
   publicMusicIndexRoute: typeof publicMusicIndexRoute
+  publicNmixxIndexRoute: typeof publicNmixxIndexRoute
   publicVideoIndexRoute: typeof publicVideoIndexRoute
 }
 
 const publicRouteRouteChildren: publicRouteRouteChildren = {
   publicIndexRoute: publicIndexRoute,
-  publicAboutIndexRoute: publicAboutIndexRoute,
+  publicNmixxMemberRoute: publicNmixxMemberRoute,
   publicMusicIndexRoute: publicMusicIndexRoute,
+  publicNmixxIndexRoute: publicNmixxIndexRoute,
   publicVideoIndexRoute: publicVideoIndexRoute,
 }
 
@@ -142,3 +161,12 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}

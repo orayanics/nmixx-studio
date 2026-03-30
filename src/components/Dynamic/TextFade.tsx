@@ -16,7 +16,7 @@ export default function TextFade(props: TextFadeProps) {
   } = props
   return (
     <div
-      className={`${styles['text-fade-container']} ${styles[position]} ${className || ''} ${rounded ? 'rounded-[var(--border-radius)]' : ''}`}
+      className={`${styles['text-fade-container']} ${styles[position]} ${className || ''} ${rounded ? 'rounded-sm' : ''}`}
     >
       <div className={styles['text-content']}>{children}</div>
     </div>
