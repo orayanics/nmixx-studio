@@ -14,7 +14,7 @@ export default function MemberDiscography({
       {releases.map((item, idx) => (
         <div
           key={idx}
-          className="bg-(--background-dark) border-4 border-blue-500 p-3 relative group hover:bg-blue-500 hover:text-black transition-colors overflow-hidden"
+          className="bg-dark border-4 border-blue-500 p-3 relative group hover:bg-blue-500 hover:text-black transition-colors overflow-hidden"
         >
           <div className="flex gap-4">
             <div className="w-24 h-24 shrink-0 border border-blue-500 overflow-hidden grayscale contrast-150">

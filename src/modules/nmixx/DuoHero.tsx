@@ -18,7 +18,7 @@ export default function DuoHero() {
       <TextDivider
         text="blue valentine"
         className="bg-blue-500"
-        textClassName="text-(--background-dark)"
+        textClassName="text-dark"
       />
 
       <DuoScreen
@@ -34,7 +34,7 @@ export default function DuoHero() {
       <TextDivider
         text="blue valentine"
         className="bg-blue-500"
-        textClassName="text-(--background-dark)"
+        textClassName="text-dark"
       />
 
       <DuoScreen

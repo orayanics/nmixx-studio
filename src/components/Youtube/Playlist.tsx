@@ -13,8 +13,6 @@ export default function Playlist() {
   })
   const { years, groupedPlaylists } = usePlaylist(data || [])
 
-  console.log(years)
-
   if (isLoading) return <LoaderSpinner isFullScreen />
   if (error) return <LoaderError isFullScreen />
 

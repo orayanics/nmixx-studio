@@ -14,7 +14,6 @@ import { Route as publicIndexRouteImport } from './routes/(public)/index'
 import { Route as publicVideoIndexRouteImport } from './routes/(public)/video/index'
 import { Route as publicNmixxIndexRouteImport } from './routes/(public)/nmixx/index'
 import { Route as publicMusicIndexRouteImport } from './routes/(public)/music/index'
-import { Route as publicAboutIndexRouteImport } from './routes/(public)/about/index'
 import { Route as publicNmixxMemberRouteImport } from './routes/(public)/nmixx/$member'
 
 const publicRouteRoute = publicRouteRouteImport.update({
@@ -41,11 +40,6 @@ const publicMusicIndexRoute = publicMusicIndexRouteImport.update({
   path: '/music/',
   getParentRoute: () => publicRouteRoute,
 } as any)
-const publicAboutIndexRoute = publicAboutIndexRouteImport.update({
-  id: '/about/',
-  path: '/about/',
-  getParentRoute: () => publicRouteRoute,
-} as any)
 const publicNmixxMemberRoute = publicNmixxMemberRouteImport.update({
   id: '/nmixx/$member',
   path: '/nmixx/$member',
@@ -55,7 +49,6 @@ const publicNmixxMemberRoute = publicNmixxMemberRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof publicIndexRoute
   '/nmixx/$member': typeof publicNmixxMemberRoute
-  '/about/': typeof publicAboutIndexRoute
   '/music/': typeof publicMusicIndexRoute
   '/nmixx/': typeof publicNmixxIndexRoute
   '/video/': typeof publicVideoIndexRoute
@@ -63,7 +56,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof publicIndexRoute
   '/nmixx/$member': typeof publicNmixxMemberRoute
-  '/about': typeof publicAboutIndexRoute
   '/music': typeof publicMusicIndexRoute
   '/nmixx': typeof publicNmixxIndexRoute
   '/video': typeof publicVideoIndexRoute
@@ -73,28 +65,20 @@ export interface FileRoutesById {
   '/(public)': typeof publicRouteRouteWithChildren
   '/(public)/': typeof publicIndexRoute
   '/(public)/nmixx/$member': typeof publicNmixxMemberRoute
-  '/(public)/about/': typeof publicAboutIndexRoute
   '/(public)/music/': typeof publicMusicIndexRoute
   '/(public)/nmixx/': typeof publicNmixxIndexRoute
   '/(public)/video/': typeof publicVideoIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/nmixx/$member'
-    | '/about/'
-    | '/music/'
-    | '/nmixx/'
-    | '/video/'
+  fullPaths: '/' | '/nmixx/$member' | '/music/' | '/nmixx/' | '/video/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/nmixx/$member' | '/about' | '/music' | '/nmixx' | '/video'
+  to: '/' | '/nmixx/$member' | '/music' | '/nmixx' | '/video'
   id:
     | '__root__'
     | '/(public)'
     | '/(public)/'
     | '/(public)/nmixx/$member'
-    | '/(public)/about/'
     | '/(public)/music/'
     | '/(public)/nmixx/'
     | '/(public)/video/'
@@ -141,13 +125,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof publicMusicIndexRouteImport
       parentRoute: typeof publicRouteRoute
     }
-    '/(public)/about/': {
-      id: '/(public)/about/'
-      path: '/about'
-      fullPath: '/about/'
-      preLoaderRoute: typeof publicAboutIndexRouteImport
-      parentRoute: typeof publicRouteRoute
-    }
     '/(public)/nmixx/$member': {
       id: '/(public)/nmixx/$member'
       path: '/nmixx/$member'
@@ -161,7 +138,6 @@ declare module '@tanstack/react-router' {
 interface publicRouteRouteChildren {
   publicIndexRoute: typeof publicIndexRoute
   publicNmixxMemberRoute: typeof publicNmixxMemberRoute
-  publicAboutIndexRoute: typeof publicAboutIndexRoute
   publicMusicIndexRoute: typeof publicMusicIndexRoute
   publicNmixxIndexRoute: typeof publicNmixxIndexRoute
   publicVideoIndexRoute: typeof publicVideoIndexRoute
@@ -170,7 +146,6 @@ interface publicRouteRouteChildren {
 const publicRouteRouteChildren: publicRouteRouteChildren = {
   publicIndexRoute: publicIndexRoute,
   publicNmixxMemberRoute: publicNmixxMemberRoute,
-  publicAboutIndexRoute: publicAboutIndexRoute,
   publicMusicIndexRoute: publicMusicIndexRoute,
   publicNmixxIndexRoute: publicNmixxIndexRoute,
   publicVideoIndexRoute: publicVideoIndexRoute,

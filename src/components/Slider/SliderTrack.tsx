@@ -14,12 +14,12 @@ export default function SliderTrack(props: SliderTrackProps) {
     <div
       className={`${styles['card--gradient']} relative w-auto flex items-center justify-center gap-4`}
     >
-      <div className="md:w-125 w-60 rounded-(--border-radius) overflow-hidden block">
+      <div className="md:w-125 w-60 rounded-xl overflow-hidden block">
         {/* Card */}
         <img
           src={img}
           alt={`${name} cover`}
-          className="rounded-(--border-radius) object-cover w-inherit h-inherit"
+          className="rounded-xl object-cover w-inherit h-inherit"
         />
       </div>
 
