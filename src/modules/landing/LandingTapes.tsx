@@ -1,3 +1,4 @@
+import { Link } from '@tanstack/react-router'
 import {
   motion,
   useScroll,
@@ -134,14 +135,16 @@ export default function LandingTapes() {
       >
         <div className="relative flex flex-col items-center justify-center">
           {BLUE_VALENTINE_TRACKS.map((track, i) => (
-            <TapeItem
-              key={i}
-              track={track}
-              index={i}
-              scrollYProgress={scrollYProgress}
-              total={BLUE_VALENTINE_TRACKS.length}
-              config={TAPE_CONFIG[i]}
-            />
+            <Link to="/music">
+              <TapeItem
+                key={i}
+                track={track}
+                index={i}
+                scrollYProgress={scrollYProgress}
+                total={BLUE_VALENTINE_TRACKS.length}
+                config={TAPE_CONFIG[i]}
+              />
+            </Link>
           ))}
         </div>
       </div>

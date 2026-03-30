@@ -158,3 +158,17 @@ section {
   filter: grayscale(1) contrast(2) brightness(1);
   transition: filter 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
+
+.topographic-bg {
+  --topo-blue: #202f43;
+  background-color: #0a0c11;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1000' height='1000' viewBox='0 0 1000 1000'%3E%3Cstyle%3E path %7B stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: draw 3s ease-out forwards; %7D @keyframes draw %7B to %7B stroke-dashoffset: 0; %7D %7D %3C/style%3E%3Cpath d='M0 200 Q 250 100 500 200 T 1000 200 M0 400 Q 300 550 600 400 T 1000 400 M0 600 Q 200 750 500 600 T 1000 600 M0 800 Q 400 700 700 800 T 1000 800' fill='none' stroke='%23202f43' stroke-width='2'/%3E%3C/svg%3E");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
