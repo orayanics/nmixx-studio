@@ -12,8 +12,10 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as publicRouteRouteImport } from './routes/(public)/route'
 import { Route as publicIndexRouteImport } from './routes/(public)/index'
 import { Route as publicVideoIndexRouteImport } from './routes/(public)/video/index'
+import { Route as publicNmixxIndexRouteImport } from './routes/(public)/nmixx/index'
 import { Route as publicMusicIndexRouteImport } from './routes/(public)/music/index'
 import { Route as publicAboutIndexRouteImport } from './routes/(public)/about/index'
+import { Route as publicNmixxHaewonRouteImport } from './routes/(public)/nmixx/$haewon'
 
 const publicRouteRoute = publicRouteRouteImport.update({
   id: '/(public)',
@@ -29,6 +31,11 @@ const publicVideoIndexRoute = publicVideoIndexRouteImport.update({
   path: '/video/',
   getParentRoute: () => publicRouteRoute,
 } as any)
+const publicNmixxIndexRoute = publicNmixxIndexRouteImport.update({
+  id: '/nmixx/',
+  path: '/nmixx/',
+  getParentRoute: () => publicRouteRoute,
+} as any)
 const publicMusicIndexRoute = publicMusicIndexRouteImport.update({
   id: '/music/',
   path: '/music/',
@@ -39,38 +46,57 @@ const publicAboutIndexRoute = publicAboutIndexRouteImport.update({
   path: '/about/',
   getParentRoute: () => publicRouteRoute,
 } as any)
+const publicNmixxHaewonRoute = publicNmixxHaewonRouteImport.update({
+  id: '/nmixx/$haewon',
+  path: '/nmixx/$haewon',
+  getParentRoute: () => publicRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof publicIndexRoute
+  '/nmixx/$haewon': typeof publicNmixxHaewonRoute
   '/about/': typeof publicAboutIndexRoute
   '/music/': typeof publicMusicIndexRoute
+  '/nmixx/': typeof publicNmixxIndexRoute
   '/video/': typeof publicVideoIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof publicIndexRoute
+  '/nmixx/$haewon': typeof publicNmixxHaewonRoute
   '/about': typeof publicAboutIndexRoute
   '/music': typeof publicMusicIndexRoute
+  '/nmixx': typeof publicNmixxIndexRoute
   '/video': typeof publicVideoIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/(public)': typeof publicRouteRouteWithChildren
   '/(public)/': typeof publicIndexRoute
+  '/(public)/nmixx/$haewon': typeof publicNmixxHaewonRoute
   '/(public)/about/': typeof publicAboutIndexRoute
   '/(public)/music/': typeof publicMusicIndexRoute
+  '/(public)/nmixx/': typeof publicNmixxIndexRoute
   '/(public)/video/': typeof publicVideoIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about/' | '/music/' | '/video/'
+  fullPaths:
+    | '/'
+    | '/nmixx/$haewon'
+    | '/about/'
+    | '/music/'
+    | '/nmixx/'
+    | '/video/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/music' | '/video'
+  to: '/' | '/nmixx/$haewon' | '/about' | '/music' | '/nmixx' | '/video'
   id:
     | '__root__'
     | '/(public)'
     | '/(public)/'
+    | '/(public)/nmixx/$haewon'
     | '/(public)/about/'
     | '/(public)/music/'
+    | '/(public)/nmixx/'
     | '/(public)/video/'
   fileRoutesById: FileRoutesById
 }
@@ -101,6 +127,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof publicVideoIndexRouteImport
       parentRoute: typeof publicRouteRoute
     }
+    '/(public)/nmixx/': {
+      id: '/(public)/nmixx/'
+      path: '/nmixx'
+      fullPath: '/nmixx/'
+      preLoaderRoute: typeof publicNmixxIndexRouteImport
+      parentRoute: typeof publicRouteRoute
+    }
     '/(public)/music/': {
       id: '/(public)/music/'
       path: '/music'
@@ -115,20 +148,31 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof publicAboutIndexRouteImport
       parentRoute: typeof publicRouteRoute
     }
+    '/(public)/nmixx/$haewon': {
+      id: '/(public)/nmixx/$haewon'
+      path: '/nmixx/$haewon'
+      fullPath: '/nmixx/$haewon'
+      preLoaderRoute: typeof publicNmixxHaewonRouteImport
+      parentRoute: typeof publicRouteRoute
+    }
   }
 }
 
 interface publicRouteRouteChildren {
   publicIndexRoute: typeof publicIndexRoute
+  publicNmixxHaewonRoute: typeof publicNmixxHaewonRoute
   publicAboutIndexRoute: typeof publicAboutIndexRoute
   publicMusicIndexRoute: typeof publicMusicIndexRoute
+  publicNmixxIndexRoute: typeof publicNmixxIndexRoute
   publicVideoIndexRoute: typeof publicVideoIndexRoute
 }
 
 const publicRouteRouteChildren: publicRouteRouteChildren = {
   publicIndexRoute: publicIndexRoute,
+  publicNmixxHaewonRoute: publicNmixxHaewonRoute,
   publicAboutIndexRoute: publicAboutIndexRoute,
   publicMusicIndexRoute: publicMusicIndexRoute,
+  publicNmixxIndexRoute: publicNmixxIndexRoute,
   publicVideoIndexRoute: publicVideoIndexRoute,
 }
 

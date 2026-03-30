@@ -130,3 +130,63 @@ export const BLUE_VALENTINE_IDS = [
     img: 'https://pbs.twimg.com/media/G6hYvOKbsAAWdW7?format=jpg&name=small',
   },
 ]
+
+export const BL_CHAOS_DUO_IMGS = {
+  HAE_SULL: 'https://i.imgur.com/3IyfK4d.jpeg',
+  LILY_BAE: 'https://i.imgur.com/ledfQMx.jpeg',
+  JI_KYU: 'https://i.imgur.com/0aG00Cu.jpeg',
+}
+
+export const BL_CHAOS_INDIV_IMGS = [
+  {
+    title: 'Lily',
+    img: 'https://i.imgur.com/5GE9TeY.jpeg',
+  },
+  {
+    title: 'Haewon',
+    img: 'https://i.imgur.com/uWdUgQa.jpeg',
+  },
+  {
+    title: 'Sullyoon',
+    img: 'https://i.imgur.com/86DfgvS.jpeg',
+  },
+  {
+    title: 'Bae',
+    img: 'https://i.imgur.com/wGLS0qp.jpeg',
+  },
+  {
+    title: 'Jiwoo',
+    img: 'https://i.imgur.com/zEO88P0.jpeg',
+  },
+  {
+    title: 'Kyujin',
+    img: 'https://i.imgur.com/eFo61DF.jpeg',
+  },
+]
+
+export const SOT_INDIV_IDS = [
+  {
+    title: 'Lily',
+    img: 'https://static.wikia.nocookie.net/nmixx/images/6/6c/Lily_SPINNIN%27_ON_IT_%282%29.jpg',
+  },
+  {
+    title: 'Haewon',
+    img: 'https://static.wikia.nocookie.net/nmixx/images/7/77/Haewon_SPINNIN%27_ON_IT_%284%29.jpg',
+  },
+  {
+    title: 'Sullyoon',
+    img: 'https://static.wikia.nocookie.net/nmixx/images/7/77/Haewon_SPINNIN%27_ON_IT_%284%29.jpg',
+  },
+  {
+    title: 'Bae',
+    img: 'https://static.wikia.nocookie.net/nmixx/images/7/7e/Bae_SPINNIN%27_ON_IT_%282%29.jpg',
+  },
+  {
+    title: 'Jiwoo',
+    img: 'https://static.wikia.nocookie.net/nmixx/images/1/1e/Jiwoo_SPINNIN%27_ON_IT_%283%29.jpg',
+  },
+  {
+    title: 'Kyujin',
+    img: 'https://static.wikia.nocookie.net/nmixx/images/8/83/Kyujin_SPINNIN%27_ON_IT_%285%29.jpg',
+  },
+]

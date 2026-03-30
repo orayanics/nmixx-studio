@@ -114,7 +114,7 @@ export default function Navigation(props: NavigationProps) {
       className="top-0 inset-s-0 z-50 w-full bg-blue-500 border-b-2 border-black"
     >
       {/* --- HEADER BAR --- */}
-      <div className="text-black container flex md:gap-3 gap-6 justify-between items-center md:px-0 px-4 relative z-50">
+      <div className="text-black container flex md:gap-3 gap-6 justify-between items-center px-4 relative z-50">
         <div>
           <Logo className="h-12! py-2" />
         </div>
