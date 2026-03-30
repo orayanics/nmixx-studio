@@ -4,14 +4,14 @@ import type { LastFMAlbumResponse } from '@/types/LastFm'
 const LAST_FM_URL = 'https://ws.audioscrobbler.com/2.0'
 const LAST_FM_KEY = import.meta.env.VITE_LAST_FM_API_KEY
 
-if (!LAST_FM_KEY) {
-  console.log('SET LAST FM KEY')
-}
-
 async function fetchAlbum(
   artist: string,
   album: string,
 ): Promise<LastFMAlbumResponse> {
+  if (!LAST_FM_KEY) {
+    return Promise.reject(new Error('Last FM API key is not set'))
+  }
+
   const url = new URL(LAST_FM_URL)
   url.searchParams.set('method', 'album.getinfo')
   url.searchParams.set('artist', artist)
@@ -30,7 +30,7 @@ export function useAlbum(artist: string, album: string) {
   return useQuery({
     queryKey: ['album', artist, album],
     queryFn: () => fetchAlbum(artist, album),
-    enabled: Boolean(artist && album),
+    enabled: Boolean(artist && album) && !!LAST_FM_KEY,
     staleTime: 1000 * 60 * 5,
     select: (data) => data.album,
     retry: false,

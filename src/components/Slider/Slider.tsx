@@ -7,7 +7,7 @@ export default function Slider({ children }: { children: React.ReactNode }) {
     <div
       ref={sliderRef}
       style={{ cursor: 'grab' }}
-      className="flex gap-4 max-w-full rounded-(--border-radius) md:overflow-x-hidden overflow-x-auto overflow-y-hidden touch-pan-x my-6"
+      className="flex gap-4 max-w-full rounded-sm md:overflow-x-hidden overflow-x-auto overflow-y-hidden touch-pan-x my-6"
     >
       {children}
     </div>
