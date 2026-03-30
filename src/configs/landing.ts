@@ -103,3 +103,30 @@ export const BLUE_VALENTINE_TRACKS = [
 ]
 
 export { SAMPLE_DECK as LANDING_DECK }
+
+export const BLUE_VALENTINE_IDS = [
+  {
+    title: 'Haewon',
+    img: 'https://pbs.twimg.com/media/G6cDIt1aoAAyocI?format=jpg&name=small',
+  },
+  {
+    title: 'Lily',
+    img: 'https://pbs.twimg.com/media/G6cCjRebMAEEOe8?format=jpg&name=small',
+  },
+  {
+    title: 'Sullyoon',
+    img: 'https://pbs.twimg.com/media/G6cDn-OawAApQmK?format=jpg&name=small',
+  },
+  {
+    title: 'Bae',
+    img: 'https://pbs.twimg.com/media/G6hU1AFaUAEojSF?format=jpg&name=small',
+  },
+  {
+    title: 'Jiwoo',
+    img: 'https://pbs.twimg.com/media/G6hXWKeaoAAoqKC?format=jpg&name=small',
+  },
+  {
+    title: 'Kyujin',
+    img: 'https://pbs.twimg.com/media/G6hYvOKbsAAWdW7?format=jpg&name=small',
+  },
+]
