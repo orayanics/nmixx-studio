@@ -22,7 +22,7 @@ export default function LandingTextHero() {
   return (
     <div
       ref={containerRef}
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden z-10"
+      className="bg-dark/80 backdrop-blur-xs relative min-h-screen flex flex-col items-center justify-center overflow-hidden z-10"
     >
       <motion.div
         style={{

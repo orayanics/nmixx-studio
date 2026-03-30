@@ -10,7 +10,7 @@ export default function MemberDiscography({
   releases,
 }: MemberDiscographyProps) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-2 grow">
+    <>
       {releases.map((item, idx) => (
         <div
           key={idx}
@@ -25,7 +25,7 @@ export default function MemberDiscography({
             </div>
 
             <div className="flex flex-col justify-between">
-              <span className="text-[10px] bg-blue-500 text-black px-1 self-start font-bold group-hover:bg-black group-hover:text-blue-500">
+              <span className="text-[10px] bg-blue-500 text-black px-1 self-start font-bold group-hover:bg-dark group-hover:text-blue-500">
                 {item.type}
               </span>
 
@@ -46,7 +46,7 @@ export default function MemberDiscography({
       ))}
 
       <EmptyCard />
-    </div>
+    </>
   )
 }
 

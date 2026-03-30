@@ -58,7 +58,9 @@ function RouteComponent() {
 
       <div className="text-blue-500 font-mono my-2">
         <div className="grid grid-cols-12 gap-2 min-h-screen">
-          <MemberPhoto img={match.img} title={match.title} isBae={isBae} />
+          <div className="col-span-12 lg:col-span-5 relative group border-4 border-blue-500 overflow-hidden bg-blue-900/20">
+            <MemberPhoto img={match.img} title={match.title} isBae={isBae} />
+          </div>
 
           <div className="col-span-12 lg:col-span-7 flex flex-col gap-2">
             <MemberDetail
@@ -67,7 +69,9 @@ function RouteComponent() {
               repAnimal={matchDetails?.rep_animal!}
             />
 
-            <MemberDiscography releases={allReleases} />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2 grow">
+              <MemberDiscography releases={allReleases} />
+            </div>
           </div>
         </div>
       </div>

@@ -198,7 +198,7 @@ export default function Navigation(props: NavigationProps) {
               exit={{ opacity: 0, transition: { duration: 0.2 } }}
               className="absolute bottom-12 flex flex-col items-center gap-2"
             >
-              <p className="text-blue-500 text-xs tracking-[0.2em] font-bold uppercase bg-black/50 px-3 py-1 rounded-full">
+              <p className="text-blue-500 text-xs tracking-[0.2em] font-bold uppercase">
                 NMIXX Studio
               </p>
             </motion.div>

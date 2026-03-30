@@ -6,7 +6,7 @@ interface MemberPhotoProps {
 
 export default function MemberPhoto({ img, title, isBae }: MemberPhotoProps) {
   return (
-    <div className="col-span-12 lg:col-span-5 relative group border-4 border-blue-500 overflow-hidden bg-blue-900/20">
+    <>
       <div className="absolute inset-0 bg-scanline pointer-events-none opacity-30 z-20" />
       <div className="absolute inset-0 bg-blue-500/10 mix-blend-color z-10" />
 
@@ -22,6 +22,6 @@ export default function MemberPhoto({ img, title, isBae }: MemberPhotoProps) {
       <div className="absolute bottom-4 left-4 border-4 bg-blue-500 text-black p-4 font-black text-4xl">
         [IDENTIFIED]
       </div>
-    </div>
+    </>
   )
 }

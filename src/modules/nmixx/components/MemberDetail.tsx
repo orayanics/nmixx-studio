@@ -11,12 +11,12 @@ export default function MemberDetail({
   repAnimal,
 }: MemberDetailProps) {
   return (
-    <div className="bg-black border-4 border-blue-500 p-4 relative overflow-hidden">
+    <div className="bg-dark border-4 border-blue-500 p-4 relative overflow-hidden">
       <div className="absolute top-2 right-2 text-[10px] opacity-50 uppercase tracking-[0.5em]">
         System.Profile.v3
       </div>
       <p
-        className="w-full leading-none text-white uppercase font-bold flex justify-between border-b-2 border-black"
+        className="w-full leading-none text-white uppercase font-bold flex justify-between"
         style={{ fontSize: 'clamp(4rem, 10vw, 12rem)' }}
       >
         {stageName.split('').map((l, i) => (
