@@ -15,7 +15,7 @@ import { Route as publicVideoIndexRouteImport } from './routes/(public)/video/in
 import { Route as publicNmixxIndexRouteImport } from './routes/(public)/nmixx/index'
 import { Route as publicMusicIndexRouteImport } from './routes/(public)/music/index'
 import { Route as publicAboutIndexRouteImport } from './routes/(public)/about/index'
-import { Route as publicNmixxHaewonRouteImport } from './routes/(public)/nmixx/$haewon'
+import { Route as publicNmixxMemberRouteImport } from './routes/(public)/nmixx/$member'
 
 const publicRouteRoute = publicRouteRouteImport.update({
   id: '/(public)',
@@ -46,15 +46,15 @@ const publicAboutIndexRoute = publicAboutIndexRouteImport.update({
   path: '/about/',
   getParentRoute: () => publicRouteRoute,
 } as any)
-const publicNmixxHaewonRoute = publicNmixxHaewonRouteImport.update({
-  id: '/nmixx/$haewon',
-  path: '/nmixx/$haewon',
+const publicNmixxMemberRoute = publicNmixxMemberRouteImport.update({
+  id: '/nmixx/$member',
+  path: '/nmixx/$member',
   getParentRoute: () => publicRouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof publicIndexRoute
-  '/nmixx/$haewon': typeof publicNmixxHaewonRoute
+  '/nmixx/$member': typeof publicNmixxMemberRoute
   '/about/': typeof publicAboutIndexRoute
   '/music/': typeof publicMusicIndexRoute
   '/nmixx/': typeof publicNmixxIndexRoute
@@ -62,7 +62,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof publicIndexRoute
-  '/nmixx/$haewon': typeof publicNmixxHaewonRoute
+  '/nmixx/$member': typeof publicNmixxMemberRoute
   '/about': typeof publicAboutIndexRoute
   '/music': typeof publicMusicIndexRoute
   '/nmixx': typeof publicNmixxIndexRoute
@@ -72,7 +72,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/(public)': typeof publicRouteRouteWithChildren
   '/(public)/': typeof publicIndexRoute
-  '/(public)/nmixx/$haewon': typeof publicNmixxHaewonRoute
+  '/(public)/nmixx/$member': typeof publicNmixxMemberRoute
   '/(public)/about/': typeof publicAboutIndexRoute
   '/(public)/music/': typeof publicMusicIndexRoute
   '/(public)/nmixx/': typeof publicNmixxIndexRoute
@@ -82,18 +82,18 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/nmixx/$haewon'
+    | '/nmixx/$member'
     | '/about/'
     | '/music/'
     | '/nmixx/'
     | '/video/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/nmixx/$haewon' | '/about' | '/music' | '/nmixx' | '/video'
+  to: '/' | '/nmixx/$member' | '/about' | '/music' | '/nmixx' | '/video'
   id:
     | '__root__'
     | '/(public)'
     | '/(public)/'
-    | '/(public)/nmixx/$haewon'
+    | '/(public)/nmixx/$member'
     | '/(public)/about/'
     | '/(public)/music/'
     | '/(public)/nmixx/'
@@ -148,11 +148,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof publicAboutIndexRouteImport
       parentRoute: typeof publicRouteRoute
     }
-    '/(public)/nmixx/$haewon': {
-      id: '/(public)/nmixx/$haewon'
-      path: '/nmixx/$haewon'
-      fullPath: '/nmixx/$haewon'
-      preLoaderRoute: typeof publicNmixxHaewonRouteImport
+    '/(public)/nmixx/$member': {
+      id: '/(public)/nmixx/$member'
+      path: '/nmixx/$member'
+      fullPath: '/nmixx/$member'
+      preLoaderRoute: typeof publicNmixxMemberRouteImport
       parentRoute: typeof publicRouteRoute
     }
   }
@@ -160,7 +160,7 @@ declare module '@tanstack/react-router' {
 
 interface publicRouteRouteChildren {
   publicIndexRoute: typeof publicIndexRoute
-  publicNmixxHaewonRoute: typeof publicNmixxHaewonRoute
+  publicNmixxMemberRoute: typeof publicNmixxMemberRoute
   publicAboutIndexRoute: typeof publicAboutIndexRoute
   publicMusicIndexRoute: typeof publicMusicIndexRoute
   publicNmixxIndexRoute: typeof publicNmixxIndexRoute
@@ -169,7 +169,7 @@ interface publicRouteRouteChildren {
 
 const publicRouteRouteChildren: publicRouteRouteChildren = {
   publicIndexRoute: publicIndexRoute,
-  publicNmixxHaewonRoute: publicNmixxHaewonRoute,
+  publicNmixxMemberRoute: publicNmixxMemberRoute,
   publicAboutIndexRoute: publicAboutIndexRoute,
   publicMusicIndexRoute: publicMusicIndexRoute,
   publicNmixxIndexRoute: publicNmixxIndexRoute,

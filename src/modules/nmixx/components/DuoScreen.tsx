@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, type Variants } from 'framer-motion'
 import LoaderSpinner from '@/components/Loader/LoaderSpinner'
+import type { IndividualImage } from '@/configs/landing'
+import { Link } from '@tanstack/react-router'
 
 type Align = 'left' | 'center' | 'right'
 
@@ -11,12 +13,22 @@ interface DuoScreenProps {
   description: string
   names: string
   img: string
+  indivs?: IndividualImage | IndividualImage[]
 }
 
 export default function DuoScreen(props: DuoScreenProps) {
-  const { align = 'left', index, title, description, names, img } = props
+  const {
+    align = 'left',
+    index,
+    title,
+    description,
+    names,
+    img,
+    indivs,
+  } = props
   const [isLoaded, setIsLoaded] = useState(false)
   const imgRef = useRef<HTMLImageElement>(null)
+  const indivArray = Array.isArray(indivs) ? indivs : indivs ? [indivs] : []
 
   const alignmentStyles: Record<
     Align,
@@ -80,6 +92,32 @@ export default function DuoScreen(props: DuoScreenProps) {
       <div className="absolute z-10 inset-0 bg-linear-to-t from-blue-600/40 to-transparent opacity-50 pointer-events-none" />
       <div className="absolute z-10 inset-0 halftone-aura opacity-30 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none" />
 
+      {indivArray.length > 0 && (
+        <div
+          className={`w-screen items-center justify-center h-full absolute z-20 flex gap-4 md:gap-10`}
+        >
+          {indivArray.map((item) => (
+            <div key={item.title} className="relative w-70 h-100">
+              {/* Invisible hover zone */}
+              <Link
+                to="/nmixx/$member"
+                params={{ member: item.title.toLowerCase() }}
+                className="absolute inset-0 cursor-pointer"
+              >
+                <motion.img
+                  initial={{ opacity: 0, scale: 1 }}
+                  whileHover={{ opacity: 1, scale: 1.05 }}
+                  whileTap={{ opacity: 1, scale: 1.05 }}
+                  transition={{ duration: 0.3, ease: 'easeOut' }}
+                  src={item.img}
+                  alt={item.title}
+                  className="w-full h-full object-cover border-2 border-white saturate-[0.5] contrast-[1.2]"
+                />
+              </Link>
+            </div>
+          ))}
+        </div>
+      )}
       {/* content */}
       <motion.div
         variants={containerVariants}

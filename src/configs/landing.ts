@@ -104,6 +104,11 @@ export const BLUE_VALENTINE_TRACKS = [
 
 export { SAMPLE_DECK as LANDING_DECK }
 
+export interface IndividualImage {
+  title: string
+  img: string
+}
+
 export const BLUE_VALENTINE_IDS = [
   {
     title: 'Haewon',
@@ -137,7 +142,7 @@ export const BL_CHAOS_DUO_IMGS = {
   JI_KYU: 'https://i.imgur.com/0aG00Cu.jpeg',
 }
 
-export const BL_CHAOS_INDIV_IMGS = [
+export const BL_CHAOS_INDIV_IMGS: IndividualImage[] = [
   {
     title: 'Lily',
     img: 'https://i.imgur.com/5GE9TeY.jpeg',
@@ -164,7 +169,7 @@ export const BL_CHAOS_INDIV_IMGS = [
   },
 ]
 
-export const SOT_INDIV_IDS = [
+export const SOT_INDIV_IDS: IndividualImage[] = [
   {
     title: 'Lily',
     img: 'https://static.wikia.nocookie.net/nmixx/images/6/6c/Lily_SPINNIN%27_ON_IT_%282%29.jpg',
@@ -175,7 +180,7 @@ export const SOT_INDIV_IDS = [
   },
   {
     title: 'Sullyoon',
-    img: 'https://static.wikia.nocookie.net/nmixx/images/7/77/Haewon_SPINNIN%27_ON_IT_%284%29.jpg',
+    img: 'https://static.wikia.nocookie.net/nmixx/images/a/af/Sullyoon_SPINNIN%27_ON_IT_%283%29.jpg',
   },
   {
     title: 'Bae',

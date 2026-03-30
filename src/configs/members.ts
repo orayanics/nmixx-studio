@@ -1,4 +1,13 @@
-export const NMIXX_PROFILE = [
+interface NProfile {
+  stage_name: string
+  name: string
+  birthday: string
+  rep_color: string
+  rep_color_code: string
+  rep_animal: string
+}
+
+export const NMIXX_PROFILE: NProfile[] = [
   {
     stage_name: 'Haewon',
     name: 'Oh Haewon',
