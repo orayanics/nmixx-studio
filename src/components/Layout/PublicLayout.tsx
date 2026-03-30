@@ -1,5 +1,4 @@
 import React from 'react'
-
 import Navigation from '@/components/Page/Navigation'
 import Footer from '@/components/Page/Footer'
 
@@ -17,7 +16,7 @@ export default function PublicLayout(props: PublicLayoutProps) {
   return (
     <>
       {enableNavigation && <Navigation links={PUBLIC_LINKS} />}
-      {children}
+      <main className="min-h-screen">{children}</main>
       {enableFooter && <Footer />}
     </>
   )

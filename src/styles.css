@@ -89,6 +89,31 @@ body {
   }
 }
 
+@layer base {
+  .bg-scrapbook {
+    background-color: #000;
+    background-image:
+      radial-gradient(#3b83f626 0.1px, transparent 0.1px),
+      linear-gradient(rgba(59, 130, 246, 0.02) 1px, transparent 1px);
+    background-size:
+      24px 24px,
+      100% 4px;
+  }
+
+  .brutalist-shadow {
+    box-shadow: 8px 8px 0px 0px #3b82f6;
+  }
+
+  .tape-effect {
+    background: #3b82f6;
+    color: #000;
+    padding: 2px 12px;
+    font-weight: 900;
+    transform: rotate(-2deg);
+    box-shadow: 2px 2px 0px 0px #fff;
+  }
+}
+
 @theme {
   --color-dark: #040404;
   --animate-marquee: marquee 20s linear infinite;

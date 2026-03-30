@@ -1,16 +1,11 @@
-interface SliderTrackProps {
+interface VideoCardProps {
   img: string
   href?: string
   name: string
   artist: string
 }
 
-export default function SliderTrack({
-  img,
-  href,
-  name,
-  artist,
-}: SliderTrackProps) {
+export default function VideoCard({ img, href, name, artist }: VideoCardProps) {
   return (
     <div className="group relative bg-black border-4 border-blue-500 p-2 transition-all hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[12px_12px_0px_0px_#3b82f6]">
       {/* Top Tape Label */}
