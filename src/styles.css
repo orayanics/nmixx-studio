@@ -116,6 +116,7 @@ body {
 
 @theme {
   --color-dark: #040404;
+  --color-dark-blue: #0a0c11;
   --animate-marquee: marquee 20s linear infinite;
 
   @keyframes marquee {

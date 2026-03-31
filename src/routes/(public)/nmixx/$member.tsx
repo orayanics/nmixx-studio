@@ -10,7 +10,27 @@ import MemberPhoto from '@/modules/nmixx/components/MemberPhoto'
 import MemberDetail from '@/modules/nmixx/components/MemberDetail'
 import MemberDiscography from '@/modules/nmixx/components/MemberDiscography'
 
+const members = [
+  'lily',
+  'haewon',
+  'sullyoon',
+  'bae',
+  'jiwoo',
+  'kyujin',
+] as const
+
+type Member = (typeof members)[number]
+
 export const Route = createFileRoute('/(public)/nmixx/$member')({
+  params: {
+    parse: (params): { member: Member } => {
+      if (!members.includes(params.member as Member)) {
+        throw new Error('Invalid NMIXX member')
+      }
+      return { member: params.member as Member }
+    },
+  },
+
   component: RouteComponent,
 })
 

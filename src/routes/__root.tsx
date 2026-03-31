@@ -24,10 +24,11 @@ export const Route = createRootRouteWithContext<{
       },
       {
         name: 'description',
-        content: 'A starter for TanStack Start',
+        content:
+          'NMIXX Studio is a fan-made website dedicated to K-Pop girl group NMIXX.',
       },
       {
-        title: 'TanStack Start Starter',
+        title: 'NMIXX Studio',
       },
     ],
     links: [
