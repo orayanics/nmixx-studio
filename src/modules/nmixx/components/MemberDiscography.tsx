@@ -1,0 +1,57 @@
+import type { Album } from '@/types/scrape'
+
+interface MemberDiscographyProps {
+  releases: (Album & {
+    type: 'OST_DATA' | 'COLLAB_FILE'
+  })[]
+}
+
+export default function MemberDiscography({
+  releases,
+}: MemberDiscographyProps) {
+  return (
+    <>
+      {releases.map((item, idx) => (
+        <div
+          key={idx}
+          className="bg-dark border border-blue-500/40 p-3 relative group hover:bg-blue-500 hover:text-black transition-colors overflow-hidden"
+        >
+          <div className="flex gap-4">
+            <div className="w-24 h-24 shrink-0 border border-blue-500 overflow-hidden grayscale contrast-150">
+              <img
+                src={item.cover!}
+                className="w-full h-full object-cover group-hover:scale-125 transition-transform"
+                alt={item.title}
+              />
+            </div>
+
+            <div className="flex flex-col justify-between">
+              <span className="text-xs bg-blue-500 text-black px-1 self-start font-bold group-hover:bg-dark group-hover:text-blue-500">
+                {item.type}
+              </span>
+
+              <h4 className="font-black text-lg leading-none uppercase mt-1">
+                {item.title}
+              </h4>
+
+              <div className="text-xs text-white mt-2">
+                DATE: {item.year} // LEN: {item.length}
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+
+      <EmptyCard />
+    </>
+  )
+}
+
+function EmptyCard() {
+  return (
+    <div className="border border-dashed border-blue-500/40 flex flex-col items-center justify-center p-4 opacity-40">
+      <div className="animate-pulse">WAITING FOR DATA...</div>
+      <div className="w-full h-1 bg-blue-500/20 mt-2" />
+    </div>
+  )
+}

@@ -1,22 +1,22 @@
 import styles from './TextFade.module.css'
 
 interface TextFadeProps {
-  position?:
-    | 'top-left'
-    | 'top-right'
-    | 'bottom-left'
-    | 'bottom-right'
-    | 'center'
+  position?: 'bottom-left' | 'bottom-right' | 'center'
   children?: React.ReactNode
   className?: string
+  rounded?: boolean
 }
 
 export default function TextFade(props: TextFadeProps) {
-  const { position = 'top-left', children, className } = props
-
+  const {
+    position = 'bottom-left',
+    children,
+    className,
+    rounded = false,
+  } = props
   return (
     <div
-      className={`${styles['text-fade-container']} ${styles[position]} ${className || ''}`}
+      className={`${styles['text-fade-container']} ${styles[position]} ${className || ''} ${rounded ? 'rounded-sm' : ''}`}
     >
       <div className={styles['text-content']}>{children}</div>
     </div>

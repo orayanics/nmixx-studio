@@ -1,0 +1,291 @@
+:root {
+  --blue-light: #87a8ff;
+  --blue-base: #1360cb;
+  --blue-dark-1: #102152;
+  --blue-dark-2: #050d24;
+}
+
+.scene {
+  --scene-size: clamp(300px, 50vw, 600px);
+  --radiating-lines-size: clamp(400px, 70vw, 800px);
+  --orbit-ring-size: clamp(340px, 52vw, 420px);
+
+  position: relative;
+  width: var(--scene-size);
+  height: var(--scene-size);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  z-index: 10;
+}
+
+.radiatingLines {
+  position: absolute;
+  width: var(--radiating-lines-size);
+  height: var(--radiating-lines-size);
+  border-radius: 50%;
+  background: repeating-conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 2deg,
+    rgba(255, 255, 255, 0.03) 2deg,
+    rgba(255, 255, 255, 0.03) 3deg
+  );
+  filter: blur(2px);
+  mask-image: radial-gradient(circle, transparent 30%, black 70%);
+  -webkit-mask-image: radial-gradient(circle, transparent 30%, black 70%);
+  animation: spin 120s linear infinite;
+  opacity: 0.3;
+}
+
+.orbitRing {
+  position: absolute;
+  width: var(--orbit-ring-size);
+  height: var(--orbit-ring-size);
+
+  border: 1px solid rgba(141, 175, 255, 0.4);
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(125, 156, 255, 0.1);
+  transform-style: preserve-3d;
+
+  background:
+    conic-gradient(
+      from 0deg,
+      transparent,
+      rgba(255, 255, 255, 0.55),
+      transparent 90deg
+    ),
+    conic-gradient(
+      from 90deg,
+      transparent,
+      rgba(255, 255, 255, 0.65),
+      transparent 180deg
+    );
+  mask: radial-gradient(
+    closest-side,
+    transparent calc(100% - 5px),
+    #000 calc(100% - 2px)
+  );
+
+  animation: spinOrbit 10s linear infinite;
+}
+
+.orbitRingDot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(
+    circle,
+    var(--blue-light) 50%,
+    var(--blue-base) 80%,
+    var(--blue-light) 100%
+  );
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(125, 156, 255, 0.6);
+
+  left: 15%;
+  transform-style: preserve-3d;
+
+  animation: dotOrbit 3.5s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+.planet {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 50% 0%,
+    #000000 30%,
+    var(--blue-dark-2) 45%,
+    var(--blue-dark-1) 65%,
+    var(--blue-base) 90%,
+    #ffffff 100%
+  );
+  transform: translateZ(0);
+  box-shadow:
+    inset 0px 2px 3px rgba(125, 156, 255, 0.01),
+    inset 0px -3px 6px rgba(141, 175, 255, 0.4),
+    -10px 10px 20px rgba(87, 168, 255, 0.2),
+    inset -10px 20px 40px rgba(87, 168, 255, 0.2);
+
+  animation: animatedGradient 8s linear infinite;
+}
+
+.planetRim {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateZ(-2px);
+
+  opacity: 0.03;
+  border: 1px solid rgba(125, 156, 255, 0.1);
+
+  background: repeating-radial-gradient(
+    circle,
+    transparent 0px,
+    transparent 60px,
+    rgba(255, 255, 255, 0.5) 60px,
+    rgba(255, 255, 255, 0.5) 61px,
+    transparent 61px
+  );
+
+  box-shadow: 0 0 20px rgba(125, 156, 255, 0.05);
+}
+
+.planetShadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 40%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+}
+
+.center {
+  position: absolute;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.starWrapper {
+  position: absolute;
+  z-index: 200 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.starSvg {
+  display: block;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  z-index: 1;
+  overflow: visible;
+  fill: #fff;
+}
+
+.starSvg polygon {
+  fill: var(--blue-light);
+
+  filter: drop-shadow(0 0 4px rgba(#fff, 0.8))
+    drop-shadow(0 0 10px rgba(#fff, 0.6)) drop-shadow(0 0 20px rgba(#fff, 0.4));
+
+  animation: twinkle 4s infinite ease-in-out;
+  transform-origin: 50% 50%;
+}
+
+.starSvg:hover polygon {
+  animation: spin 3s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.starSvg:nth-of-type(odd) polygon {
+  animation-duration: 2.2s;
+}
+
+.starWrapper:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+.tooltip {
+  position: absolute;
+  top: 20px;
+
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+
+  font-size: 12px;
+  white-space: nowrap;
+  pointer-events: none;
+
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s,
+    visibility 0.3s,
+    transform 0.3s;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-family: sans-serif;
+  z-index: 10;
+}
+
+.text {
+  color: var(--blue-light);
+  text-align: center;
+  text-shadow:
+    0 0 2px rgba(8, 57, 109, 0.8),
+    0 0 4px rgba(87, 168, 255, 0.6),
+    0 0 12px rgba(87, 168, 255, 0.4);
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes spinOrbit {
+  0% {
+    transform: rotate(-60deg) rotateX(0deg);
+  }
+  50% {
+    transform: rotate(-60deg) rotateX(180deg);
+  }
+  100% {
+    transform: rotate(-60deg) rotateX(360deg);
+  }
+}
+
+@keyframes dotOrbit {
+  0% {
+    transform: translateX(0) translateZ(50px) scale(1);
+  }
+  50% {
+    transform: translateX(var(--orbit-ring-size)) translateZ(-5px) scale(1.5);
+  }
+  100% {
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg) scale(1);
+  }
+  to {
+    transform: rotate(360deg) scale(2);
+  }
+}
+
+@keyframes animatedGradient {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,67 +1,136 @@
 @import 'tailwindcss';
+@import './styles/Gradient.css';
+@import './styles/Background.css';
+
+html {
+  /* hide scrollbar */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  font-optical-sizing: auto;
+  font-feature-settings: 'salt' 1;
+}
 
 body {
-  @apply m-0;
-  font-family:
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  @apply font-sans antialiased bg-neutral-950! tracking-tight!;
+  background-color: var(--background-dark);
+  color: white;
 }
 
-code {
-  font-family:
-    source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
-}
-
-.liquid-glass {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px) saturate(120%);
-  -webkit-backdrop-filter: blur(20px) saturate(120%);
-  border: 1.5px solid rgba(255, 255, 255, 0.3);
-  box-shadow:
-    0 2px 12px #0003,
-    inset 0 1px #ffffff1a;
-
-  color: #fff;
-
-  svg,
-  img {
-    fill: #fff;
-    filter: brightness(0) invert(1);
+@layer components {
+  .bg-scanline {
+    background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.1) 50%,
+      transparent 50%
+    );
+    background-size: 100% 4px;
   }
-}
 
-/* section*/
-section {
-  padding: 64px 0px;
-
-  &:last-of-type {
-    padding-bottom: 0;
-
-    + div {
-      margin-top: 64px;
-    }
-
-    + footer {
-      margin-top: 64px;
-    }
+  .topographic-bg {
+    --topo-blue: #202f43;
+    background-color: #0a0c11;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1000' height='1000' viewBox='0 0 1000 1000'%3E%3Cstyle%3E path %7B stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: draw 3s ease-out forwards; %7D @keyframes draw %7B to %7B stroke-dashoffset: 0; %7D %7D %3C/style%3E%3Cpath d='M0 200 Q 250 100 500 200 T 1000 200 M0 400 Q 300 550 600 400 T 1000 400 M0 600 Q 200 750 500 600 T 1000 600 M0 800 Q 400 700 700 800 T 1000 800' fill='none' stroke='%23202f43' stroke-width='2'/%3E%3C/svg%3E");
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
-}
 
-/* page transition */
-/* on page load, navigate to other page */
-@keyframes scale-fade-in {
-  from {
-    transform: scale(0.95);
+  .halftone-aura {
+    background-image: radial-gradient(circle, #fff 1px, transparent 1px);
+    background-size: 4px 4px;
+    mask-image: radial-gradient(
+      circle,
+      rgb(255, 255, 255, 0.2),
+      transparent 80%
+    );
+  }
+
+  .zine-image {
+    filter: grayscale(1) contrast(5) brightness(1) blur(1.5px);
+  }
+
+  .zine-group::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(88, 160, 255, 1);
     opacity: 0;
+    mix-blend-mode: color;
+    pointer-events: none;
+    transition: opacity 1s ease;
   }
-  to {
-    transform: scale(1);
+
+  .zine-group:hover::after {
     opacity: 1;
+    transition: opacity 2s ease;
+  }
+
+  .zine-group:hover .zine-image {
+    filter: grayscale(1) contrast(6) brightness(1);
+    transition: filter 1s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 }
 
-.page-transition {
-  animation: scale-fade-in 0.4s cubic-bezier(0.3, 0, 0, 1) forwards;
+@layer base {
+  .bg-scrapbook {
+    background-color: #000;
+    background-image:
+      radial-gradient(#3b83f626 0.1px, transparent 0.1px),
+      linear-gradient(rgba(59, 130, 246, 0.02) 1px, transparent 1px);
+    background-size:
+      24px 24px,
+      100% 4px;
+  }
+
+  .brutalist-shadow {
+    box-shadow: 8px 8px 0px 0px #3b82f6;
+  }
+
+  .tape-effect {
+    background: #3b82f6;
+    color: #000;
+    padding: 2px 12px;
+    font-weight: 900;
+    transform: rotate(-2deg);
+    box-shadow: 2px 2px 0px 0px #fff;
+  }
+
+  /* repeating square background */
+  .bg-square {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 5rem 5rem;
+  }
+
+  .bg-square-nav {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+    background-size: 5rem 5rem;
+  }
+}
+
+@theme {
+  --color-dark: #040404;
+  --color-base: #0e0e0e;
+  --color-dark-blue: #0a0c11;
+  --animate-marquee: marquee 20s linear infinite;
+
+  --font-sans: 'Inter Variable', sans-serif;
+  --font-mono: 'JetBrains Mono Variable', monospace;
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
 }

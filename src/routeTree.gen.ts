@@ -10,75 +10,82 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as publicRouteRouteImport } from './routes/(public)/route'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as BlogIndexRouteImport } from './routes/blog/index'
-import { Route as BlogBlogIdRouteImport } from './routes/blog/$blogId'
-import { Route as publicPlaygroundRouteImport } from './routes/(public)/playground'
+import { Route as publicIndexRouteImport } from './routes/(public)/index'
+import { Route as publicVideoIndexRouteImport } from './routes/(public)/video/index'
+import { Route as publicNmixxIndexRouteImport } from './routes/(public)/nmixx/index'
+import { Route as publicMusicIndexRouteImport } from './routes/(public)/music/index'
+import { Route as publicNmixxMemberRouteImport } from './routes/(public)/nmixx/$member'
 
 const publicRouteRoute = publicRouteRouteImport.update({
   id: '/(public)',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
+const publicIndexRoute = publicIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => publicRouteRoute,
 } as any)
-const BlogIndexRoute = BlogIndexRouteImport.update({
-  id: '/blog/',
-  path: '/blog/',
-  getParentRoute: () => rootRouteImport,
+const publicVideoIndexRoute = publicVideoIndexRouteImport.update({
+  id: '/video/',
+  path: '/video/',
+  getParentRoute: () => publicRouteRoute,
 } as any)
-const BlogBlogIdRoute = BlogBlogIdRouteImport.update({
-  id: '/blog/$blogId',
-  path: '/blog/$blogId',
-  getParentRoute: () => rootRouteImport,
+const publicNmixxIndexRoute = publicNmixxIndexRouteImport.update({
+  id: '/nmixx/',
+  path: '/nmixx/',
+  getParentRoute: () => publicRouteRoute,
 } as any)
-const publicPlaygroundRoute = publicPlaygroundRouteImport.update({
-  id: '/playground',
-  path: '/playground',
+const publicMusicIndexRoute = publicMusicIndexRouteImport.update({
+  id: '/music/',
+  path: '/music/',
+  getParentRoute: () => publicRouteRoute,
+} as any)
+const publicNmixxMemberRoute = publicNmixxMemberRouteImport.update({
+  id: '/nmixx/$member',
+  path: '/nmixx/$member',
   getParentRoute: () => publicRouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/playground': typeof publicPlaygroundRoute
-  '/blog/$blogId': typeof BlogBlogIdRoute
-  '/blog': typeof BlogIndexRoute
+  '/': typeof publicIndexRoute
+  '/nmixx/$member': typeof publicNmixxMemberRoute
+  '/music/': typeof publicMusicIndexRoute
+  '/nmixx/': typeof publicNmixxIndexRoute
+  '/video/': typeof publicVideoIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/playground': typeof publicPlaygroundRoute
-  '/blog/$blogId': typeof BlogBlogIdRoute
-  '/blog': typeof BlogIndexRoute
+  '/': typeof publicIndexRoute
+  '/nmixx/$member': typeof publicNmixxMemberRoute
+  '/music': typeof publicMusicIndexRoute
+  '/nmixx': typeof publicNmixxIndexRoute
+  '/video': typeof publicVideoIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
   '/(public)': typeof publicRouteRouteWithChildren
-  '/(public)/playground': typeof publicPlaygroundRoute
-  '/blog/$blogId': typeof BlogBlogIdRoute
-  '/blog/': typeof BlogIndexRoute
+  '/(public)/': typeof publicIndexRoute
+  '/(public)/nmixx/$member': typeof publicNmixxMemberRoute
+  '/(public)/music/': typeof publicMusicIndexRoute
+  '/(public)/nmixx/': typeof publicNmixxIndexRoute
+  '/(public)/video/': typeof publicVideoIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/playground' | '/blog/$blogId' | '/blog'
+  fullPaths: '/' | '/nmixx/$member' | '/music/' | '/nmixx/' | '/video/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/playground' | '/blog/$blogId' | '/blog'
+  to: '/' | '/nmixx/$member' | '/music' | '/nmixx' | '/video'
   id:
     | '__root__'
-    | '/'
     | '/(public)'
-    | '/(public)/playground'
-    | '/blog/$blogId'
-    | '/blog/'
+    | '/(public)/'
+    | '/(public)/nmixx/$member'
+    | '/(public)/music/'
+    | '/(public)/nmixx/'
+    | '/(public)/video/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
   publicRouteRoute: typeof publicRouteRouteWithChildren
-  BlogBlogIdRoute: typeof BlogBlogIdRoute
-  BlogIndexRoute: typeof BlogIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -90,43 +97,58 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof publicRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
+    '/(public)/': {
+      id: '/(public)/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof publicIndexRouteImport
+      parentRoute: typeof publicRouteRoute
     }
-    '/blog/': {
-      id: '/blog/'
-      path: '/blog'
-      fullPath: '/blog'
-      preLoaderRoute: typeof BlogIndexRouteImport
-      parentRoute: typeof rootRouteImport
+    '/(public)/video/': {
+      id: '/(public)/video/'
+      path: '/video'
+      fullPath: '/video/'
+      preLoaderRoute: typeof publicVideoIndexRouteImport
+      parentRoute: typeof publicRouteRoute
     }
-    '/blog/$blogId': {
-      id: '/blog/$blogId'
-      path: '/blog/$blogId'
-      fullPath: '/blog/$blogId'
-      preLoaderRoute: typeof BlogBlogIdRouteImport
-      parentRoute: typeof rootRouteImport
+    '/(public)/nmixx/': {
+      id: '/(public)/nmixx/'
+      path: '/nmixx'
+      fullPath: '/nmixx/'
+      preLoaderRoute: typeof publicNmixxIndexRouteImport
+      parentRoute: typeof publicRouteRoute
     }
-    '/(public)/playground': {
-      id: '/(public)/playground'
-      path: '/playground'
-      fullPath: '/playground'
-      preLoaderRoute: typeof publicPlaygroundRouteImport
+    '/(public)/music/': {
+      id: '/(public)/music/'
+      path: '/music'
+      fullPath: '/music/'
+      preLoaderRoute: typeof publicMusicIndexRouteImport
+      parentRoute: typeof publicRouteRoute
+    }
+    '/(public)/nmixx/$member': {
+      id: '/(public)/nmixx/$member'
+      path: '/nmixx/$member'
+      fullPath: '/nmixx/$member'
+      preLoaderRoute: typeof publicNmixxMemberRouteImport
       parentRoute: typeof publicRouteRoute
     }
   }
 }
 
 interface publicRouteRouteChildren {
-  publicPlaygroundRoute: typeof publicPlaygroundRoute
+  publicIndexRoute: typeof publicIndexRoute
+  publicNmixxMemberRoute: typeof publicNmixxMemberRoute
+  publicMusicIndexRoute: typeof publicMusicIndexRoute
+  publicNmixxIndexRoute: typeof publicNmixxIndexRoute
+  publicVideoIndexRoute: typeof publicVideoIndexRoute
 }
 
 const publicRouteRouteChildren: publicRouteRouteChildren = {
-  publicPlaygroundRoute: publicPlaygroundRoute,
+  publicIndexRoute: publicIndexRoute,
+  publicNmixxMemberRoute: publicNmixxMemberRoute,
+  publicMusicIndexRoute: publicMusicIndexRoute,
+  publicNmixxIndexRoute: publicNmixxIndexRoute,
+  publicVideoIndexRoute: publicVideoIndexRoute,
 }
 
 const publicRouteRouteWithChildren = publicRouteRoute._addFileChildren(
@@ -134,11 +156,17 @@ const publicRouteRouteWithChildren = publicRouteRoute._addFileChildren(
 )
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
   publicRouteRoute: publicRouteRouteWithChildren,
-  BlogBlogIdRoute: BlogBlogIdRoute,
-  BlogIndexRoute: BlogIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}
