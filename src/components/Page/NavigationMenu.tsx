@@ -11,17 +11,17 @@ export default function NavigationMenu({
 }: NavigationMenuProps) {
   const variantTop = {
     closed: { rotate: 0, y: 0, stroke: '#000000' },
-    opened: { rotate: 45, y: 6, stroke: '#3b82f6' },
+    opened: { rotate: 45, y: 6, stroke: '#000000' },
   }
 
   const variantMiddle = {
     closed: { opacity: 1, x: 0, stroke: '#000000' },
-    opened: { opacity: 0, x: 20, stroke: '#3b82f6' },
+    opened: { opacity: 0, x: 20, stroke: '#000000' },
   }
 
   const variantBottom = {
     closed: { rotate: 0, y: 0, stroke: '#000000' },
-    opened: { rotate: -45, y: -6, stroke: '#3b82f6' },
+    opened: { rotate: -45, y: -6, stroke: '#000000' },
   }
 
   return (

@@ -8,7 +8,7 @@ export default function Footer() {
     <>
       <Planet />
       <footer
-        className="z-10 backdrop-blur-sm relative bg-linear-to-t from-blue-500/10 via-transparent to-transparent h-full
+        className="relative z-50 backdrop-blur-sm bg-linear-to-t from-blue-500/10 via-transparent to-transparent h-full
       md:overflow-visible overflow-hidden"
       >
         <div className="max-w-7xl mx-auto relative border border-blue-500/40 rounded-sm shadow-2xl p-10">

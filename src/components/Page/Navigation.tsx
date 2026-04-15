@@ -148,7 +148,7 @@ export default function Navigation(props: NavigationProps) {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="fixed inset-0 z-40 flex md:hidden flex-col items-center justify-center topographic-bg w-screen h-dvh overflow-hidden"
+            className="fixed inset-0 z-40 flex md:hidden flex-col items-center justify-center bg-square-nav bg-dark w-screen h-dvh overflow-hidden"
           >
             <nav className="flex flex-col items-center gap-4 mt-12">
               {links.map((link, i) => (
