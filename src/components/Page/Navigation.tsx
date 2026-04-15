@@ -10,7 +10,6 @@ import useNavigation from './useNavigation'
 import Logo from '@/components/Logo/Logo'
 import NavigationMenu from '@/components/Page/NavigationMenu'
 import useScrolled from '@/utils/useScrolled'
-import BorderSquare from '../Layout/BorderSquare'
 
 type NavigationLink = {
   to: string
@@ -110,7 +109,7 @@ export default function Navigation(props: NavigationProps) {
   }, [isMenuOpen])
 
   return (
-    <header ref={scrolledRef} className="top-0 inset-s-0 z-50 w-full">
+    <header ref={scrolledRef} className="top-0 inset-s-0 z-200 w-full">
       {/* --- HEADER BAR --- */}
       <div
         className="text-black container flex md:gap-3 gap-6 justify-between items-center px-4 relative z-50

@@ -35,7 +35,7 @@ export default function MusicDiscography() {
       className="min-h-screen text-white font-mono uppercase"
       id="discography"
     >
-      <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[200px] gap-2 p-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[200px] gap-2">
         {allReleases.map((album, i) => {
           const size =
             i % 7 === 0

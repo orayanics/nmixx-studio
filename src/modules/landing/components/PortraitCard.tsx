@@ -22,7 +22,7 @@ export const PortraitCard = ({
   }, [])
 
   return (
-    <div className="relative aspect-3/4 border border-blue-500/40 border-border overflow-hidden bg-card group">
+    <div className="relative aspect-3/4 border border-blue-500/40 border-border overflow-hidden group">
       <div className="absolute z-10 inset-0 halftone-aura opacity-30 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none" />
 
       {!isLoaded && <LoaderSpinner isFullScreen />}

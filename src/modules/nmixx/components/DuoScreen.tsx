@@ -3,13 +3,14 @@ import { motion, type Variants } from 'framer-motion'
 import LoaderSpinner from '@/components/Loader/LoaderSpinner'
 import type { IndividualImage } from '@/configs/landing'
 import { Link } from '@tanstack/react-router'
+import BorderSquare from '@/components/Layout/BorderSquare'
 
 type Align = 'left' | 'center' | 'right'
 
 interface DuoScreenProps {
   align?: Align
   index: string
-  title: string
+  title?: string
   description: string
   names: string
   img: string
@@ -17,15 +18,7 @@ interface DuoScreenProps {
 }
 
 export default function DuoScreen(props: DuoScreenProps) {
-  const {
-    align = 'left',
-    index,
-    title,
-    description,
-    names,
-    img,
-    indivs,
-  } = props
+  const { align = 'left', description, names, img, indivs } = props
   const [isLoaded, setIsLoaded] = useState(false)
   const imgRef = useRef<HTMLImageElement>(null)
   const indivArray = Array.isArray(indivs) ? indivs : indivs ? [indivs] : []
@@ -41,17 +34,17 @@ export default function DuoScreen(props: DuoScreenProps) {
     left: {
       container: 'items-start',
       text: 'text-left items-start',
-      width: 'w-screen',
+      width: 'w-full',
     },
     center: {
       container: 'items-center',
       text: 'text-center items-center',
-      width: 'w-screen',
+      width: 'w-full',
     },
     right: {
       container: 'items-end',
       text: 'text-right items-end',
-      width: 'w-screen',
+      width: 'w-full',
     },
   }
 
@@ -86,33 +79,42 @@ export default function DuoScreen(props: DuoScreenProps) {
   }, [])
 
   return (
-    <div className="relative h-full w-full overflow-hidden group">
+    <div className="relative h-full w-full md:overflow-visible overflow-hidden group">
       {!isLoaded && <LoaderSpinner isFullScreen />}
+      <BorderSquare />
       {/* overlays */}
       <div className="absolute z-10 inset-0 bg-linear-to-t from-blue-600/40 to-transparent opacity-50 pointer-events-none" />
       <div className="absolute z-10 inset-0 halftone-aura opacity-30 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none" />
 
       {indivArray.length > 0 && (
         <div
-          className={`w-screen items-center justify-center h-full absolute z-20 flex gap-4 md:gap-10`}
+          className={`w-full items-center justify-center h-full absolute z-20 flex gap-4 md:gap-10 md:p-0 p-2`}
         >
           {indivArray.map((item) => (
-            <div key={item.title} className="relative w-70 h-100">
-              {/* Invisible hover zone */}
+            <div key={item.title} className="relative w-70 md:h-100 h-60">
               <Link
                 to="/nmixx/$member"
-                params={{ member: item.title.toLowerCase() }}
+                params={{ member: item.title }}
                 className="absolute inset-0 cursor-pointer"
               >
-                <motion.img
+                <motion.div
                   initial={{ opacity: 0, scale: 1 }}
                   whileHover={{ opacity: 1, scale: 1.05 }}
                   whileTap={{ opacity: 1, scale: 1.05 }}
                   transition={{ duration: 0.3, ease: 'easeOut' }}
-                  src={item.img}
-                  alt={item.title}
-                  className="w-full h-full object-cover border-2 border-white saturate-[0.5] contrast-[1.2]"
-                />
+                  className="w-full h-full group relative"
+                >
+                  <div className="absolute z-10 inset-0 bg-linear-to-t from-blue-600/20 to-blue-400/30 opacity-50 pointer-events-none" />
+
+                  <div className="absolute z-10 inset-0 halftone-aura opacity-30 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none" />
+                  <BorderSquare />
+
+                  <motion.img
+                    src={item.img}
+                    alt={item.title}
+                    className="w-full h-full object-cover border-2 border-blue-500 saturate-0 contrast-[2] zine-image"
+                  />
+                </motion.div>
               </Link>
             </div>
           ))}
@@ -125,35 +127,21 @@ export default function DuoScreen(props: DuoScreenProps) {
         whileInView="show"
         viewport={{ once: true, amount: 0.05, margin: '-100px' }}
         className={`h-full ${styles.width} absolute z-10 inset-0 p-8
-        flex flex-col justify-center ${styles.container} gap-6`}
+        flex flex-col justify-center ${styles.container} gap-2`}
       >
         <div className={`relative w-full flex flex-col gap-2 ${styles.text}`}>
           <motion.p
             variants={itemVariants}
-            className="uppercase tracking-widest text-xs md:text-md"
-          >
-            {index}. blue valentine
-          </motion.p>
-
-          <motion.p
-            variants={itemVariants}
-            className="font-serif text-sm md:text-4xl lg:text-7xl capitalize max-w-40 md:max-w-md lg:max-w-lg"
+            className="text-sm md:text-4xl lg:text-6xl capitalize max-w-50 md:max-w-2xl"
           >
             {description}
           </motion.p>
-
-          <motion.div
-            variants={itemVariants}
-            className="w-fit border text-xs md:text-lg my-1 md:my-2 p-1 md:p-2"
-          >
-            <p>{title}</p>
-          </motion.div>
         </div>
 
         <div className={`relative w-full flex flex-col ${styles.text}`}>
           <motion.h1
             variants={itemVariants}
-            className="font-serif italic text-md md:text-xl capitalize"
+            className="font-mono text-sm md:text-xl capitalize"
           >
             {names}
           </motion.h1>

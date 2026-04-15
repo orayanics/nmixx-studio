@@ -104,8 +104,16 @@ export const BLUE_VALENTINE_TRACKS = [
 
 export { SAMPLE_DECK as LANDING_DECK }
 
+export type MEMBERS =
+  | 'lily'
+  | 'haewon'
+  | 'sullyoon'
+  | 'bae'
+  | 'jiwoo'
+  | 'kyujin'
+
 export interface IndividualImage {
-  title: string
+  title: MEMBERS
   img: string
 }
 
@@ -144,54 +152,54 @@ export const BL_CHAOS_DUO_IMGS = {
 
 export const BL_CHAOS_INDIV_IMGS: IndividualImage[] = [
   {
-    title: 'Lily',
+    title: 'lily',
     img: 'https://i.imgur.com/5GE9TeY.jpeg',
   },
   {
-    title: 'Haewon',
+    title: 'haewon',
     img: 'https://i.imgur.com/uWdUgQa.jpeg',
   },
   {
-    title: 'Sullyoon',
+    title: 'sullyoon',
     img: 'https://i.imgur.com/86DfgvS.jpeg',
   },
   {
-    title: 'Bae',
+    title: 'bae',
     img: 'https://i.imgur.com/wGLS0qp.jpeg',
   },
   {
-    title: 'Jiwoo',
+    title: 'jiwoo',
     img: 'https://i.imgur.com/zEO88P0.jpeg',
   },
   {
-    title: 'Kyujin',
+    title: 'kyujin',
     img: 'https://i.imgur.com/eFo61DF.jpeg',
   },
 ]
 
 export const SOT_INDIV_IDS: IndividualImage[] = [
   {
-    title: 'Lily',
+    title: 'lily',
     img: 'https://static.wikia.nocookie.net/nmixx/images/6/6c/Lily_SPINNIN%27_ON_IT_%282%29.jpg',
   },
   {
-    title: 'Haewon',
+    title: 'haewon',
     img: 'https://static.wikia.nocookie.net/nmixx/images/7/77/Haewon_SPINNIN%27_ON_IT_%284%29.jpg',
   },
   {
-    title: 'Sullyoon',
+    title: 'sullyoon',
     img: 'https://static.wikia.nocookie.net/nmixx/images/a/af/Sullyoon_SPINNIN%27_ON_IT_%283%29.jpg',
   },
   {
-    title: 'Bae',
+    title: 'bae',
     img: 'https://static.wikia.nocookie.net/nmixx/images/7/7e/Bae_SPINNIN%27_ON_IT_%282%29.jpg',
   },
   {
-    title: 'Jiwoo',
+    title: 'jiwoo',
     img: 'https://static.wikia.nocookie.net/nmixx/images/1/1e/Jiwoo_SPINNIN%27_ON_IT_%283%29.jpg',
   },
   {
-    title: 'Kyujin',
+    title: 'kyujin',
     img: 'https://static.wikia.nocookie.net/nmixx/images/8/83/Kyujin_SPINNIN%27_ON_IT_%285%29.jpg',
   },
 ]

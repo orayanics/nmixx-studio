@@ -9,6 +9,7 @@ import TextDivider from '@/components/Layout/TextDivider'
 import MemberPhoto from '@/modules/nmixx/components/MemberPhoto'
 import MemberDetail from '@/modules/nmixx/components/MemberDetail'
 import MemberDiscography from '@/modules/nmixx/components/MemberDiscography'
+import BorderSquare from '@/components/Layout/BorderSquare'
 
 const members = [
   'lily',
@@ -64,32 +65,25 @@ function RouteComponent() {
   if (isError || !data || !match) return <LoaderError isFullScreen />
 
   return (
-    <>
-      <TextDivider
-        speed={250}
-        className="bg-blue-500 text-black"
-        text={
-          <>
-            NMIXX_CORE // {matchDetails?.stage_name} // SYSTEM_RECOVERED //{' '}
-            {matchDetails?.rep_animal} // DATA_STREAM_OPEN //
-          </>
-        }
-      />
-
-      <div className="text-blue-500 font-mono my-2">
-        <div className="grid grid-cols-12 gap-2 min-h-screen">
-          <div className="col-span-12 lg:col-span-5 relative group border-4 border-blue-500 overflow-hidden bg-blue-900/20">
+    <div className="max-w-7xl mx-auto md:overflow-visible overflow-hidden">
+      <div className="relative text-blue-500 font-mono">
+        <BorderSquare />
+        <div className="grid grid-cols-12 min-h-screen">
+          <div
+            className="col-span-12 lg:col-span-5 relative group overflow-hidden bg-blue-900/20
+          border border-blue-500/40"
+          >
             <MemberPhoto img={match.img} title={match.title} isBae={isBae} />
           </div>
 
-          <div className="col-span-12 lg:col-span-7 flex flex-col gap-2">
+          <div className="col-span-12 lg:col-span-7 flex flex-col border border-blue-500/40">
             <MemberDetail
               stageName={matchDetails?.stage_name!}
               birthday={matchDetails?.birthday!}
               repAnimal={matchDetails?.rep_animal!}
             />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-2 grow">
+            <div className="grid grid-cols-1 md:grid-cols-2 grow">
               <MemberDiscography releases={allReleases} />
             </div>
           </div>
@@ -98,14 +92,15 @@ function RouteComponent() {
 
       <TextDivider
         speed={250}
-        className="bg-blue-500 text-black"
+        className="bg-blue-500"
+        textClassName="text-black"
         text={
           <>
-            NMIXX_CORE // {matchDetails?.stage_name} // SYSTEM_RECOVERED //{' '}
+            NMIXX_CORE // {matchDetails?.stage_name} // MIXX_TOPIA //{' '}
             {matchDetails?.rep_animal} // DATA_STREAM_OPEN //
           </>
         }
       />
-    </>
+    </div>
   )
 }

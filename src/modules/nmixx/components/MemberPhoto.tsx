@@ -7,7 +7,7 @@ interface MemberPhotoProps {
 export default function MemberPhoto({ img, title, isBae }: MemberPhotoProps) {
   return (
     <>
-      <div className="absolute inset-0 bg-scanline pointer-events-none opacity-30 z-20" />
+      <div className="absolute inset-0 bg-scanline pointer-events-none opacity-60 z-20" />
       <div className="absolute inset-0 bg-blue-500/10 mix-blend-color z-10" />
 
       <img
