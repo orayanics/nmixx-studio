@@ -4,7 +4,7 @@ import { BL_CHAOS_DUO_IMGS, BL_CHAOS_INDIV_IMGS } from '@/configs/landing'
 
 export default function DuoHero() {
   return (
-    <div className="relative max-w-7xl mx-auto border-x border-blue-500/40">
+    <div className="relative">
       <DuoScreen
         align="left"
         index="01"
@@ -18,6 +18,7 @@ export default function DuoHero() {
         text="blue valentine"
         className="bg-black"
         textClassName="text-blue-500"
+        speed={50}
       />
 
       <DuoScreen
@@ -33,6 +34,7 @@ export default function DuoHero() {
         text="blue valentine"
         className="bg-black"
         textClassName="text-blue-500"
+        speed={50}
       />
 
       <DuoScreen

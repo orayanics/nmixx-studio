@@ -34,17 +34,17 @@ export default function DuoScreen(props: DuoScreenProps) {
     left: {
       container: 'items-start',
       text: 'text-left items-start',
-      width: 'w-full',
+      width: 'w-full max-w-7xl mx-auto',
     },
     center: {
       container: 'items-center',
       text: 'text-center items-center',
-      width: 'w-full',
+      width: 'w-full max-w-7xl mx-auto',
     },
     right: {
       container: 'items-end',
       text: 'text-right items-end',
-      width: 'w-full',
+      width: 'w-full max-w-7xl mx-auto',
     },
   }
 
@@ -81,7 +81,6 @@ export default function DuoScreen(props: DuoScreenProps) {
   return (
     <div className="relative h-full w-full md:overflow-visible overflow-hidden group">
       {!isLoaded && <LoaderSpinner isFullScreen />}
-      <BorderSquare />
       {/* overlays */}
       <div className="absolute z-10 inset-0 bg-linear-to-t from-blue-600/40 to-transparent opacity-50 pointer-events-none" />
       <div className="absolute z-10 inset-0 halftone-aura opacity-30 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none" />
@@ -102,17 +101,15 @@ export default function DuoScreen(props: DuoScreenProps) {
                   whileHover={{ opacity: 1, scale: 1.05 }}
                   whileTap={{ opacity: 1, scale: 1.05 }}
                   transition={{ duration: 0.3, ease: 'easeOut' }}
-                  className="w-full h-full group relative"
+                  className="w-full h-full group relative border border-white"
                 >
                   <div className="absolute z-10 inset-0 bg-linear-to-t from-blue-600/20 to-blue-400/30 opacity-50 pointer-events-none" />
-
                   <div className="absolute z-10 inset-0 halftone-aura opacity-30 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none" />
-                  <BorderSquare />
 
                   <motion.img
                     src={item.img}
                     alt={item.title}
-                    className="w-full h-full object-cover border-2 border-blue-500 saturate-0 contrast-[2] zine-image"
+                    className="w-full h-full object-cover saturate-0 contrast-[2] zine-image"
                   />
                 </motion.div>
               </Link>
@@ -127,12 +124,14 @@ export default function DuoScreen(props: DuoScreenProps) {
         whileInView="show"
         viewport={{ once: true, amount: 0.05, margin: '-100px' }}
         className={`h-full ${styles.width} absolute z-10 inset-0 p-8
-        flex flex-col justify-center ${styles.container} gap-2`}
+        flex flex-col justify-center ${styles.container} gap-2 border border-blue-500/40`}
       >
+        <BorderSquare />
+
         <div className={`relative w-full flex flex-col gap-2 ${styles.text}`}>
           <motion.p
             variants={itemVariants}
-            className="text-sm md:text-4xl lg:text-6xl capitalize max-w-50 md:max-w-2xl"
+            className="text-sm md:text-4xl lg:text-6xl capitalize max-w-50 md:max-w-2xl font-bold"
           >
             {description}
           </motion.p>
