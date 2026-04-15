@@ -16,7 +16,7 @@ export default function PublicLayout(props: PublicLayoutProps) {
   return (
     <>
       {enableNavigation && <Navigation links={PUBLIC_LINKS} />}
-      <main className="min-h-screen">{children}</main>
+      <main className="min-h-screen mx-auto">{children}</main>
       {enableFooter && <Footer />}
     </>
   )

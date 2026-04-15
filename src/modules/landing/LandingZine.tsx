@@ -7,6 +7,7 @@ import { PortraitCard } from './components/PortraitCard'
 import { LANDING_BACKGROUND } from '@/configs/landing'
 import TextFade from '@/components/Dynamic/TextFade'
 import LoaderSpinner from '@/components/Loader/LoaderSpinner'
+import BorderSquare from '@/components/Layout/BorderSquare'
 
 export default function LandingZine() {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -39,12 +40,13 @@ export default function LandingZine() {
   }, [])
 
   return (
-    <div className="relative w-full p-4 md:p-8 flex items-center justify-center z-20">
+    <div className="relative w-full max-w-7xl mx-auto flex items-center justify-center z-20">
+      <BorderSquare />
       <motion.div
-        initial={{ opacity: 0, borderColor: 'rgba(255, 255, 255, 0)' }}
-        whileInView={{ opacity: 1, borderColor: 'rgba(255, 255, 255, 0.2)' }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         transition={{ duration: 2, ease: 'easeOut' }}
-        className="h-[96vh] md:h-full flex flex-col gap-2 w-full mx-auto rounded-sm shadow-2xl backdrop-blur-sm border border-white/10 p-2 md:p-4"
+        className="h-[96vh] md:h-full flex flex-col w-full mx-auto rounded-sm shadow-2xl backdrop-blur-sm"
       >
         {/* Section 1: Triple Columns */}
         <motion.div
@@ -63,9 +65,7 @@ export default function LandingZine() {
             className="relative group zine-group"
           >
             <TextFade position="center">
-              <p className="text-sm md:text-4xl lowercase italic font-serif bg-clip-text text-transparent bg-linear-to-r from-rose-600 to-rose-800">
-                Lily
-              </p>
+              <p className="text-sm md:text-4xl lowercase  font-mono">Lily</p>
             </TextFade>
             <PortraitCard
               name="LILY"
@@ -79,9 +79,7 @@ export default function LandingZine() {
             className="relative group zine-group"
           >
             <TextFade position="center">
-              <p className="text-sm md:text-4xl lowercase italic font-serif bg-clip-text text-transparent bg-linear-to-r from-rose-600 to-rose-800">
-                Haewon
-              </p>
+              <p className="text-sm md:text-4xl lowercase  font-mono">Haewon</p>
             </TextFade>
             <PortraitCard
               name="HAEWON"
@@ -95,7 +93,7 @@ export default function LandingZine() {
             className="relative group zine-group"
           >
             <TextFade position="center">
-              <p className="text-sm md:text-4xl lowercase italic font-serif bg-clip-text text-transparent bg-linear-to-r from-rose-600 to-rose-800">
+              <p className="text-sm md:text-4xl lowercase  font-mono">
                 Sullyoon
               </p>
             </TextFade>
@@ -108,26 +106,29 @@ export default function LandingZine() {
         </motion.div>
 
         {/* Section 2: Full Width Banner */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="show"
-          viewport={{
-            once: true,
-            amount: 0.05,
-            margin: '0px 0px -120px 0px',
-          }}
-          className="flex-1 group zine-group relative border border-white/30 border-border overflow-hidden aspect-21/9"
-        >
-          <motion.div variants={itemVariants}>
-            <div className="overflow-hidden absolute z-10 inset-0 halftone-aura opacity-30 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none" />
-            {!isLoaded && <LoaderSpinner isFullScreen />}
-            <img
-              ref={imgRef}
-              onLoad={() => setIsLoaded(true)}
-              onError={() => setIsLoaded(true)}
-              src={LANDING_BACKGROUND}
-              className="
+        <div className="relative">
+          <BorderSquare />
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{
+              once: true,
+              amount: 0.05,
+              margin: '0px 0px -120px 0px',
+            }}
+            className="flex-1 group zine-group relative border border-blue-500/40 overflow-hidden aspect-21/9"
+          >
+            <motion.div variants={itemVariants}>
+              <div className="overflow-hidden absolute z-10 inset-0 halftone-aura opacity-30 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none" />
+              {!isLoaded && <LoaderSpinner isFullScreen />}
+              <img
+                ref={imgRef}
+                onLoad={() => setIsLoaded(true)}
+                onError={() => setIsLoaded(true)}
+                src={LANDING_BACKGROUND}
+                className="
                 zine-image
                 w-auto md:w-full
                 h-auto md:h-full
@@ -138,11 +139,11 @@ export default function LandingZine() {
                 translate-x-[110%] md:-translate-x-[9%]
                 translate-y-[-40%] md:-translate-y-[6%]
                 origin-[0%_0%] md:origin-[-2%_0%]"
-              alt="Full Group"
-            />
+                alt="Full Group"
+              />
+            </motion.div>
           </motion.div>
-        </motion.div>
-
+        </div>
         {/* Section 3: Triple Columns */}
         <motion.div
           variants={containerVariants}
@@ -160,9 +161,7 @@ export default function LandingZine() {
             className="relative group zine-group"
           >
             <TextFade position="center">
-              <p className="text-sm md:text-4xl lowercase italic font-serif bg-clip-text text-transparent bg-linear-to-r from-rose-600 to-rose-800">
-                Jinsol
-              </p>
+              <p className="text-sm md:text-4xl lowercase  font-mono">Jinsol</p>
             </TextFade>
             <PortraitCard name="BAE" zoom={3} focus={{ x: '20%', y: '8%' }} />
           </motion.div>
@@ -172,9 +171,7 @@ export default function LandingZine() {
             className="relative group zine-group"
           >
             <TextFade position="center">
-              <p className="text-sm md:text-4xl lowercase italic font-serif bg-clip-text text-transparent bg-linear-to-r from-rose-600 to-rose-800">
-                Jiwoo{' '}
-              </p>
+              <p className="text-sm md:text-4xl lowercase  font-mono">Jiwoo</p>
             </TextFade>
             <PortraitCard
               name="JIWOO"
@@ -188,9 +185,7 @@ export default function LandingZine() {
             className="relative group zine-group"
           >
             <TextFade position="center">
-              <p className="text-sm md:text-4xl lowercase italic font-serif bg-clip-text text-transparent bg-linear-to-r from-rose-600 to-rose-800">
-                Kyujin
-              </p>
+              <p className="text-sm md:text-4xl lowercase  font-mono">Kyujin</p>
             </TextFade>
             <PortraitCard
               name="KYUJIN"
