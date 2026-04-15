@@ -4,7 +4,7 @@ import { BL_CHAOS_DUO_IMGS, BL_CHAOS_INDIV_IMGS } from '@/configs/landing'
 
 export default function DuoHero() {
   return (
-    <div className="relative">
+    <div className="relative min-h-screen">
       <DuoScreen
         align="left"
         index="01"

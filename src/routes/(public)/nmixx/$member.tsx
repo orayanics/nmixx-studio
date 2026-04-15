@@ -65,13 +65,13 @@ function RouteComponent() {
   if (isError || !data || !match) return <LoaderError isFullScreen />
 
   return (
-    <div className="max-w-7xl mx-auto md:overflow-visible overflow-hidden">
+    <div className="max-w-7xl mx-auto md:overflow-visible overflow-hidden min-h-screen">
       <div className="relative text-blue-500 font-mono">
         <BorderSquare />
         <div className="grid grid-cols-12 min-h-screen">
           <div
             className="col-span-12 lg:col-span-5 relative group overflow-hidden bg-blue-900/20
-          border border-blue-500/40"
+          border border-blue-500/40 min-h-screen"
           >
             <MemberPhoto img={match.img} title={match.title} isBae={isBae} />
           </div>

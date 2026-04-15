@@ -21,11 +21,12 @@ export default function MemberDiscography({
               <img
                 src={item.cover!}
                 className="w-full h-full object-cover group-hover:scale-125 transition-transform"
+                alt={item.title}
               />
             </div>
 
             <div className="flex flex-col justify-between">
-              <span className="text-[10px] bg-blue-500 text-black px-1 self-start font-bold group-hover:bg-dark group-hover:text-blue-500">
+              <span className="text-xs bg-blue-500 text-black px-1 self-start font-bold group-hover:bg-dark group-hover:text-blue-500">
                 {item.type}
               </span>
 
@@ -33,14 +34,10 @@ export default function MemberDiscography({
                 {item.title}
               </h4>
 
-              <div className="text-[10px] opacity-70 mt-2">
+              <div className="text-xs text-white mt-2">
                 DATE: {item.year} // LEN: {item.length}
               </div>
             </div>
-          </div>
-
-          <div className="absolute bottom-[-22%] -right-1 text-[6rem] font-black opacity-10 italic select-none">
-            #{idx + 1}
           </div>
         </div>
       ))}

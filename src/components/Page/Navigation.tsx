@@ -175,7 +175,7 @@ export default function Navigation(props: NavigationProps) {
                     <Link
                       to={link.to}
                       onClick={closeMenu}
-                      className="block text-5xl md:text-8xl font-black tracking-tighter uppercase leading-[0.85] transition-colors duration-300 relative z-0"
+                      className="block text-4xl md:text-8xl font-black tracking-tighter uppercase leading-[0.85] transition-colors duration-300 relative z-0"
                       activeProps={{
                         className: 'text-blue-500',
                       }}

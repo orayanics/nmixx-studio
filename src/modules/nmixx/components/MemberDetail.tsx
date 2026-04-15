@@ -32,7 +32,7 @@ export default function MemberDetail({
         </div>
         <div className="col-span-2">
           <p className="text-xs text-white">AUTHENTICATION_KEY</p>
-          <p className="font-bold break-all opacity-80">
+          <p className="font-bold break-all">
             NMIXX-{stageName.toUpperCase()}-2026-X
           </p>
         </div>

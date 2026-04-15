@@ -1,6 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
 import { motion, type Variants } from 'framer-motion'
-import LoaderSpinner from '@/components/Loader/LoaderSpinner'
 import type { IndividualImage } from '@/configs/landing'
 import { Link } from '@tanstack/react-router'
 import BorderSquare from '@/components/Layout/BorderSquare'
@@ -19,8 +17,6 @@ interface DuoScreenProps {
 
 export default function DuoScreen(props: DuoScreenProps) {
   const { align = 'left', description, names, img, indivs } = props
-  const [isLoaded, setIsLoaded] = useState(false)
-  const imgRef = useRef<HTMLImageElement>(null)
   const indivArray = Array.isArray(indivs) ? indivs : indivs ? [indivs] : []
 
   const alignmentStyles: Record<
@@ -74,13 +70,8 @@ export default function DuoScreen(props: DuoScreenProps) {
 
   const styles = alignmentStyles[align]
 
-  useEffect(() => {
-    if (imgRef.current?.complete) setIsLoaded(true)
-  }, [])
-
   return (
     <div className="relative h-full w-full md:overflow-visible overflow-hidden group">
-      {!isLoaded && <LoaderSpinner isFullScreen />}
       {/* overlays */}
       <div className="absolute z-10 inset-0 bg-linear-to-t from-blue-600/40 to-transparent opacity-50 pointer-events-none" />
       <div className="absolute z-10 inset-0 halftone-aura opacity-30 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none" />
@@ -109,6 +100,7 @@ export default function DuoScreen(props: DuoScreenProps) {
                   <motion.img
                     src={item.img}
                     alt={item.title}
+                    fetchPriority="high"
                     className="w-full h-full object-cover saturate-0 contrast-[2] zine-image"
                   />
                 </motion.div>
@@ -150,14 +142,12 @@ export default function DuoScreen(props: DuoScreenProps) {
       {/* image */}
       <motion.img
         initial={{ opacity: 0 }}
-        whileInView={{ opacity: isLoaded ? 1 : 0 }}
+        whileInView={{ opacity: 1 }}
         transition={{ duration: 2, ease: 'easeOut' }}
-        ref={imgRef}
-        onLoad={() => setIsLoaded(true)}
-        onError={() => setIsLoaded(true)}
         src={img}
         alt={names}
-        className="grayscale-100 contrast-[1.2]"
+        className="grayscale-100 contrast-[1.2] h-screen w-full object-cover"
+        fetchPriority="high"
       />
     </div>
   )

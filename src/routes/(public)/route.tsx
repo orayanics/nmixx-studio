@@ -2,6 +2,7 @@ import { Outlet, createFileRoute, useLocation } from '@tanstack/react-router'
 import PublicLayout from '@/components/Layout/PublicLayout'
 
 export const Route = createFileRoute('/(public)')({
+  ssr: false,
   component: RouteComponent,
 })
 
