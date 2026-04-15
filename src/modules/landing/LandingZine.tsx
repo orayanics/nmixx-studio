@@ -46,7 +46,7 @@ export default function LandingZine() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 2, ease: 'easeOut' }}
-        className="h-[96vh] md:h-full flex flex-col w-full mx-auto rounded-sm shadow-2xl backdrop-blur-sm"
+        className="h-full flex flex-col w-full mx-auto rounded-sm shadow-2xl backdrop-blur-sm"
       >
         {/* Section 1: Triple Columns */}
         <motion.div

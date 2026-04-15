@@ -1,6 +1,10 @@
 import styles from './Planet.module.css'
 
-export default function Planet() {
+interface Props {
+  isFullscreen?: boolean
+}
+
+export default function Planet({ isFullscreen = false }: Props) {
   const STARS = [
     { id: 'star1', name: 'Lily', style: { top: '30%', left: '15%' } },
     { id: 'star2', name: 'Haewon', style: { top: '25%', right: '10%' } },
@@ -11,7 +15,9 @@ export default function Planet() {
   ]
 
   return (
-    <div className="w-full h-screen absolute z-10 flex items-center justify-center overflow-hidden">
+    <div
+      className={`w-full ${isFullscreen ? 'h-screen' : 'h-100'} absolute z-10 flex items-center justify-center overflow-hidden`}
+    >
       {STARS.map(({ id, name, style }) => (
         <div key={id} className={styles.starWrapper} style={style}>
           <svg

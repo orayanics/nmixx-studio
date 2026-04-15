@@ -7,6 +7,7 @@ import {
 } from 'framer-motion'
 import { useRef } from 'react'
 import { BLUE_VALENTINE_TRACKS } from '@/configs/landing'
+import BorderTop from '@/components/Layout/BorderTop'
 
 const TAPE_CONFIG = BLUE_VALENTINE_TRACKS.map((_, i) => ({
   x: ((i * 137.508) % 80) - 40,
@@ -97,8 +98,11 @@ export default function LandingTapes() {
 
   return (
     <>
-      <div className="h-[40vh] my-40 text-center flex flex-col items-center justify-center">
-        <div className="flex flex-col">
+      <div
+        className="h-full max-w-7xl mx-auto relative p-10
+        border-y border-blue-500/40 text-right"
+      >
+        <div>
           <motion.p
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -107,7 +111,7 @@ export default function LandingTapes() {
               delay: 0.2,
               ease: [0.25, 0.46, 0.45, 0.94],
             }}
-            className="text-7xl md:text-9xl font-bold tracking-tighter leading-none"
+            className="text-6xl md:text-9xl"
           >
             listen to
           </motion.p>
@@ -119,9 +123,12 @@ export default function LandingTapes() {
               delay: 0.4,
               ease: [0.25, 0.46, 0.45, 0.94],
             }}
-            className="text-7xl md:text-9xl font-bold tracking-tighter leading-none"
+            className="text-6xl md:text-9xl"
           >
-            <span className="text-blue-500 font-serif italic font-normal lowercase block md:inline">
+            <span
+              className="lowercase block md:inline
+            font-bold text-blue-500"
+            >
               blue valentine
             </span>
           </motion.p>
@@ -130,8 +137,9 @@ export default function LandingTapes() {
 
       <div
         ref={containerRef}
-        className="relative w-full pt-20 flex justify-center overflow-hidden"
+        className="relative w-full pt-20 flex justify-center md:overflow-visible overflow-hidden"
       >
+        <BorderTop />
         <div className="relative flex flex-col items-center justify-center">
           {BLUE_VALENTINE_TRACKS.map((track, i) => (
             <Link to="/music" key={i}>

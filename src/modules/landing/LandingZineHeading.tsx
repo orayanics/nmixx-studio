@@ -6,8 +6,7 @@ export default function LandingZineHeading() {
   return (
     <div
       className="h-full max-w-7xl mx-auto relative p-10
-      border border-blue-500/40
-"
+      border border-blue-500/40"
     >
       <BorderSquare />
       <div>
@@ -15,7 +14,7 @@ export default function LandingZineHeading() {
           initial={{ opacity: 0, x: 40 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="text-7xl md:text-9xl"
+          className="text-6xl md:text-9xl"
         >
           meet the
         </motion.p>
@@ -23,9 +22,14 @@ export default function LandingZineHeading() {
           initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="text-7xl md:text-9xl"
+          className="text-6xl md:text-9xl"
         >
-          <span className="lowercase block md:inline">members</span>
+          <span
+            className="lowercase block md:inline
+          font-bold text-blue-500"
+          >
+            members
+          </span>
         </motion.p>
       </div>
 
