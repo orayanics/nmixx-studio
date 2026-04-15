@@ -1,5 +1,6 @@
 import type { PlaylistItem } from '@/types/Playlist'
 import VideoCard from './VideoCard'
+import BorderSquare from '@/components/Layout/BorderSquare'
 
 interface VideoGroupProps {
   year: string
@@ -9,19 +10,18 @@ interface VideoGroupProps {
 export default function VideoGroup({ year, playlists }: VideoGroupProps) {
   return (
     <section className="relative">
-      {/* Massive Year Background */}
-      <div className="absolute -top-12 -left-4 z-0 opacity-10 text-[15vw] font-black text-blue-500 select-none">
-        {year}
+      <BorderSquare />
+      <div
+        className="relative z-10 border border-blue-500/40 p-10
+      bg-linear-to-t from-blue-500/5 to-transparent"
+      >
+        <p className="font-mono text-lg tracking-tight text-neutral-400">
+          From the year
+        </p>
+        <p className="text-4xl md:text-6xl font-bold">{year}</p>
       </div>
 
-      <div className="relative z-10 mb-8 flex items-center gap-4">
-        <h2 className="bg-blue-500 text-black px-6 py-2 text-4xl md:text-6xl font-black skew-x-[-10deg]">
-          {year}
-        </h2>
-        <div className="h-1 grow bg-blue-500/30 border-t border-blue-500" />
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {playlists.map((playlist) => (
           <VideoCard
             key={playlist.id}

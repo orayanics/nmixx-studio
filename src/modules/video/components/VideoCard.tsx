@@ -7,11 +7,11 @@ interface VideoCardProps {
 
 export default function VideoCard({ img, href, name, artist }: VideoCardProps) {
   return (
-    <div className="group relative bg-black border-4 border-blue-500 p-2 transition-all hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[12px_12px_0px_0px_#3b82f6]">
+    <div className="group relative bg-neutral-950 border border-blue-500/40 p-2 transition-all hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[12px_12px_0px_0px_#3b82f6]">
       {/* Top Tape Label */}
-      <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-30">
+      <div className="absolute left-1/2 -translate-x-1/2 z-30">
         <span className="tape-effect text-[10px] whitespace-nowrap uppercase">
-          Item_Serial_Ref
+          {name}
         </span>
       </div>
 
@@ -22,7 +22,7 @@ export default function VideoCard({ img, href, name, artist }: VideoCardProps) {
         className="block relative overflow-hidden"
       >
         {/* Image Container */}
-        <div className="aspect-video overflow-hidden border-2 border-blue-500/50 bg-blue-900">
+        <div className="aspect-video overflow-hidden border-2 border-blue-500/40 bg-blue-900">
           <img
             src={img}
             alt={name}

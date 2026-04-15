@@ -50,7 +50,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
         <HeadContent />
       </head>
-      <body className="wrap-anywhere selection:bg-blue-200 selection:text-white">
+      <body className="wrap-anywhere selection:bg-blue-200 selection:text-white bg-square">
         {children}
         <Scripts />
       </body>

@@ -6,7 +6,7 @@ export default function LandingZineHeading() {
   return (
     <div
       className="h-full max-w-7xl mx-auto relative p-10
-      border border-blue-500/40"
+      border border-blue-500/40 bg-linear-to-t from-blue-500/5 to-transparent"
     >
       <BorderSquare />
       <div>

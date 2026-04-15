@@ -100,7 +100,7 @@ export default function LandingTapes() {
     <>
       <div
         className="h-full max-w-7xl mx-auto relative p-10
-        border-y border-blue-500/40 text-right"
+        border-y border-blue-500/40 text-right bg-linear-to-t from-blue-500/5 to-transparent"
       >
         <div>
           <motion.p

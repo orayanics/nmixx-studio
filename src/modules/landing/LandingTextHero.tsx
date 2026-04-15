@@ -34,7 +34,7 @@ export default function LandingTextHero() {
         }}
         className="relative w-full h-full px-10 py-20
         flex flex-col items-center justify-center gap-12
-        border border-blue-500/40 backdrop-blur-md"
+        border border-blue-500/40 backdrop-blur-md bg-linear-to-t from-blue-500/5 to-transparent"
       >
         <BorderSquare />
 
