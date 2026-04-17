@@ -2,7 +2,7 @@
 PORT = "3000"
 
 [deploy]
-startCommand = "node dist/server/server.js"
+startCommand = "node start.js"
 
 [providers.node]
 runtime = true
