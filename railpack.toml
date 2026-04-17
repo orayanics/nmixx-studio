@@ -1,0 +1,2 @@
+[deploy]
+cmd = "node .output/server/index.mjs"
