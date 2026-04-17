@@ -1,0 +1,8 @@
+[deploy]
+startCommand = "node dist/server/server.js"
+
+[providers.node]
+runtime = true
+
+[[staticAssets]]
+path = "dist/client"
