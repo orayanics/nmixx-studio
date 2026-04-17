@@ -1,3 +1,6 @@
+[env]
+PORT = "3000"
+
 [deploy]
 startCommand = "node dist/server/server.js"
 
