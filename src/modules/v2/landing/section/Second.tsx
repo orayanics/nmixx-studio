@@ -113,7 +113,7 @@ export default function Second() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
-          viewport={{ margin: '-300px' }}
+          viewport={{ margin: '-200px' }}
           src={THIRD_IMAGE}
           alt="THIRD_IMAGE"
           className="w-full h-auto object-cover

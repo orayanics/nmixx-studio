@@ -9,7 +9,7 @@ export default function Hero() {
   return (
     <>
       <div
-        className="relative z-10 w-full min-w-screen px-10 min-h-screen
+        className="relative z-10 w-full min-w-screen px-10 h-svh min-h-screen
       flex flex-col items-center justify-center"
       >
         <LogoV2 />
