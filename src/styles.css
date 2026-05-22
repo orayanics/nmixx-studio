@@ -119,6 +119,7 @@ body {
   --color-dark: #040404;
   --color-base: #0e0e0e;
   --color-dark-blue: #0a0c11;
+  --color-gold: #ffb12f;
   --animate-marquee: marquee 20s linear infinite;
 
   --font-sans: 'Inter Variable', sans-serif;

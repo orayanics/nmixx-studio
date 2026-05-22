@@ -1,5 +1,4 @@
-import { Outlet, createFileRoute, useLocation } from '@tanstack/react-router'
-import RouteLoadingOverlay from '@/components/Loader/RouteLoadingOverlay'
+import { Outlet, createFileRoute } from '@tanstack/react-router'
 import PublicLayout from '@/components/Layout/PublicLayout'
 
 export const Route = createFileRoute('/v1')({
@@ -7,18 +6,11 @@ export const Route = createFileRoute('/v1')({
 })
 
 function RouteComponent() {
-  const location = useLocation()
-
   return (
-    <RouteLoadingOverlay triggerKey={location.pathname} text="loading">
-      <PublicLayout>
-        <main
-          key={location.pathname}
-          style={{ viewTransitionName: 'main-content' }}
-        >
-          <Outlet />
-        </main>
-      </PublicLayout>
-    </RouteLoadingOverlay>
+    <PublicLayout>
+      <main>
+        <Outlet />
+      </main>
+    </PublicLayout>
   )
 }
