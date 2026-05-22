@@ -124,6 +124,7 @@ export default function Navigation(props: NavigationProps) {
             <Link
               key={link.to}
               to={link.to}
+              viewTransition
               className="font-mono flex items-center px-6 hover:bg-blue-800 hover:text-white transition-colors duration-300"
             >
               {link.label}
@@ -174,6 +175,7 @@ export default function Navigation(props: NavigationProps) {
                   >
                     <Link
                       to={link.to}
+                      viewTransition
                       onClick={closeMenu}
                       className="block text-4xl md:text-8xl font-black tracking-tighter uppercase leading-[0.85] transition-colors duration-300 relative z-0"
                       activeProps={{

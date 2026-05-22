@@ -142,7 +142,7 @@ export default function LandingTapes() {
         <BorderTop />
         <div className="relative flex flex-col items-center justify-center">
           {BLUE_VALENTINE_TRACKS.map((track, i) => (
-            <Link to="/music" key={i}>
+            <Link to="/music" viewTransition key={i}>
               <TapeItem
                 track={track}
                 index={i}

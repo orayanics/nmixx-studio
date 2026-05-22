@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
-import MusicView from '@/modules/music/MusicView'
+import MusicView from '@/modules/v1/music/MusicView'
 
-export const Route = createFileRoute('/(public)/music/')({
+export const Route = createFileRoute('/v1/music/')({
   component: RouteComponent,
 })
 

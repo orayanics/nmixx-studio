@@ -6,9 +6,9 @@ import { useDiscography } from '@/api/fetchDiscography'
 import LoaderSpinner from '@/components/Loader/LoaderSpinner'
 import LoaderError from '@/components/Loader/LoaderError'
 import TextDivider from '@/components/Layout/TextDivider'
-import MemberPhoto from '@/modules/nmixx/components/MemberPhoto'
-import MemberDetail from '@/modules/nmixx/components/MemberDetail'
-import MemberDiscography from '@/modules/nmixx/components/MemberDiscography'
+import MemberPhoto from '@/modules/v1/nmixx/components/MemberPhoto'
+import MemberDetail from '@/modules/v1/nmixx/components/MemberDetail'
+import MemberDiscography from '@/modules/v1/nmixx/components/MemberDiscography'
 import BorderSquare from '@/components/Layout/BorderSquare'
 
 const members = [
@@ -22,7 +22,7 @@ const members = [
 
 type Member = (typeof members)[number]
 
-export const Route = createFileRoute('/(public)/nmixx/$member')({
+export const Route = createFileRoute('/v1/nmixx/$member')({
   params: {
     parse: (params): { member: Member } => {
       if (!members.includes(params.member as Member)) {

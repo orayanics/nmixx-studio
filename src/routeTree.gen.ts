@@ -9,15 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as publicRouteRouteImport } from './routes/(public)/route'
+import { Route as V1RouteRouteImport } from './routes/v1/route'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as publicVideoIndexRouteImport } from './routes/(public)/video/index'
-import { Route as publicNmixxIndexRouteImport } from './routes/(public)/nmixx/index'
-import { Route as publicMusicIndexRouteImport } from './routes/(public)/music/index'
-import { Route as publicNmixxMemberRouteImport } from './routes/(public)/nmixx/$member'
+import { Route as V1IndexRouteImport } from './routes/v1/index'
+import { Route as V1VideoIndexRouteImport } from './routes/v1/video/index'
+import { Route as V1NmixxIndexRouteImport } from './routes/v1/nmixx/index'
+import { Route as V1MusicIndexRouteImport } from './routes/v1/music/index'
+import { Route as V1NmixxMemberRouteImport } from './routes/v1/nmixx/$member'
 
-const publicRouteRoute = publicRouteRouteImport.update({
-  id: '/(public)',
+const V1RouteRoute = V1RouteRouteImport.update({
+  id: '/v1',
+  path: '/v1',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -25,77 +27,100 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const publicVideoIndexRoute = publicVideoIndexRouteImport.update({
+const V1IndexRoute = V1IndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => V1RouteRoute,
+} as any)
+const V1VideoIndexRoute = V1VideoIndexRouteImport.update({
   id: '/video/',
   path: '/video/',
-  getParentRoute: () => publicRouteRoute,
+  getParentRoute: () => V1RouteRoute,
 } as any)
-const publicNmixxIndexRoute = publicNmixxIndexRouteImport.update({
+const V1NmixxIndexRoute = V1NmixxIndexRouteImport.update({
   id: '/nmixx/',
   path: '/nmixx/',
-  getParentRoute: () => publicRouteRoute,
+  getParentRoute: () => V1RouteRoute,
 } as any)
-const publicMusicIndexRoute = publicMusicIndexRouteImport.update({
+const V1MusicIndexRoute = V1MusicIndexRouteImport.update({
   id: '/music/',
   path: '/music/',
-  getParentRoute: () => publicRouteRoute,
+  getParentRoute: () => V1RouteRoute,
 } as any)
-const publicNmixxMemberRoute = publicNmixxMemberRouteImport.update({
+const V1NmixxMemberRoute = V1NmixxMemberRouteImport.update({
   id: '/nmixx/$member',
   path: '/nmixx/$member',
-  getParentRoute: () => publicRouteRoute,
+  getParentRoute: () => V1RouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/nmixx/$member': typeof publicNmixxMemberRoute
-  '/music/': typeof publicMusicIndexRoute
-  '/nmixx/': typeof publicNmixxIndexRoute
-  '/video/': typeof publicVideoIndexRoute
+  '/v1': typeof V1RouteRouteWithChildren
+  '/v1/': typeof V1IndexRoute
+  '/v1/nmixx/$member': typeof V1NmixxMemberRoute
+  '/v1/music/': typeof V1MusicIndexRoute
+  '/v1/nmixx/': typeof V1NmixxIndexRoute
+  '/v1/video/': typeof V1VideoIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/nmixx/$member': typeof publicNmixxMemberRoute
-  '/music': typeof publicMusicIndexRoute
-  '/nmixx': typeof publicNmixxIndexRoute
-  '/video': typeof publicVideoIndexRoute
+  '/v1': typeof V1IndexRoute
+  '/v1/nmixx/$member': typeof V1NmixxMemberRoute
+  '/v1/music': typeof V1MusicIndexRoute
+  '/v1/nmixx': typeof V1NmixxIndexRoute
+  '/v1/video': typeof V1VideoIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/(public)': typeof publicRouteRouteWithChildren
-  '/(public)/nmixx/$member': typeof publicNmixxMemberRoute
-  '/(public)/music/': typeof publicMusicIndexRoute
-  '/(public)/nmixx/': typeof publicNmixxIndexRoute
-  '/(public)/video/': typeof publicVideoIndexRoute
+  '/v1': typeof V1RouteRouteWithChildren
+  '/v1/': typeof V1IndexRoute
+  '/v1/nmixx/$member': typeof V1NmixxMemberRoute
+  '/v1/music/': typeof V1MusicIndexRoute
+  '/v1/nmixx/': typeof V1NmixxIndexRoute
+  '/v1/video/': typeof V1VideoIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/nmixx/$member' | '/music/' | '/nmixx/' | '/video/'
+  fullPaths:
+    | '/'
+    | '/v1'
+    | '/v1/'
+    | '/v1/nmixx/$member'
+    | '/v1/music/'
+    | '/v1/nmixx/'
+    | '/v1/video/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/nmixx/$member' | '/music' | '/nmixx' | '/video'
+  to:
+    | '/'
+    | '/v1'
+    | '/v1/nmixx/$member'
+    | '/v1/music'
+    | '/v1/nmixx'
+    | '/v1/video'
   id:
     | '__root__'
     | '/'
-    | '/(public)'
-    | '/(public)/nmixx/$member'
-    | '/(public)/music/'
-    | '/(public)/nmixx/'
-    | '/(public)/video/'
+    | '/v1'
+    | '/v1/'
+    | '/v1/nmixx/$member'
+    | '/v1/music/'
+    | '/v1/nmixx/'
+    | '/v1/video/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  publicRouteRoute: typeof publicRouteRouteWithChildren
+  V1RouteRoute: typeof V1RouteRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/(public)': {
-      id: '/(public)'
-      path: ''
-      fullPath: ''
-      preLoaderRoute: typeof publicRouteRouteImport
+    '/v1': {
+      id: '/v1'
+      path: '/v1'
+      fullPath: '/v1'
+      preLoaderRoute: typeof V1RouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -105,58 +130,66 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/(public)/video/': {
-      id: '/(public)/video/'
+    '/v1/': {
+      id: '/v1/'
+      path: '/'
+      fullPath: '/v1/'
+      preLoaderRoute: typeof V1IndexRouteImport
+      parentRoute: typeof V1RouteRoute
+    }
+    '/v1/video/': {
+      id: '/v1/video/'
       path: '/video'
-      fullPath: '/video/'
-      preLoaderRoute: typeof publicVideoIndexRouteImport
-      parentRoute: typeof publicRouteRoute
+      fullPath: '/v1/video/'
+      preLoaderRoute: typeof V1VideoIndexRouteImport
+      parentRoute: typeof V1RouteRoute
     }
-    '/(public)/nmixx/': {
-      id: '/(public)/nmixx/'
+    '/v1/nmixx/': {
+      id: '/v1/nmixx/'
       path: '/nmixx'
-      fullPath: '/nmixx/'
-      preLoaderRoute: typeof publicNmixxIndexRouteImport
-      parentRoute: typeof publicRouteRoute
+      fullPath: '/v1/nmixx/'
+      preLoaderRoute: typeof V1NmixxIndexRouteImport
+      parentRoute: typeof V1RouteRoute
     }
-    '/(public)/music/': {
-      id: '/(public)/music/'
+    '/v1/music/': {
+      id: '/v1/music/'
       path: '/music'
-      fullPath: '/music/'
-      preLoaderRoute: typeof publicMusicIndexRouteImport
-      parentRoute: typeof publicRouteRoute
+      fullPath: '/v1/music/'
+      preLoaderRoute: typeof V1MusicIndexRouteImport
+      parentRoute: typeof V1RouteRoute
     }
-    '/(public)/nmixx/$member': {
-      id: '/(public)/nmixx/$member'
+    '/v1/nmixx/$member': {
+      id: '/v1/nmixx/$member'
       path: '/nmixx/$member'
-      fullPath: '/nmixx/$member'
-      preLoaderRoute: typeof publicNmixxMemberRouteImport
-      parentRoute: typeof publicRouteRoute
+      fullPath: '/v1/nmixx/$member'
+      preLoaderRoute: typeof V1NmixxMemberRouteImport
+      parentRoute: typeof V1RouteRoute
     }
   }
 }
 
-interface publicRouteRouteChildren {
-  publicNmixxMemberRoute: typeof publicNmixxMemberRoute
-  publicMusicIndexRoute: typeof publicMusicIndexRoute
-  publicNmixxIndexRoute: typeof publicNmixxIndexRoute
-  publicVideoIndexRoute: typeof publicVideoIndexRoute
+interface V1RouteRouteChildren {
+  V1IndexRoute: typeof V1IndexRoute
+  V1NmixxMemberRoute: typeof V1NmixxMemberRoute
+  V1MusicIndexRoute: typeof V1MusicIndexRoute
+  V1NmixxIndexRoute: typeof V1NmixxIndexRoute
+  V1VideoIndexRoute: typeof V1VideoIndexRoute
 }
 
-const publicRouteRouteChildren: publicRouteRouteChildren = {
-  publicNmixxMemberRoute: publicNmixxMemberRoute,
-  publicMusicIndexRoute: publicMusicIndexRoute,
-  publicNmixxIndexRoute: publicNmixxIndexRoute,
-  publicVideoIndexRoute: publicVideoIndexRoute,
+const V1RouteRouteChildren: V1RouteRouteChildren = {
+  V1IndexRoute: V1IndexRoute,
+  V1NmixxMemberRoute: V1NmixxMemberRoute,
+  V1MusicIndexRoute: V1MusicIndexRoute,
+  V1NmixxIndexRoute: V1NmixxIndexRoute,
+  V1VideoIndexRoute: V1VideoIndexRoute,
 }
 
-const publicRouteRouteWithChildren = publicRouteRoute._addFileChildren(
-  publicRouteRouteChildren,
-)
+const V1RouteRouteWithChildren =
+  V1RouteRoute._addFileChildren(V1RouteRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  publicRouteRoute: publicRouteRouteWithChildren,
+  V1RouteRoute: V1RouteRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

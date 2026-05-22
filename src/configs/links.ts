@@ -1,8 +1,8 @@
-const PUBLIC_LINKS = [
+const PUBLIC_LINKS_V1 = [
   { to: '/', label: 'Home' },
-  { to: '/music', label: 'Discography' },
-  { to: '/video', label: 'Videography' },
-  { to: '/nmixx', label: 'NMIXX' },
+  { to: '/v1/music', label: 'Discography' },
+  { to: '/v1/video', label: 'Videography' },
+  { to: '/v1/nmixx', label: 'NMIXX' },
 ]
 
-export { PUBLIC_LINKS }
+export { PUBLIC_LINKS_V1 }

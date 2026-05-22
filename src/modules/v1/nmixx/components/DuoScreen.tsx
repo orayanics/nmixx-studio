@@ -84,6 +84,7 @@ export default function DuoScreen(props: DuoScreenProps) {
             <div key={item.title} className="relative w-70 md:h-100 h-60">
               <Link
                 to="/nmixx/$member"
+                viewTransition
                 params={{ member: item.title }}
                 className="absolute inset-0 cursor-pointer"
               >
