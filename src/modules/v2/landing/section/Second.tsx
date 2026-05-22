@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion, type Variants } from 'framer-motion'
 import { starAnimation } from '@/configs/animations'
 import { NMIXX_MEMBERS } from '@/configs/landing'
 
@@ -22,6 +22,20 @@ export default function Second() {
     'Superior',
     'LOUD',
   ]
+
+  const parent: Variants = {
+    visible: {
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  }
+
+  const child = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+    transition: { duration: 0.6, ease: 'easeInOut' },
+  }
 
   return (
     <div className="space-y-20">
@@ -125,13 +139,22 @@ export default function Second() {
       >
         <Cassette />
 
-        <div className="space-y-10 w-full">
+        <motion.div
+          variants={parent}
+          initial="hidden"
+          whileInView="visible"
+          className="space-y-10 w-full"
+        >
           {TRACKS.map((track, index) => (
-            <p key={`track-${index}`} className="text-right">
+            <motion.p
+              variants={child}
+              key={`track-${index}`}
+              className="text-right"
+            >
               {track}
-            </p>
+            </motion.p>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       <div className="relative md:pt-60 pt-0">
