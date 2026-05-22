@@ -11,8 +11,18 @@ import {
 import { Heavy, Serenade } from '../components/TextHS'
 import SECOND_IMAGE from '@/assets/v2/hc_2.webp'
 import THIRD_IMAGE from '@/assets/v2/hc_3.webp'
+import Cassette from '../components/Cassette'
 
 export default function Second() {
+  const TRACKS = [
+    'Crescendo',
+    'Heavy Serenade',
+    'IDESERVEIT',
+    'Different Girl',
+    'Superior',
+    'LOUD',
+  ]
+
   return (
     <div className="space-y-20">
       <div className="relative">
@@ -108,7 +118,23 @@ export default function Second() {
         </div>
       </div>
 
-      <div>
+      <div
+        className="mx-auto py-10 px-5
+        relative w-full max-w-5xl
+       grid grid-cols-2 items-center"
+      >
+        <Cassette />
+
+        <div className="space-y-10 w-full">
+          {TRACKS.map((track, index) => (
+            <p key={`track-${index}`} className="text-right">
+              {track}
+            </p>
+          ))}
+        </div>
+      </div>
+
+      <div className="relative md:pt-60 pt-0">
         <motion.img
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1, x: 0 }}
