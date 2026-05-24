@@ -7,5 +7,5 @@ export const starAnimation = {
     scale: { duration: 0.6, ease: 'easeOut' as const },
     rotate: { duration: 8, ease: 'linear' as const, repeat: Infinity },
   },
-  viewport: { once: true },
+  viewport: { margin: '-100px' },
 }

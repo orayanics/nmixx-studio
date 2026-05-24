@@ -114,7 +114,7 @@ export default function Navigation(props: NavigationProps) {
       <div
         className="text-black container flex md:gap-3 gap-6 justify-between items-center px-4 relative z-50
       mx-auto max-w-7xl
-      bg-blue-500 border border-blue-500/40"
+      bg-white border-b border-black-500/40"
       >
         <div>
           <Logo className="h-12! py-2" />

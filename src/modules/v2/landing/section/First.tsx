@@ -40,7 +40,7 @@ export default function First() {
         </div>
       </div>
 
-      <div className="w-full flex md:flex-row flex-col justify-between items-center gap-2">
+      <div className="w-full flex md:flex-row flex-col justify-between items-center gap-10">
         <p className="md:text-left text-center">
           어린 맘속 헤매던 cosmos
           <br /> 터진 눈물 잃어버린 color

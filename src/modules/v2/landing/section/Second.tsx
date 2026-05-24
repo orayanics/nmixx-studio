@@ -145,6 +145,7 @@ export default function Second() {
           whileInView="visible"
           className="space-y-10 w-full"
         >
+          <p className="text-right text-xl">Tracklist</p>
           {TRACKS.map((track, index) => (
             <motion.p
               variants={child}

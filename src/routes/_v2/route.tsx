@@ -1,15 +1,16 @@
-import { createFileRoute } from '@tanstack/react-router'
-import Landing from '@/modules/v2/landing'
+import { Outlet, createFileRoute } from '@tanstack/react-router'
 import PublicLayout from '@/components/Layout/PublicLayout'
 
-export const Route = createFileRoute('/')({
+export const Route = createFileRoute('/_v2')({
   component: RouteComponent,
 })
 
 function RouteComponent() {
   return (
     <PublicLayout>
-      <Landing />
+      <main>
+        <Outlet />
+      </main>
     </PublicLayout>
   )
 }
