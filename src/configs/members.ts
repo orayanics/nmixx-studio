@@ -57,3 +57,14 @@ export const NMIXX_PROFILE: NProfile[] = [
     rep_animal: 'cat',
   },
 ]
+
+export const NMIXX_MEMBERS = [
+  'lily',
+  'haewon',
+  'sullyoon',
+  'bae',
+  'jiwoo',
+  'kyujin',
+] as const
+
+export type Member = (typeof NMIXX_MEMBERS)[number]

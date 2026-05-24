@@ -14,9 +14,9 @@ import { Route as V2RouteRouteImport } from './routes/_v2/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as V1IndexRouteImport } from './routes/v1/index'
 import { Route as V1VideoIndexRouteImport } from './routes/v1/video/index'
-import { Route as V1NmixxIndexRouteImport } from './routes/v1/nmixx/index'
 import { Route as V2TracksIndexRouteImport } from './routes/_v2/tracks/index'
-import { Route as V1NmixxMemberRouteImport } from './routes/v1/nmixx/$member'
+import { Route as V2NmixxIndexRouteImport } from './routes/_v2/nmixx/index'
+import { Route as V2NmixxMemberRouteImport } from './routes/_v2/nmixx/$member'
 
 const V1RouteRoute = V1RouteRouteImport.update({
   id: '/v1',
@@ -42,37 +42,37 @@ const V1VideoIndexRoute = V1VideoIndexRouteImport.update({
   path: '/video/',
   getParentRoute: () => V1RouteRoute,
 } as any)
-const V1NmixxIndexRoute = V1NmixxIndexRouteImport.update({
-  id: '/nmixx/',
-  path: '/nmixx/',
-  getParentRoute: () => V1RouteRoute,
-} as any)
 const V2TracksIndexRoute = V2TracksIndexRouteImport.update({
   id: '/tracks/',
   path: '/tracks/',
   getParentRoute: () => V2RouteRoute,
 } as any)
-const V1NmixxMemberRoute = V1NmixxMemberRouteImport.update({
+const V2NmixxIndexRoute = V2NmixxIndexRouteImport.update({
+  id: '/nmixx/',
+  path: '/nmixx/',
+  getParentRoute: () => V2RouteRoute,
+} as any)
+const V2NmixxMemberRoute = V2NmixxMemberRouteImport.update({
   id: '/nmixx/$member',
   path: '/nmixx/$member',
-  getParentRoute: () => V1RouteRoute,
+  getParentRoute: () => V2RouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/v1': typeof V1RouteRouteWithChildren
   '/v1/': typeof V1IndexRoute
-  '/v1/nmixx/$member': typeof V1NmixxMemberRoute
+  '/nmixx/$member': typeof V2NmixxMemberRoute
+  '/nmixx/': typeof V2NmixxIndexRoute
   '/tracks/': typeof V2TracksIndexRoute
-  '/v1/nmixx/': typeof V1NmixxIndexRoute
   '/v1/video/': typeof V1VideoIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/v1': typeof V1IndexRoute
-  '/v1/nmixx/$member': typeof V1NmixxMemberRoute
+  '/nmixx/$member': typeof V2NmixxMemberRoute
+  '/nmixx': typeof V2NmixxIndexRoute
   '/tracks': typeof V2TracksIndexRoute
-  '/v1/nmixx': typeof V1NmixxIndexRoute
   '/v1/video': typeof V1VideoIndexRoute
 }
 export interface FileRoutesById {
@@ -81,9 +81,9 @@ export interface FileRoutesById {
   '/_v2': typeof V2RouteRouteWithChildren
   '/v1': typeof V1RouteRouteWithChildren
   '/v1/': typeof V1IndexRoute
-  '/v1/nmixx/$member': typeof V1NmixxMemberRoute
+  '/_v2/nmixx/$member': typeof V2NmixxMemberRoute
+  '/_v2/nmixx/': typeof V2NmixxIndexRoute
   '/_v2/tracks/': typeof V2TracksIndexRoute
-  '/v1/nmixx/': typeof V1NmixxIndexRoute
   '/v1/video/': typeof V1VideoIndexRoute
 }
 export interface FileRouteTypes {
@@ -92,21 +92,21 @@ export interface FileRouteTypes {
     | '/'
     | '/v1'
     | '/v1/'
-    | '/v1/nmixx/$member'
+    | '/nmixx/$member'
+    | '/nmixx/'
     | '/tracks/'
-    | '/v1/nmixx/'
     | '/v1/video/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/v1' | '/v1/nmixx/$member' | '/tracks' | '/v1/nmixx' | '/v1/video'
+  to: '/' | '/v1' | '/nmixx/$member' | '/nmixx' | '/tracks' | '/v1/video'
   id:
     | '__root__'
     | '/'
     | '/_v2'
     | '/v1'
     | '/v1/'
-    | '/v1/nmixx/$member'
+    | '/_v2/nmixx/$member'
+    | '/_v2/nmixx/'
     | '/_v2/tracks/'
-    | '/v1/nmixx/'
     | '/v1/video/'
   fileRoutesById: FileRoutesById
 }
@@ -153,13 +153,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof V1VideoIndexRouteImport
       parentRoute: typeof V1RouteRoute
     }
-    '/v1/nmixx/': {
-      id: '/v1/nmixx/'
-      path: '/nmixx'
-      fullPath: '/v1/nmixx/'
-      preLoaderRoute: typeof V1NmixxIndexRouteImport
-      parentRoute: typeof V1RouteRoute
-    }
     '/_v2/tracks/': {
       id: '/_v2/tracks/'
       path: '/tracks'
@@ -167,21 +160,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof V2TracksIndexRouteImport
       parentRoute: typeof V2RouteRoute
     }
-    '/v1/nmixx/$member': {
-      id: '/v1/nmixx/$member'
+    '/_v2/nmixx/': {
+      id: '/_v2/nmixx/'
+      path: '/nmixx'
+      fullPath: '/nmixx/'
+      preLoaderRoute: typeof V2NmixxIndexRouteImport
+      parentRoute: typeof V2RouteRoute
+    }
+    '/_v2/nmixx/$member': {
+      id: '/_v2/nmixx/$member'
       path: '/nmixx/$member'
-      fullPath: '/v1/nmixx/$member'
-      preLoaderRoute: typeof V1NmixxMemberRouteImport
-      parentRoute: typeof V1RouteRoute
+      fullPath: '/nmixx/$member'
+      preLoaderRoute: typeof V2NmixxMemberRouteImport
+      parentRoute: typeof V2RouteRoute
     }
   }
 }
 
 interface V2RouteRouteChildren {
+  V2NmixxMemberRoute: typeof V2NmixxMemberRoute
+  V2NmixxIndexRoute: typeof V2NmixxIndexRoute
   V2TracksIndexRoute: typeof V2TracksIndexRoute
 }
 
 const V2RouteRouteChildren: V2RouteRouteChildren = {
+  V2NmixxMemberRoute: V2NmixxMemberRoute,
+  V2NmixxIndexRoute: V2NmixxIndexRoute,
   V2TracksIndexRoute: V2TracksIndexRoute,
 }
 
@@ -190,15 +194,11 @@ const V2RouteRouteWithChildren =
 
 interface V1RouteRouteChildren {
   V1IndexRoute: typeof V1IndexRoute
-  V1NmixxMemberRoute: typeof V1NmixxMemberRoute
-  V1NmixxIndexRoute: typeof V1NmixxIndexRoute
   V1VideoIndexRoute: typeof V1VideoIndexRoute
 }
 
 const V1RouteRouteChildren: V1RouteRouteChildren = {
   V1IndexRoute: V1IndexRoute,
-  V1NmixxMemberRoute: V1NmixxMemberRoute,
-  V1NmixxIndexRoute: V1NmixxIndexRoute,
   V1VideoIndexRoute: V1VideoIndexRoute,
 }
 
