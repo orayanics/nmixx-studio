@@ -1,6 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
 import {
-  AnimatePresence,
   motion,
   useMotionValue,
   useMotionValueEvent,
@@ -46,7 +45,14 @@ function RouteComponent() {
   })
 
   useEffect(() => {
+    const previousHtmlOverflow = document.documentElement.style.overflow
+    const previousBodyOverflow = document.body.style.overflow
+    document.documentElement.style.overflow = 'hidden'
+    document.body.style.overflow = 'hidden'
+
     return () => {
+      document.documentElement.style.overflow = previousHtmlOverflow
+      document.body.style.overflow = previousBodyOverflow
       if (snapTimeoutRef.current !== null) {
         window.clearTimeout(snapTimeoutRef.current)
       }
@@ -96,7 +102,7 @@ function RouteComponent() {
 
   return (
     <section
-      className={`${styles.tracksSection} max-w-screen mx-auto h-screen max-h-screen overflow-hidden
+      className={`${styles.tracksSection} max-w-screen mx-auto h-svh overflow-hidden box-border
       flex flex-col items-center justify-center`}
     >
       <div
@@ -124,36 +130,29 @@ function RouteComponent() {
         </div>
       </div>
 
-      <AnimatePresence mode="wait">
-        {activeAlbum ? (
-          <motion.div
-            key={`${activeAlbum.album}-${activeAlbum.releaseDate}`}
-            className={styles.details}
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -6 }}
-            transition={{ duration: 0.28, ease: 'easeOut' }}
-          >
-            <div className={styles.albumMeta}>
-              <p className="font-bold text-2xl">{activeAlbum.album}</p>
-              <p>{activeAlbum.releaseDate}</p>
-            </div>
-            <ol className={styles.trackList}>
-              {activeAlbum.tracks.map((track, index) => (
-                <li
-                  key={`${activeAlbum.album}-${track}`}
-                  className={styles.trackItem}
-                >
-                  <span className={styles.trackIndex}>
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <span>{track}</span>
-                </li>
-              ))}
-            </ol>
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
+      {activeAlbum ? (
+        <motion.div
+          className={styles.details}
+          initial={false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.18, ease: 'easeOut' }}
+        >
+          <div className={styles.albumMeta}>
+            <p className="font-bold text-2xl">{activeAlbum.album}</p>
+            <p>{activeAlbum.releaseDate}</p>
+          </div>
+          <ol className={styles.trackList}>
+            {activeAlbum.tracks.map((track, index) => (
+              <li key={`${activeAlbum.album}-${track}`} className={styles.trackItem}>
+                <span className={styles.trackIndex}>
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <span>{track}</span>
+              </li>
+            ))}
+          </ol>
+        </motion.div>
+      ) : null}
     </section>
   )
 }

@@ -25,7 +25,7 @@ export default function NavigationMenu({
   }
 
   return (
-    <div className="relative z-60 flex gap-4 items-center md:hidden">
+    <div className="relative z-60 flex gap-4 items-center">
       <button
         onClick={() => setIsMenuOpen(!isMenuOpen)}
         className="flex flex-col justify-center items-center p-2 focus:outline-none"

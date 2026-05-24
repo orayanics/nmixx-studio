@@ -5,4 +5,4 @@ export const PUBLIC_LINKS_V1 = [
   { to: '/v1/nmixx', label: 'NMIXX' },
 ]
 
-export const DISABLE_FOOTER = ['/tracks']
+export const DISABLE_FOOTER = ['/', '/tracks']

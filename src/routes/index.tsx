@@ -8,7 +8,7 @@ export const Route = createFileRoute('/')({
 
 function RouteComponent() {
   return (
-    <PublicLayout>
+    <PublicLayout enableFooter={false}>
       <Landing />
     </PublicLayout>
   )
