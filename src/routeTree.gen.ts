@@ -15,7 +15,6 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as V1IndexRouteImport } from './routes/v1/index'
 import { Route as V1VideoIndexRouteImport } from './routes/v1/video/index'
 import { Route as V1NmixxIndexRouteImport } from './routes/v1/nmixx/index'
-import { Route as V1MusicIndexRouteImport } from './routes/v1/music/index'
 import { Route as V2TracksIndexRouteImport } from './routes/_v2/tracks/index'
 import { Route as V1NmixxMemberRouteImport } from './routes/v1/nmixx/$member'
 
@@ -48,11 +47,6 @@ const V1NmixxIndexRoute = V1NmixxIndexRouteImport.update({
   path: '/nmixx/',
   getParentRoute: () => V1RouteRoute,
 } as any)
-const V1MusicIndexRoute = V1MusicIndexRouteImport.update({
-  id: '/music/',
-  path: '/music/',
-  getParentRoute: () => V1RouteRoute,
-} as any)
 const V2TracksIndexRoute = V2TracksIndexRouteImport.update({
   id: '/tracks/',
   path: '/tracks/',
@@ -70,7 +64,6 @@ export interface FileRoutesByFullPath {
   '/v1/': typeof V1IndexRoute
   '/v1/nmixx/$member': typeof V1NmixxMemberRoute
   '/tracks/': typeof V2TracksIndexRoute
-  '/v1/music/': typeof V1MusicIndexRoute
   '/v1/nmixx/': typeof V1NmixxIndexRoute
   '/v1/video/': typeof V1VideoIndexRoute
 }
@@ -79,7 +72,6 @@ export interface FileRoutesByTo {
   '/v1': typeof V1IndexRoute
   '/v1/nmixx/$member': typeof V1NmixxMemberRoute
   '/tracks': typeof V2TracksIndexRoute
-  '/v1/music': typeof V1MusicIndexRoute
   '/v1/nmixx': typeof V1NmixxIndexRoute
   '/v1/video': typeof V1VideoIndexRoute
 }
@@ -91,7 +83,6 @@ export interface FileRoutesById {
   '/v1/': typeof V1IndexRoute
   '/v1/nmixx/$member': typeof V1NmixxMemberRoute
   '/_v2/tracks/': typeof V2TracksIndexRoute
-  '/v1/music/': typeof V1MusicIndexRoute
   '/v1/nmixx/': typeof V1NmixxIndexRoute
   '/v1/video/': typeof V1VideoIndexRoute
 }
@@ -103,18 +94,10 @@ export interface FileRouteTypes {
     | '/v1/'
     | '/v1/nmixx/$member'
     | '/tracks/'
-    | '/v1/music/'
     | '/v1/nmixx/'
     | '/v1/video/'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/v1'
-    | '/v1/nmixx/$member'
-    | '/tracks'
-    | '/v1/music'
-    | '/v1/nmixx'
-    | '/v1/video'
+  to: '/' | '/v1' | '/v1/nmixx/$member' | '/tracks' | '/v1/nmixx' | '/v1/video'
   id:
     | '__root__'
     | '/'
@@ -123,7 +106,6 @@ export interface FileRouteTypes {
     | '/v1/'
     | '/v1/nmixx/$member'
     | '/_v2/tracks/'
-    | '/v1/music/'
     | '/v1/nmixx/'
     | '/v1/video/'
   fileRoutesById: FileRoutesById
@@ -178,13 +160,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof V1NmixxIndexRouteImport
       parentRoute: typeof V1RouteRoute
     }
-    '/v1/music/': {
-      id: '/v1/music/'
-      path: '/music'
-      fullPath: '/v1/music/'
-      preLoaderRoute: typeof V1MusicIndexRouteImport
-      parentRoute: typeof V1RouteRoute
-    }
     '/_v2/tracks/': {
       id: '/_v2/tracks/'
       path: '/tracks'
@@ -216,7 +191,6 @@ const V2RouteRouteWithChildren =
 interface V1RouteRouteChildren {
   V1IndexRoute: typeof V1IndexRoute
   V1NmixxMemberRoute: typeof V1NmixxMemberRoute
-  V1MusicIndexRoute: typeof V1MusicIndexRoute
   V1NmixxIndexRoute: typeof V1NmixxIndexRoute
   V1VideoIndexRoute: typeof V1VideoIndexRoute
 }
@@ -224,7 +198,6 @@ interface V1RouteRouteChildren {
 const V1RouteRouteChildren: V1RouteRouteChildren = {
   V1IndexRoute: V1IndexRoute,
   V1NmixxMemberRoute: V1NmixxMemberRoute,
-  V1MusicIndexRoute: V1MusicIndexRoute,
   V1NmixxIndexRoute: V1NmixxIndexRoute,
   V1VideoIndexRoute: V1VideoIndexRoute,
 }

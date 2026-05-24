@@ -11,7 +11,6 @@ interface PublicLayoutProps {
 
 export default function PublicLayout(props: PublicLayoutProps) {
   const { children, enableFooter = true, enableNavigation = true } = props
-
   return (
     <>
       {enableNavigation && <Navigation links={PUBLIC_LINKS_V1} />}
