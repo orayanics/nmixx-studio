@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { Link } from '@tanstack/react-router'
 import {
   motion,
@@ -9,7 +8,6 @@ import {
 import useNavigation from './useNavigation'
 import Logo from '@/components/Logo/Logo'
 import NavigationMenu from '@/components/Page/NavigationMenu'
-import useScrolled from '@/utils/useScrolled'
 
 type NavigationLink = {
   to: string
@@ -25,7 +23,6 @@ const smoothEase: Easing = [0.76, 0, 0.24, 1]
 export default function Navigation(props: NavigationProps) {
   const { links } = props
   const { isMenuOpen, setIsMenuOpen, closeMenu } = useNavigation()
-  const { scrolledRef } = useScrolled()
 
   const menuVariants: Variants = {
     hidden: { y: '-100%' },
@@ -83,52 +80,16 @@ export default function Navigation(props: NavigationProps) {
     }),
   }
 
-  useEffect(() => {
-    const media = window.matchMedia('(min-width: 768px)')
-
-    const handleResize = () => {
-      if (media.matches) closeMenu()
-    }
-
-    handleResize()
-    media.addEventListener('change', handleResize)
-
-    return () => media.removeEventListener('change', handleResize)
-  }, [closeMenu])
-
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-    }
-
-    return () => {
-      document.body.style.overflow = ''
-    }
-  }, [isMenuOpen])
-
   return (
-    <header ref={scrolledRef} className="top-0 inset-s-0 z-200 w-full">
+    <header className="fixed top-0 z-200 w-full">
       {/* --- HEADER BAR --- */}
       <div
         className="text-black container flex md:gap-3 gap-6 justify-between items-center px-4 relative z-50
       mx-auto max-w-7xl
-      bg-blue-500 border border-blue-500/40"
+      bg-white "
       >
         <div>
           <Logo className="h-12! py-2" />
-        </div>
-        <div className="text-xs uppercase font-semibold items-center md:flex hidden">
-          {links.map((link) => (
-            <Link
-              key={link.to}
-              to={link.to}
-              className="font-mono flex items-center px-6 hover:bg-blue-800 hover:text-white transition-colors duration-300"
-            >
-              {link.label}
-            </Link>
-          ))}
         </div>
         <NavigationMenu
           isMenuOpen={isMenuOpen}
@@ -148,7 +109,7 @@ export default function Navigation(props: NavigationProps) {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="fixed inset-0 z-40 flex md:hidden flex-col items-center justify-center bg-square-nav bg-dark w-screen h-dvh overflow-hidden"
+            className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-square-nav bg-dark w-screen h-dvh overflow-hidden"
           >
             <nav className="flex flex-col items-center gap-4 mt-12">
               {links.map((link, i) => (
@@ -174,6 +135,7 @@ export default function Navigation(props: NavigationProps) {
                   >
                     <Link
                       to={link.to}
+                      viewTransition
                       onClick={closeMenu}
                       className="block text-4xl md:text-8xl font-black tracking-tighter uppercase leading-[0.85] transition-colors duration-300 relative z-0"
                       activeProps={{

@@ -1,10 +1,15 @@
 import { createFileRoute } from '@tanstack/react-router'
+import Landing from '@/modules/v2/landing'
+import PublicLayout from '@/components/Layout/PublicLayout'
 
 export const Route = createFileRoute('/')({
-  component: App,
+  component: RouteComponent,
 })
 
-import LandingView from '@/modules/landing/LandingView'
-function App() {
-  return <LandingView />
+function RouteComponent() {
+  return (
+    <PublicLayout enableFooter={false}>
+      <Landing />
+    </PublicLayout>
+  )
 }
