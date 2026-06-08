@@ -19,7 +19,7 @@ function RouteComponent() {
 
   return (
     <div className="max-w-7xl mx-auto md:overflow-visible overflow-hidden min-h-screen">
-      <p>{member}</p>
+      <p className="text-9xl">{member}</p>
     </div>
   )
 }
