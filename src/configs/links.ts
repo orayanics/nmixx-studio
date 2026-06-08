@@ -1,8 +1,8 @@
-const PUBLIC_LINKS = [
+export const PUBLIC_LINKS_V1 = [
   { to: '/', label: 'Home' },
-  { to: '/music', label: 'Discography' },
-  { to: '/video', label: 'Videography' },
+  { to: '/tracks', label: 'Discography' },
+  { to: '/v1/video', label: 'Videography' },
   { to: '/nmixx', label: 'NMIXX' },
 ]
 
-export { PUBLIC_LINKS }
+export const DISABLE_FOOTER = ['/', '/tracks']
