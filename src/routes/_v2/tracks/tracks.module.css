@@ -8,15 +8,17 @@
 
 .arcWrapper {
   position: relative;
-  height: 600px;
+  height: 700px;
   touch-action: none;
   user-select: none;
+  background: #fff !important;
 }
 
 .arcStage {
   position: relative;
   height: 100%;
   width: 100%;
+  background: #fff !important;
 }
 
 .arcItem {
@@ -50,8 +52,11 @@
   display: grid;
   gap: 0.5rem;
   position: absolute;
-  top: 50%;
+  top: 65%;
   text-align: center;
+  max-height: 26%;
+  overflow-y: auto;
+  scrollbar-width: none;
 }
 
 .albumMeta {
@@ -79,4 +84,10 @@
 .trackIndex {
   width: 2ch;
   color: rgba(255, 255, 255, 0.45);
+}
+
+@media (max-width: 768px) {
+  .arcWrapper {
+    height: 700px;
+  }
 }

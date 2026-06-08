@@ -248,4 +248,11 @@ export const NMIXX_DISCOGRAPHY: Album[] = [
       'LOUD',
     ],
   },
+  {
+    album: 'K-POPS! (with Anderson .Paak)',
+    releaseDate: 'May 29, 2026',
+    cover:
+      'https://i0.wp.com/kprofiles.com/wp-content/uploads/2022/02/IMG_4206.jpeg',
+    tracks: ['Caution'],
+  },
 ]

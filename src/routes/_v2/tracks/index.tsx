@@ -11,12 +11,19 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 
 import { NMIXX_DISCOGRAPHY } from '@/configs/albums'
 import styles from './tracks.module.css'
+import { discographyQueryOptions } from '@/api/discography'
+import { useSuspenseQuery } from '@tanstack/react-query'
+
 export const Route = createFileRoute('/_v2/tracks/')({
+  loader: ({ context: { queryClient } }) =>
+    queryClient.ensureQueryData(discographyQueryOptions),
   component: RouteComponent,
 })
 
 function RouteComponent() {
-  const albums = useMemo(() => [...NMIXX_DISCOGRAPHY].reverse(), [])
+  const { data } = useSuspenseQuery(discographyQueryOptions)
+  const albums = useMemo(() => [...data].reverse(), [data])
+
   const [activeIndex, setActiveIndex] = useState(0)
   const snapTimeoutRef = useRef<number | null>(null)
   const dragStateRef = useRef<{ active: boolean; lastX: number } | null>(null)
@@ -143,7 +150,10 @@ function RouteComponent() {
           </div>
           <ol className={styles.trackList}>
             {activeAlbum.tracks.map((track, index) => (
-              <li key={`${activeAlbum.album}-${track}`} className={styles.trackItem}>
+              <li
+                key={`${activeAlbum.album}-${track}`}
+                className={styles.trackItem}
+              >
                 <span className={styles.trackIndex}>
                   {String(index + 1).padStart(2, '0')}
                 </span>
@@ -218,7 +228,12 @@ function ArcSlot({
       }
       aria-hidden={false}
     >
-      <img className={styles.arcCover} src={album.cover} alt={album.album} />
+      <img
+        className={styles.arcCover}
+        src={album.cover}
+        alt={album.album}
+        referrerPolicy="no-referrer"
+      />
     </motion.div>
   )
 }
