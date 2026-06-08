@@ -6,7 +6,7 @@ export const StarOne = ({ className }: StarProps) => {
   return (
     <div className={className ? className : ''}>
       <svg
-        className="w-full h-auto max-w-[97]"
+        className="w-full h-auto max-w-[387px]"
         preserveAspectRatio="xMidYMid meet"
         width="387"
         height="387"
@@ -48,7 +48,7 @@ export const StarThree = ({ className }: StarProps) => {
   return (
     <div className={className ? className : ''}>
       <svg
-        className="w-full h-auto max-w-[46]"
+        className="w-full h-auto max-w-[185px]"
         preserveAspectRatio="xMidYMid meet"
         width="185"
         height="165"

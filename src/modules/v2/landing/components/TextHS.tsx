@@ -130,7 +130,7 @@ export function Serenade() {
       initial="hidden"
       whileInView="visible"
       viewport={{ margin: '0px 0px -300px 0px' }}
-      className="w-full h-auto max-w-[170]"
+      className="w-full h-auto max-w-[680px]"
       preserveAspectRatio="xMidYMid meet"
       width="680"
       height="229"

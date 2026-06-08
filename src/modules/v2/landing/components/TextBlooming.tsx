@@ -28,7 +28,7 @@ export default function TextBlooming() {
       variants={container}
       initial="hidden"
       whileInView="visible"
-      className="w-full h-auto max-w-[128.25]"
+      className="w-full h-auto max-w-[513px]"
       preserveAspectRatio="xMidYMid meet"
       width="513"
       height="189"

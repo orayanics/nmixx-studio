@@ -28,7 +28,7 @@ export default function TextWere() {
       variants={container}
       initial="hidden"
       whileInView="visible"
-      className="w-full h-auto max-w-[128.25]"
+      className="w-full h-auto max-w-[514px]"
       preserveAspectRatio="xMidYMid meet"
       width="514"
       height="147"
